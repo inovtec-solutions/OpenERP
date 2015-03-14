@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<menuitem id="menu_fee_head_id_top" name="Fee Management" parent="" sequence="" groups="sms.group_sms_admin,sms.group_sms_fee_manager"/>
+	<menuitem id="menu_fee_head_id" name="Fee Management" parent="menu_fee_head_id_top" sequence="1" groups="sms.group_sms_fee_manager"/>
+	<menuitem id="menu_feetypes_id" parent="menu_fee_head_id" sequence="1" groups="sms.group_sms_fee_manager,sms.group_sms_principal,sms.group_sms_admin,sms.group_sms_admission_manager" action="action_feetypes"/>
+	<menuitem id="menu_fee_receiptbook_id" parent="menu_fee_head_id" sequence="3" groups="sms.group_sms_fee_manager,sms.group_sms_principal,sms.group_sms_admin" action="action_receiptbook_id"/>
+	<menuitem id="menu_fee_feereports" icon ="terp-graph" parent="menu_fee_head_id" sequence="4" groups="sms.group_sms_fee_manager,sms.group_sms_principal,sms.group_sms_admin,sms.group_sms_admission_manager" action="action_fee_reports"/>
+	<menuitem id="menu_dailyfee_feereports" icon ="terp-graph" parent="menu_fee_head_id" sequence="5" groups="sms.group_sms_fee_manager,sms.group_sms_principal,sms.group_sms_admin,sms.group_sms_admission_manager" action="action_dailyfee_reports"/>
+	<menuitem id="menu_withdraw_process_id" icon ="terp-graph" parent="menu_fee_head_id" sequence="6" groups="sms.group_sms_fee_manager,sms.group_sms_principal,sms.group_sms_admin,sms.group_sms_admission_manager" action="action_withdrawprocess_id"/>	
+    <menuitem id="menu_return_fee" parent="menu_fee_head_id" sequence="7" groups="sms.group_sms_admin,sms.group_sms_admission_manager" action="action_smsfee_return_fee"/>
+</data>
+</openerp>

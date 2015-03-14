@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(632.0,920.0)" title="Crossovered Analytic" author="Inovtec" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="28.0" y1="28.0" width="570" height="786"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="Table1">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="0.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="0.0" start="0,0" stop="-1,-1"/>
+   
+	</blockTableStyle>
+    
+    <blockTableStyle id="Table3">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+	<blockTableStyle id="Table2">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="7.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="pageheading1" fontName="Arial" fontSize="13.0" alignment="CENTER" leading="15" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="pageheading2" fontName="Arial" fontSize="12.0" alignment="CENTER" leading="20" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="pageheading3" fontName="Helvetica" fontSize="9.0" alignment="LEFT" leading="8" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="pageheading5" fontName="Verdena" fontSize="7.0" alignment="LEFT" leading="8" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="pageheading4" fontName="Verdena" fontSize="11.0" alignment="RIGHT" leading="5" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="para_heading" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="headingright" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>	
+	<paraStyle name="para_title" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_heading2" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="para_amount" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="bold_column" fontName="Helvetica" fontSize="11.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="parasmall" fontName="Helvetica" fontSize="6.0" leading="7" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_3" fontName="Helvetica" fontSize="11.0" leading="9" alignment="CENTER" spaceBefore="5.0" spaceAfter="5.0"/>
+    <paraStyle name="para_4" fontName="Helvetica" fontSize="11.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	 <paraStyle name="ParaWhite" fontName="Helvetica" fontSize="9.0" leading="18" alignment="CENTER"  spaceBefore="0.0" spaceAfter="0.0" textColor="#FFFFFF"/>
+    <images/>
+  
+  </stylesheet>
+  <story>
+  <pto>
+  <section>
+ 			<para style="para_3">[[ repeatIn(student_fee_receipts('Form'),'r') ]]</para>
+			<blockTable colWidths="250.0,250.0" repeatRows="1" style="Table2">
+			<tr>
+			<td>
+				<blockTable colWidths="240.0" repeatRows="1" style="Table3">
+				<tr><td><para style="pageheading1">[[ company_name(data['form'])]]</para></td></tr>
+				<tr><td><para style="pageheading2">Office Copy</para></td></tr>
+				<tr>
+					<td>
+						<blockTable colWidths="50.0,140.0" repeatRows="1" style="Table2">
+							<tr>
+								<td><para style="pageheading3">Student:</para></td>
+								<td><para style="pageheading3">[[r['student'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading3">Father:</para></td>
+								<td><para style="pageheading3">[[ r['father'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">Class:</para></td>
+								<td><para style="pageheading5">[[ r['class'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">Date:</para></td>
+								<td><para style="pageheading5">[[ r['dated'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">F.Structure:</para></td>
+								<td><para style="pageheading5">[[ r['feestrc'] ]]</para></td>
+							</tr>
+							
+						</blockTable>
+
+						<blockTable colWidths="30.0,155.0,40.0" repeatRows="1" style="Table3">
+						<tr><para style="para_heading2">[[repeatIn((r['fee_arr']),'s')]]</para>
+						<td><para style="para_heading2">[[ s['sno'] ]]</para></td>
+						<td><para style="para_heading2">[[ s['fee_name'] ]]</para></td>
+						<td><para style="para_amount">[[ s['amount'] ]]</para></td>
+						</tr>
+						</blockTable>
+
+					 
+						<blockTable colWidths="185.0,45.0" repeatRows="1" style="Table2">
+						<tr>
+						<td><para style="pageheding4">Total(Rs)</para></td>
+						<td><para style="pageheading4">[[ r['total'] ]]/-</para></td>
+						</tr>
+						<tr>
+						<td><para style="para_heading2">Prepared By: [[ get_user_name(data['form'])]]</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="para_heading2">Received By: ________</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="parasmall">Fee shold be sumitted till 10th of the month</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="parasmall"></para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						</blockTable>
+				</td>
+				</tr>
+				</blockTable>
+			</td>
+			<td>		
+				<blockTable colWidths="240.0" repeatRows="1" style="Table3">
+				<tr><td><para style="pageheading1">[[ company_name(data['form'])]]</para></td></tr>
+				<tr><td><para style="pageheading2">Student Copy</para></td></tr>
+				<tr>
+				<td>
+						<blockTable colWidths="50.0,140.0" repeatRows="1" style="Table2">
+							<tr>
+								<td><para style="pageheading3">Student:</para></td>
+								<td><para style="pageheading3">[[r['student'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading3">Father:</para></td>
+								<td><para style="pageheading3">[[ r['father'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">Class:</para></td>
+								<td><para style="pageheading5">[[ r['class'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">Date:</para></td>
+								<td><para style="pageheading5">[[ r['dated'] ]]</para></td>
+							</tr>
+							<tr>
+								<td><para style="pageheading5">F.Structure:</para></td>
+								<td><para style="pageheading5">[[ r['feestrc'] ]]</para></td>
+							</tr>
+							
+						</blockTable>
+						
+						<blockTable colWidths="30.0,155.0,40.0" repeatRows="1" style="Table3">
+						<tr><para style="para_heading2">[[repeatIn((r['fee_arr']),'s')]]</para>
+						<td><para style="para_heading2">[[ s['sno'] ]]</para></td>
+						<td><para style="para_heading2">[[ s['fee_name'] ]]</para></td>
+						<td><para style="para_amount">[[ s['amount'] ]]</para></td>
+						</tr>
+						</blockTable>
+						
+						<blockTable colWidths="185.0,45.0" repeatRows="1" style="Table2">
+						<tr>
+						<td><para style="pageheding4">Total(Rs)</para></td>
+						<td><para style="pageheading4">[[ r['total'] ]]/-</para></td>
+						</tr>
+						<tr>
+						<td><para style="para_heading2">Prepared By: [[ get_user_name(data['form'])]]</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="para_heading2">Received By: ________</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="parasmall">Fee shold be sumitted till 10th of the month</para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						<tr>
+						<td><para style="parasmall"></para></td>
+						<td><para style="para_heading2"></para></td>
+						</tr>
+						</blockTable>
+				</td>
+				</tr>
+				</blockTable>
+
+			</td>
+			</tr>
+	       </blockTable>
+	</section>
+    </pto>
+  </story>
+</document>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Subject Assignment -->
+
+        <record id="view_sms_student_subject_assignment" model="ir.ui.view">
+            <field name="name">Subject Assignment</field>
+            <field name="model">sms.student.subject.assignment</field>
+            <field name="arch" type="xml">
+                <form string="Subject Assignment" version="7.0">
+                    <group col="4">
+						<field name="academiccalendar_id" on_change="onchange_academiccalendar(academiccalendar_id)"/>
+						<field name="subject_id"/>
+						<field name="teacher_id"/>
+						<field name="offered_as"/>
+						<field name="academiccalendar_subject_id" attrs="{'required':[('offered_as','=','practical')], 'invisible':[('offered_as','!=','practical')]}"/>
+					</group>
+                    <footer>
+                        <button string="Assign Subject" name="assign_subject" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Subject Assignment -->
+					
+        <record id="action_view_sms_student_subject_assignment_wizard" model="ir.actions.act_window">
+            <field name="name">Subject Assignment</field>
+            <field name="res_model">sms.student.subject.assignment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_student_subject_assignment"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

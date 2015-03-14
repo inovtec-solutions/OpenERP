@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Print expense list -->
+
+        <record id="view_expense_form" model="ir.ui.view">
+            <field name="name">sms.expense.report</field>
+            <field name="model">sms.expense.report</field>
+            <field name="arch" type="xml">
+                <form string="Daily Expenses" version="7.0">
+			    		<group col="4">
+						<newline/><field name="from_date"/>
+						<newline/><field name="to_date"/>
+						</group>
+						<group >              			
+							<newline/><field name="expense_manager"/>
+							<newline/><field name="state"/>
+						</group>
+                    <footer>
+                        <button string="Print" name="print_expense_list" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View CMS Student Admit -->
+
+        <record id="action_expense_report" model="ir.actions.act_window">
+            <field name="name">Expense Report</field>
+            <field name="res_model">sms.expense.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_expense_form"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

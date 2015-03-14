@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+<!-- sms months  -->
+
+	<record id="sms_month_1" model="sms.month">
+		<field name="name">January</field>
+		<field name="code">01</field>
+	</record>
+	<record id="sms_month_2" model="sms.month">
+		<field name="name">February</field>
+		<field name="code">02</field>
+	</record>
+	<record id="sms_month_3" model="sms.month">
+		<field name="name">March</field>
+		<field name="code">03</field>
+	</record>
+	<record id="sms_month_4" model="sms.month">
+		<field name="name">April</field>
+		<field name="code">04</field>
+	</record>
+	<record id="sms_month_5" model="sms.month">
+		<field name="name">May</field>
+		<field name="code">05</field>
+	</record>
+	<record id="sms_month_6" model="sms.month">
+		<field name="name">June</field>
+		<field name="code">06</field>
+	</record>
+	<record id="sms_month_7" model="sms.month">
+		<field name="name">July</field>
+		<field name="code">07</field>
+	</record>
+	<record id="sms_month_8" model="sms.month">
+		<field name="name">August</field>
+		<field name="code">08</field>
+	</record>
+	<record id="sms_month_9" model="sms.month">
+		<field name="name">September</field>
+		<field name="code">09</field>
+	</record>
+	<record id="sms_month_10" model="sms.month">
+		<field name="name">October</field>
+		<field name="code">10</field>
+	</record>
+	<record id="sms_month_11" model="sms.month">
+		<field name="name">November</field>
+		<field name="code">11</field>
+	</record>
+	<record id="sms_month_12" model="sms.month">
+		<field name="name">December</field>
+		<field name="code">12</field>	
+	</record>
+    </data>
+</openerp>

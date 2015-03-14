@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--Daily Fee Reports-->
+		<report
+            id="report_dailyfee_report_id"
+            model="smsfee.classfees.register"
+            name="smsfee.dailyfee.report.name"
+            multi="True"
+            rml="smsfee/report/smsfee_dailyfee_report.rml"
+            string="Daily Fee Reports"
+            />
+
+		<!--individual paid fee receipt print-->
+		<report
+            id="print_paid_fee_receipt_id"
+            model="smsfee.classfees.register"
+            name="smsfee.paidfee.receipt.name"
+            multi="True"
+            rml="smsfee/report/print_paid_receipt_individual.rml"
+            string="Paid fee Receipts Print"
+            />
+
+		<!--Fee Reports-->
+		<report
+            id="report_annual_allclasses_id"
+            model="smsfee.classfees.register"
+            name="smsfee.annaul.allclasses.name"
+            multi="True"
+            rml="smsfee/report/smsfee_annual_allclasses.rml"
+            string="Fee Reports"
+            />
+         <report
+            id="report_annual_single_id"
+            model="smsfee.classfees.register"
+            name="smsfee.annaul.singleclass.name"
+            multi="True"
+            rml="smsfee/report/smsfee_annual_singleclass.rml"
+            string="Fee Reports"
+            /> 
+            
+             <report
+            id="report_motnhlyfee_collection_allclasses_id"
+            model="smsfee.classfees.register"
+            name="smsfee.monthlyfeecollection.allclasses.name"
+            multi="True"
+            rml="smsfee/report/smsfee_monthly_feecollection_allclasses.rml"
+            string="Fee Reports"
+            />   
+
+             <report
+            id="report_motnhly_feestructure_collection_allclasses_id"
+            model="smsfee.classfees.register"
+            name="smsfee.monthly.feestructure.collections.allclasses.name"
+            multi="True"
+            rml="smsfee/report/smsfee_monthly_feestructure_collections_allclasses.rml"
+            string="Fee Reports"
+            />   
+            
+             <report
+            id="report_students_paidfee_report_id"
+            model="smsfee.classfees.register"
+            name="smsfee_students_paidfee_report_name"
+            multi="True"
+            rml="smsfee/report/smsfee_students_paid_fee_report.rml"
+            string="Fee Reports"
+            />   
+            
+             <report
+            id="report_defaulter_student_list_id"
+            model="smsfee.classfees.register"
+            name="smsfee_defaulter_studnent_list_name"
+            multi="True"
+            rml="smsfee/report/smsfee_defaulter_student_list_report.rml"
+            string="Dafaulter Students list"
+            />   
+
+			<report
+            id="report_class_unpaidfee_receipts_id"
+            model="smsfee.classfees.register"
+            name="smsfee_unpaidfee_receipt_name"
+            multi="True"
+            rml="smsfee/report/smsfee_unpaid_receipts_report.rml"
+            string="Fee Receipts (Unpaid)"
+            />   
+            
+            <report
+            id="report_annual_defaulterlist_id"
+            model="smsfee.classfees.register"
+            name="smsfee_annaul_defaulter_list_name"
+            multi="True"
+            rml="smsfee/report/smsfee_annual_defaulter_list.rml"
+            string="Annaul Defaulter List"
+            />   
+	
+   </data>
+</openerp>

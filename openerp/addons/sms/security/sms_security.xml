@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+	<!-- SMS Groups  -->
+    <record id="group_sms_admin" model="res.groups">
+        <field name="name">SMS Admin</field>
+    </record>
+
+    <record id="group_sms_principal" model="res.groups">
+        <field name="name">Principal</field>
+    </record>
+
+    <record id="group_sms_voice_principal" model="res.groups">
+        <field name="name">Voice Principal</field>
+    </record>
+
+    <record id="group_sms_faculty" model="res.groups">
+        <field name="name">Faculty</field>
+    </record>
+
+     <record id="group_sms_admission_manager" model="res.groups">
+        <field name="name">Admission Manager</field>
+    </record>
+    
+    <record id="group_sms_officer" model="res.groups">
+        <field name="name">Admission Officer</field>
+    </record>
+    
+     <record id="group_sms_manager_exams" model="res.groups">
+        <field name="name">Exam Manager</field>
+    </record>
+    
+     <record id="group_sms_officers_exams" model="res.groups">
+        <field name="name">Exam Officer</field>
+    </record>
+    
+    <record id="group_sms_fee_manager" model="res.groups">
+        <field name="name">Fee Manager</field>
+    </record>
+    
+   
+</data>
+</openerp>

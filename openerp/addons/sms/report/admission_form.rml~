@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template title="Crossovered Analytic" author="Bahar Ali" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="28.0" y1="28.0" width="540" height="786"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="personal_info">
+    <blockAlignment value="RIGHT"/>
+    <blockValign value="BOTTOM"/>
+	<blockTopPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="LINEBELOW" colorName="#000000" start="1,0" stop="1,0"/>
+	<lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+	<lineStyle kind="LINEBELOW" colorName="#000000" start="3,1" stop="3,1"/>
+	<lineStyle kind="LINEBELOW" colorName="#000000" start="3,0" stop="3,0"/>	
+	</blockTableStyle>
+    
+
+	 <blockTableStyle id="Table2">
+    <blockAlignment value="CENTER"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="10.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="10.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+	<blockTableStyle id="innermost_tables">
+    <blockAlignment value="CENTER"/>
+    <blockBackground colorName="#e6e6e6" start="0,0" stop="0,3"/>
+	 <blockBackground colorName="#e6e6e6" start="2,0" stop="2,3"/>
+    <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+	<blockTopPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+    <blockTableStyle id="inner_tables">
+    <blockAlignment value="CENTER"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="15.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="Heading2" fontName="Helvetica"  alignment="CENTER" fontSize="12.0" leading="10" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="para_heading" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	 <paraStyle name="para_heading" fontName="Helvetica" fontSize="10.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+     <paraStyle name="form_heading" fontName="Helvetica-Bold" fontSize="14.0" leading="5" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	 <paraStyle name="address_bar" fontName="Helvetica" fontSize="9.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_3" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="para_signature" fontName="Helvetica" fontSize="9.0" leading="10" alignment="LEFT" spaceBefore="3.0" spaceAfter="3.0"/>
+    <paraStyle name="para_2" fontName="Helvetica" fontSize="6.0" leading="7" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  
+  </stylesheet>
+  <story>
+  <pto>
+   		    <para style="para_1"></para>	
+   		 <blockTable colWidths="530.0" repeatRows="1" style="Table2">
+		    <tr><td><para style="address_bar">Main Phandu chowk, Peshawar, 091-589764</para></td></tr>
+			<tr><td><para style="Heading2">Admission Form</para></td></tr>
+			<tr><td>
+					<blockTable colWidths="400.0,130" repeatRows="1" style="Table2">
+					 <tr><td>
+							<blockTable  rowHeights="25.0" colWidths="50.0,150.0,50.0,150.0" repeatRows="1" style="personal_info">
+								<tr>
+									<td><para style="para_1">Name</para></td><td><para style="para_1"></para></td><td><para style="para_1">Father</para></td><td><para style="para_1"></para></td>
+								</tr>
+								<tr>
+									<td><para style="para_1">Gender</para></td><td><para style="para_1"></para></td><td><para style="para_1">DOB</para></td><td><para style="para_1"></para></td>
+								</tr>
+							</blockTable>
+							</td>
+							<td><para style="para_1">Picture areea</para></td>
+		    		 </tr>
+					</blockTable>
+
+		   </td></tr>
+		</blockTable>
+
+	
+ <blockTable colWidths="530.0" repeatRows="1" style="inner_tables">
+		    <tr>
+				<td><para style="subtable_heading">Contact Information</para></td>
+		    </tr>
+			<tr><td>
+					<blockTable  rowHeights="25.0" colWidths="70.0,190.0,70.0,190.0" repeatRows="1" style="innermost_tables">
+					 <tr><td><para style="para_1">Cell No</para></td><td><para style="para_1"></para></td><td><para style="para_1">Phone No</para></td><td><para style="para_1"></para></td></tr>
+					 <tr><td><para style="para_1">Street</para></td><td><para style="para_1"></para></td><td><para style="para_1">City</para></td><td><para style="para_1"></para></td></tr>
+					<tr><td><para style="para_1">Country</para></td><td><para style="para_1"></para></td><td><para style="para_1">Email</para></td><td><para style="para_1"></para></td></tr>
+					</blockTable>
+		   </td></tr>
+		</blockTable>
+
+
+<blockTable colWidths="530.0" repeatRows="1" style="inner_tables">
+		    <tr>
+				<td><para style="subtable_heading">Admission Information</para></td>
+		    </tr>
+			<tr><td>
+					<blockTable  rowHeights="25.0" colWidths="70.0,190.0,70.0,190.0" repeatRows="1" style="innermost_tables">
+					 <tr><td><para style="para_1">Previous School</para></td><td><para style="para_1"></para></td><td><para style="para_1">Reason leaving</para></td><td><para style="para_1"></para></td></tr>
+					 <tr><td><para style="para_1">Previous Class</para></td><td><para style="para_1"></para></td><td><para style="para_1">Class of Admission</para></td><td><para style="para_1"></para></td></tr>
+					</blockTable>
+		   </td></tr>
+		</blockTable>
+
+
+<blockTable colWidths="530.0" repeatRows="1" style="inner_tables">
+		    <tr><td><para style="para_heading">Declaration</para></td></tr>
+			<tr>
+			<td><para style="para_1">I have read the school bulliten, the particular provided by me are correct. i am applying for admission with the expressed consent of my parents/Guardian. I will observe the rules of school and will be liable to any panalty including Rustication, expulsion in case of any violation
+									 I will devote myself whole heartedly and will maintain the dignity and prestigue of school within and outside the scholl premises. I will not leave the school without written permission of principal. I will pay all the dues before leaving the school. I will have no objection of i am detained by the authorities before board examination.	</para>
+			
+			<para style="para_signature">Father Guardian Sign_____________________	</para><para style="para_signature">Applicant Sign_____________________</para>
+
+			</td></tr>
+		</blockTable>
+
+
+<blockTable colWidths="530.0" repeatRows="1" style="inner_tables">
+		    <tr>
+				<td><para style="para_heading">Office Decision</para></td>
+		    </tr>
+			<tr><td>
+					<blockTable  rowHeights="25.0" colWidths="110.0,150.0,110.0,150.0" repeatRows="1" style="innermost_tables">
+					 <tr><td><para style="para_1">Class Admitted</para></td><td><para style="para_1"></para></td><td><para style="para_1">Admission</para></td><td><para style="para_1"></para></td></tr>
+					 <tr><td><para style="para_1">Admission No</para></td><td><para style="para_1"></para></td><td><para style="para_1">Tuition Fee (Rs)</para></td><td><para style="para_1"></para></td></tr>
+					 <tr><td><para style="para_1">Fee Type</para></td><td><para style="para_1"></para></td><td><para style="para_1">Date</para></td><td><para style="para_1"></para></td></tr>
+					 <tr><td><para style="para_1">Requires Migration </para></td><td>YES / NO<para style="para_1"></para></td>
+					 <td><para style="para_1">Registration Submission Date</para></td><td><para style="para_1"></para></td></tr>
+					</blockTable>
+					<para style="para_signature">Finance Dept Sign_____________________	</para><para style="para_signature">Principal Sign_____________________</para>
+		   </td></tr>
+		</blockTable>
+
+    </pto>
+  </story>
+</document>

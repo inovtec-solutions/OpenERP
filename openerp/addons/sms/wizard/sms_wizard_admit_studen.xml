@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Student Change Regular -->
+
+        <record id="view_admit_student" model="ir.ui.view">
+            <field name="name">admit.student</field>
+            <field name="model">admit.student</field>
+            <field name="arch" type="xml">
+                <form string="Student Admission" version="7.0">
+                    <group >
+					<group col="6" String = "New Admission" >
+                        <h2> <field name="student"/></h2>
+                         <newline/><field name="name" on_change="onchange_acad_cal(name)" placeholder = "Class" nolabel = "1"/>
+						 <newline/><field name="fee_structure" on_change="onchange_fee_staring_month(fee_starting_month,fee_structure,name)"   placeholder = "Fee Structure" nolabel = "1"/>
+						 <newline/><field name="fee_starting_month" on_change="onchange_fee_staring_month(fee_starting_month,fee_structure,name)" placeholder = "Fee Starting Month" nolabel = "1"/>
+						 </group>
+						 <group>
+						 <newline/><p>Academic Session<field name="academic_session" on_change="onchange_academic_session(academic_session)" readonly = "1" placeholder = "Academic Session" nolabel = "1"/></p>
+                          <p class="oe_view_nocontent_create">Year of Admission:<field name="session" placeholder = "Year of Admission" nolabel = "1" readonly = "1"/></p>
+                          <p class="oe_view_nocontent_create">Fee Updated Till:<field name="fee_update_till" placeholder = "Fee Updated Till" nolabel = "1" readonly = "1"/></p>
+						 
+						 
+						 </group>
+                    </group>
+                    <group>
+                     <p style = "color:red;"><field type="html" name="helptext" nolabel = "1" readonly = "1"/></p>
+                    </group>
+                    <group>
+                    <ul>
+                    <li>Student fee will be charged according to Selected Fee Structure and Class</li>
+                    <li>If your desired class is not in the list, check whether its subjects and fee are defined</li>
+                    <li>Fee will be charged from selected month</li>
+                    </ul>
+                    </group>
+                    <footer>
+                        <button string="Admit" name="register_student" type="object" class="oe_highlight"/>
+                        or
+                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View CMS Student Admit -->
+
+        <record id="action_admit_student" model="ir.actions.act_window">
+            <field name="name">Admit Student</field>
+            <field name="res_model">admit.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_admit_student"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

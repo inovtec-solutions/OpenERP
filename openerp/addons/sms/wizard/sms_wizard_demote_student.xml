@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Wizard demote student  -->
+
+        <record id="view_demote_student" model="ir.ui.view">
+            <field name="name">demote.student</field>
+            <field name="model">demote.student</field>
+            <field name="arch" type="xml">
+                <form string="Demote Student" width = "200" version="7.0">
+                    <group>
+                     <group>
+                         <h1><field name="student"/></h1>
+                         <newline/><h2><field name="current_class"/></h2>
+                         
+						 <newline/><field colspan = "2" name="assigned_class" nolabel = "1"  placeholder="New Class"/>
+						 <newline/><field colspan = "2" name="reason_demote" nolabel = "1" placeholder="Reason Demote"/>
+						 </group>
+						 <group>
+						 <p>Demote student</p>
+						 <field name="fee_register"/>
+						  </group>
+                    </group>
+                    <footer>
+                        <button string="Demote Now" confirm ="You are going to demote the student." name="demote_student" type="object" class="oe_highlight"/>
+                        or
+                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View CMS Student demote_student -->
+
+        <record id="action_demote_student" model="ir.actions.act_window">
+            <field name="name">Demote Student</field>
+            <field name="res_model">demote.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_demote_student"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

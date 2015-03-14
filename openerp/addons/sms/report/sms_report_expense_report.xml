@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(750.0,800.0)" title="Expense Report" author="Inovtec" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="20.0" y1="0.0" width="710" height="800.0"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    
+	 <blockTableStyle id="Table2">
+    <blockAlignment value="CENTER"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="8.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="13.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+	<blockTableStyle id="innermost_tables">
+    <blockAlignment value="CENTER"/>
+    <blockBackground colorName="#e6e6e6" start="0,0" stop="4,0"/>
+    <blockValign value="MIDDLE" start="0,0" stop="-1,-1"/>
+	<blockTopPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+    <blockTableStyle id="inner_tables">
+    <blockAlignment value="CENTER"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="5.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="5.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#FFFFFF" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="12.0" spaceAfter="6.0"/>
+	<paraStyle name="Heading2" fontName="Helvetica"  alignment="CENTER" fontSize="12.0" leading="10" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+	<paraStyle name="para_heading" fontName="Helvetica" fontSize="10.0" leading="12" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="form_heading" fontName="Helvetica-Bold" fontSize="14.0" leading="5" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="address_bar" fontName="Helvetica" fontSize="9.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_1" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="para_2" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="para_signature1" fontName="Helvetica" fontSize="9.0" leading="0" alignment="LEFT" spaceBefore="3.0" spaceAfter="3.0"/>
+	<paraStyle name="para_signature2" fontName="Helvetica" fontSize="9.0" leading="9" alignment="RIGHT" spaceBefore="3.0" spaceAfter="0.0"/>
+    <images/>
+  
+  </stylesheet>
+  <story>
+  <pto>
+	<section>
+   		 <blockTable colWidths="530.0" style="Table2">
+		    
+			<tr><td><para style="address_bar"></para></td></tr>
+			<tr><td><para style="Heading2">Students Contacts</para></td></tr>
+		</blockTable>
+
+ <blockTable colWidths="650.0" repeatRows="1" style="inner_tables">
+		    <tr>[[ repeatIn(expense_list('Form'),'r') ]]
+		    <td><para style="para_heading">Total:</para><para style="para_heading"> [[ r['total'] ]]</para></td></tr>
+			<tr><td>
+				<blockTable  rowHeights="20.0" colWidths="35.0,40.0,60.0,150.0,80.0,60.0,80.0,40.0,80.0,60.0" repeatRows="1" style="innermost_tables">
+					 <tr>
+					<td><para style="para_2">S.No</para></td>
+					<td><para style="para_2">Invice#</para></td>
+					<td><para style="para_2">Date</para></td>
+					<td><para style="para_2">Desc</para></td>
+					<td><para style="para_2">Expensed By</para></td>
+					<td><para style="para_2">Date Approv</para></td>
+					<td><para style="para_2">Approve By</para></td>
+					<td><para style="para_2">Vr#</para></td>
+					<td><para style="para_2">Amount</para></td>
+					<td><para style="para_2">State</para></td>
+					</tr>
+					<tr>[[repeatIn((r['sub_dict']),'s')]]
+					<td><para style="para_1">[[ s['sno'] ]]</para></td>
+					<td><para style="para_1">[[ s['id'] ]]</para></td>
+					<td><para style="para_1">[[ s['dated'] ]]</para></td>
+					<td><para style="para_1">[[ s['desc'] ]]</para></td>
+					<td><para style="para_1">[[ s['employee'] ]]</para></td>
+					<td><para style="para_1">[[ s['date_validate'] ]]</para></td>
+					<td><para style="para_1">[[ s['valid_by'] ]]</para></td>
+					<td><para style="para_1">[[ s['voucher_no'] ]]</para></td>
+					<td><para style="para_1">[[ s['amount'] ]]</para></td>
+					<td><para style="para_1">[[ s['state'] ]]</para></td>
+					</tr>
+					</blockTable>
+				</td>
+				</tr>
+			</blockTable>
+	</section>
+</pto>
+  </story>
+</document>

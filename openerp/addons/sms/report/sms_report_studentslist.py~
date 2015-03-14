@@ -1,0 +1,108 @@
+
+import time
+
+from openerp.report import report_sxw
+
+class sms_report_studentslist(report_sxw.rml_parse):
+    def __init__(self, cr, uid, name, context):
+        super(sms_report_studentslist, self).__init__(cr, uid, name, context = context)
+        self.localcontext.update( {
+            'time': time,
+            'report_title': self.report_title,
+            'class_name': self.class_name,
+            'get_student_contacts': self.get_student_contacts,
+            'get_admission_statistics': self.get_admission_statistics,
+        })
+        self.base_amount = 0.00
+    
+    def report_title(self, data):  
+        sql = """SELECT name from res_company"""
+            self.cr.execute(sql)
+            return self.cr.fetchone()[0]
+
+    def report_title(self, data):  
+        start_date = self.pool.get('sms.session').set_date_format(self.cr, self.uid,self.datas['form']['start_date'])
+        end_date = self.pool.get('sms.session').set_date_format(self.cr, self.uid,self.datas['form']['end_date'])
+        print "stat:",start_date
+        print "endate:",end_date
+               
+        string = "Students Admissions \n " +str(start_date) + "-TO -"+str(end_date)
+        return string
+    
+    def class_name(self, data):  
+        return self.pool.get('sms.academiccalendar').browse(self.cr, self.uid,self.datas['form']['acad_cal'][0]).name
+    
+    def get_student_contacts(self, data):                                                         
+        result = []
+        this_form = self.datas['form']
+        acad_cal = this_form['acad_cal'][0]
+        students = self.pool.get('sms.academiccalendar.student').search(self.cr, self.uid,[('name', '=', acad_cal),('state', '=','Current')])
+        
+        i = 1
+        for idss in students:
+            mydict = {'sno':'','admsn_no':'','student':'','father':'','Cellno':'--','phone':'--',}
+            row = self.pool.get('sms.academiccalendar.student').browse(self.cr, self.uid,idss)
+            mydict['sno'] = i
+            mydict['admsn_no'] = row.std_id.registration_no
+            mydict['student'] = row.std_id.name
+            mydict['father'] = row.std_id.father_name
+            mydict['Cellno'] = row.std_id.cell_no
+            mydict['phone'] = row.std_id.phone
+            i = i + 1
+            result.append(mydict)
+        print "mydict ",mydict
+        return result
+    
+    def get_admission_statistics(self, data):                                                         
+        result = []
+        this_form = self.datas['form']
+        
+        acad_cal =tuple(self.pool.get('sms.academiccalendar').search(self.cr, self.uid,[('state', '=','Active')]))
+        i = 1
+        for cls in acad_cal:
+            mydict = {'SNO':'','acad_cal':'','normal':0,'sibling':0,'teacher_son':0,'total':0}
+            mydict['acad_cal'] = self.pool.get('sms.academiccalendar').browse(self.cr, self.uid,cls).name
+            mydict['SNO'] = i 
+            i = i + 1
+            sql = """SELECT count(*) FROM sms_student
+                    WHERE admitted_to_class = """+str(cls)+""" 
+                    AND sms_student.fee_type = 'normal'
+                    AND sms_student.state = 'Admitted' AND sms_student.admitted_on >= '"""+this_form['start_date']+"""'
+                    AND sms_student.admitted_on <='"""+this_form['end_date']+"""'  """
+            
+            self.cr.execute(sql)
+            rows = self.cr.fetchone()
+            print "normal ",rows[0]
+            mydict['normal'] = rows[0]
+            
+            sql = """SELECT count(*) FROM sms_student
+                    WHERE admitted_to_class = """+str(cls)+""" 
+                    AND sms_student.fee_type = 'sibling'
+                    AND sms_student.state = 'Admitted' AND sms_student.admitted_on >= '"""+this_form['start_date']+"""'
+                    AND sms_student.admitted_on <='"""+this_form['end_date']+"""'  """
+            
+            self.cr.execute(sql)
+            rows = self.cr.fetchone()
+            print "normal ",rows[0]
+            mydict['sibling'] = rows[0]
+            
+            sql = """SELECT count(*) FROM sms_student
+                    WHERE admitted_to_class = """+str(cls)+""" 
+                    AND sms_student.fee_type = 'teacher_son'
+                    AND sms_student.state = 'Admitted' AND sms_student.admitted_on >= '"""+this_form['start_date']+"""'
+                    AND sms_student.admitted_on <='"""+this_form['end_date']+"""'  """
+            
+            self.cr.execute(sql)
+            rows = self.cr.fetchone()
+            print "normal ",rows[0]
+            mydict['teacher_son'] = rows[0]
+            mydict['total'] = int(mydict['sibling']) + int( mydict['teacher_son']) + int(mydict['normal'])
+            result.append(mydict)
+        return result
+    
+    
+report_sxw.report_sxw('report.sms.studentslist.name', 'sms.student', 'addons/sms/rml_studentslist.rml',parser = sms_report_studentslist, header='internal')
+report_sxw.report_sxw('report.sms.std_admission_statistics.name', 'sms.student', 'addons/sms/rml_std_admission_statistics.rml',parser = sms_report_studentslist, header='internal')
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

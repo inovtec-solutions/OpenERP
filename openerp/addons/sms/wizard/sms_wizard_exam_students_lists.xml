@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Student Exam Lists -->
+
+        <record id="view_sms_student_exam_lists" model="ir.ui.view">
+            <field name="name">Student Exam Lists</field>
+            <field name="model">sms.student.exam.lists</field>
+            <field name="arch" type="xml">
+                <form string="Student Exam Lists" version="7.0">
+                    <group col="4">
+						<field name="list_type"/>
+						<field name="academiccalendar_id" on_change="onchange_academiccalendar()"/>
+						<field name="subject_id" attrs="{'required':[('list_type','not in',['Result_List','Result_Sheet'])], 'invisible':[('list_type','in',['Result_List','Result_Sheet'])]}"/>
+						<field name="exam_type"/>
+						<field name="order_by" attrs="{'required':[('list_type','in',['Result_List','Result_Sheet'])], 'invisible':[('list_type','not in',['Result_List','Result_Sheet'])]}"/>
+					</group>
+                    <footer>
+                        <button string="Print" name="print_list" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Student Exam Lists -->
+					
+        <record id="action_view_sms_student_exam_lists_wizard" model="ir.actions.act_window">
+            <field name="name">Student Exam Lists</field>
+            <field name="res_model">sms.student.exam.lists</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_student_exam_lists"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Fee Reports -->
+
+        <record id="view_daily_report" model="ir.ui.view">
+            <field name="name">daily.report.form</field>
+            <field name="model">daily.report</field>
+            <field name="arch" type="xml">
+                <form string="Daily Fee Collection" version="7.0">
+                    <group>
+						<group>
+							<field name="session" required = "1"/>
+	                        <field name="from_date" required = "1"/>
+							<field name="fee_manager"/>
+	                    </group>
+						<group>
+							<field name="class_id" />
+							<field name="to_date" required = "1"/>
+						</group>
+					</group>
+                    <footer>
+                        <button string="Print" name="print_daily_report" type="object" class="oe_highlight"/>
+                        or
+                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- action dailyFee Reports-->
+
+        <record id="action_dailyfee_reports" model="ir.actions.act_window">
+            <field name="name">Daily Fee Report</field>
+            <field name="res_model">daily.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_daily_report"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

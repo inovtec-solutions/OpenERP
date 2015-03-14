@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Student Change Section -->
+
+        <record id="view_sms_student_change_section" model="ir.ui.view">
+            <field name="name">Student Change Section</field>
+            <field name="model">student.change.section</field>
+            <field name="arch" type="xml">
+                <form string="Student Change Section" version="7.0">
+                    <group col="4">
+						<field name="academiccalendar_id" on_change="onchange_academiccalendar(academiccalendar_id)"/>
+						<field name="academiccalendar_to_id"/>
+					</group>
+                    <footer>
+                        <button string="Next" name="student_change_section" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Student Change Section -->
+
+        <record id="action_view_sms_student_change_section_wizard" model="ir.actions.act_window">
+            <field name="name">Student Change Section</field>
+            <field name="res_model">student.change.section</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_student_change_section"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

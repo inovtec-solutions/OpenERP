@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Timetable Entry -->
+
+        <record id="view_sms_timetable_entry" model="ir.ui.view">
+            <field name="name">Timetable Entry</field>
+            <field name="model">timetable.entry</field>
+            <field name="arch" type="xml">
+                <form string="Timetable Entry" version="7.0">
+                    <group col="4">
+
+						<field name="day_type"/>
+						<field name="timetable_id"/>
+						<field name="type" on_change="onchange_type(type)"/>
+						<field name="day_id" attrs="{'required':[('day_type','=','Single_Day')], 'invisible':[('day_type','=','All')]}"/>
+                        <field name="period_break_no"/>
+						<!--
+						<field name="teacher_id" attrs="{'required':[('type','!=','Break')], 'invisible':[('type','=','Break')]}" on_change="onchange_teacher_id(teacher_id, day_id)"/>
+						-->
+						<field name="teacher_id" attrs="{'required':[('type','!=','Break')], 'invisible':[('type','=','Break')]}" />
+						<field name="subject_id" attrs="{'required':[('type','!=','Break')], 'invisible':[('type','=','Break')]}"/>
+						<field name="timetable_slot_id"/>
+						<field name="is_lab" attrs="{'invisible':[('type','=','Break')]}" />
+					</group>
+                    <footer>
+                        <button string="Save" name="timetable_entry" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Timetable Entry -->
+
+        <record id="action_view_sms_timetable_entry_wizard" model="ir.actions.act_window">
+            <field name="name">Timetable Entry</field>
+            <field name="res_model">timetable.entry</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_timetable_entry"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

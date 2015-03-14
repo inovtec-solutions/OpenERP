@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="report_class_timetable"
+            model="sms.timetable"
+            name="sms.class.timetable.report"
+            multi="True"
+            rml="sms/report/class_timetable_report.rml"
+            string="Class Timetable"/>
+		
+		<report
+            id="report_teacher_timetable"
+            model="sms.timetable"
+            name="sms.teacher.timetable.report"
+            multi="True"
+            rml="sms/report/teacher_timetable_report.rml"
+            string="Teacher Timetable"/>
+
+ 		<!--Blank Admission Form-->
+		<report
+            id="report_admission_form_id"
+            model="sms.student"
+            name="sms.admissionform.name"
+            multi="True"
+            rml="sms/report/admission_form.rml"
+            string="Admission Form"/>
+
+		 <!--Filled Admission Form-->
+		
+		<report
+            id="report_admission_form_filled_id"
+            model="sms.student"
+            name="sms.admissionformfilled.name"
+            multi="True"
+            rml="sms/report/rml_filled_admission_form.rml"
+            string="Admission Form"/>
+
+		 <!--Withdtaw Register-->
+		<report
+            id="report_withdraw_register_id"
+            model="sms.student"
+            name="sms.withdraw.register.name"
+            multi="True"
+            rml="sms/report/rml_withdraw_register.rml"
+            string="Withdraw register"/>
+
+		 <!--print students list-->
+		<report
+            id="report_studentslist_id"
+            model="sms.student"
+            name="sms.studentslist.name"
+            multi="True"
+            rml="sms/report/rml_studentslist.rml"
+            string="Admission Form"/>
+
+ 		<!--print students admission statistics list-->
+		<report
+            id="report_student_admission_statisitics_id"
+            model="sms.student"
+            name="sms.std_admission_statistics.name"
+            multi="True"
+            rml="sms/report/rml_std_admission_statistics.rml"
+            string="Admission details"/>
+
+		<!--Print Students Signature List-->
+		<report
+            id="report_student_signature_list"
+            model="sms.student"
+            name="sms.student.signature.list.name"
+            multi="True"
+            rml="sms/report/student_signature_list_report.rml"
+            string="Students Signature List"/>
+
+		<!--Print Students Award List-->
+		<report
+            id="report_student_award_list"
+            model="sms.student"
+            name="sms.student.award.list.name"
+            multi="True"
+            rml="sms/report/student_award_list_report.rml"
+            string="Students Award List"/>
+
+		<!--Print Students Result List-->
+		<report
+            id="report_student_result_list"
+            model="sms.student"
+            name="sms.student.result.list.name"
+            multi="True"
+            rml="sms/report/student_result_list_report.rml"
+            string="Students Result List"/>
+
+		<!--Print Students Result Sheet-->
+		<report
+            id="report_student_result_sheet"
+            model="sms.student"
+            name="sms.student.result.sheet.name"
+            multi="True"
+            rml="sms/report/student_result_sheet_report.rml"
+            string="Students Result Sheet"/>
+
+		<!-- Print Students DMC -->
+		<report
+            id="report_student_dmc"
+            model="sms.student"
+            name="sms.student.dmc.name"
+            multi="True"
+            rml="sms/report/sms_student_dmc.rml"
+            string="Student DMC"/>
+
+		<!--Print Students Date Sheet-->
+		<report
+            id="report_student_date_sheet"
+            model="sms.student"
+            name="sms.student.date.sheet.name"
+            multi="True"
+            rml="sms/report/student_date_sheet_report.rml"
+            string="Students Date Sheet"/>
+	
+		<!--Print Expense Report-->
+		<report
+            id="report_expense_report"
+            model="hr.expense.expense"
+            name="sms_expense_report_name"
+            multi="True"
+            rml="sms/report/sms_report_expense_report.xml"
+            string="Daily Expense Report"/>
+ 
+ 
+ 		<!--Print Certificate-->
+		<report
+            id="report_certificate_requested_id"
+            model="sms.student.clearance"
+            name="sms.certificaterequested.name"
+            multi="True"
+            rml="sms/report/rml_requested_certificate_form.rml"
+            string="Student Certificate "/>
+            
+       <!--S Certificate-->
+		<report
+            id="report_sports_certificate_id"
+            model="sms.student.clearance"
+            name="sms.sportscertificate.name"
+            multi="True"
+            rml="sms/report/rml_sports_certificate_form.rml"
+            string="Sports Certificate "/>  
+
+	 <report
+            id="report_staff_profile_filled_id"
+            model="hr.employee"
+            name="sms.staff_profile_filled.name"
+            multi="True"
+            rml="sms/report/rml_staff_profile_form.rml"
+            string="Admission Form"/>
+               
+   </data>
+</openerp>

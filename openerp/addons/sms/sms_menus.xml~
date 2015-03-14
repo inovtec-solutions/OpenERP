@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+	<menuitem name="Alfallah" id="menu_sms_root" groups="" sequence="0"/>
+	<menuitem id="menu_sms_id" name="School Management" parent="sms.menu_sms_root" sequence="1" groups=""/>
+	<menuitem id="menu_timetable_head_id" name="Timetables" parent="sms.menu_sms_root" sequence="2" groups=""/>
+	<menuitem id="menu_admission_head_id" name="Admission" parent="sms.menu_sms_root" sequence="3" groups=""/>
+	<menuitem id="menu_fee_head_id" name="Fee" parent="sms.menu_sms_root" sequence="4" groups=""/>
+	<menuitem id="menu_configuration_id" name="Configuration" parent="sms.menu_sms_root" sequence="5" groups=""/>
+	<menuitem id="general_setting_id" name="General" parent="menu_configuration_id" sequence="5" groups=""/>
+	
+	<menuitem id="menu_session_stting_id" name="Session Setting" parent="menu_configuration_id" sequence="2" groups=""/>
+	<menuitem name="General" id="base.menu_gen_configuration" parent="menu_configuration_id" sequence="4" groups=""/>
+	<menuitem name="Default Data" id="default_data_id" parent="menu_configuration_id" sequence=""/>
+    <menuitem id="menu_class_group" parent="general_setting_id" sequence="" groups="" action="action_cls_grps"/>
+    <menuitem id="menu_action_subject" parent="general_setting_id" sequence="" groups="" action="action_subject"/>
+	<menuitem id="menu_academic_calendar" parent="menu_sms_id" sequence="" groups="" action="action_session_classes"/>
+    <menuitem id="menu_action_classes" parent="general_setting_id" sequence="" groups="" action="action_classes"/>
+    <menuitem id="menu_action_class_section" parent="general_setting_id" sequence="" groups="" action="action_class_section"/>
+    <menuitem id="menu_action_student" parent="menu_sms_id" sequence="" groups="" action="action_student_admitted"/>
+     <menuitem id="session_id" parent="general_setting_id" sequence="" groups="" action="action_session"/>
+    <menuitem id="menu_action_studentslist" parent="menu_sms_id" sequence="3" groups="" action="action_studentlist"/>
+    
+    <menuitem id="menu_std_cls_reg" parent="menu_session_stting_id" sequence="" groups="" action="action_std_cls_reg"/>
+    <menuitem id="menu_default_acad_cal" parent="default_data_id" sequence="" groups="" action="action_default_acad_cal"/>
+	<menuitem id="menu_change_regular" parent="menu_configuration_id" sequence="" groups="" action="action_view_cms_student_change_regular" />
+	
+		
+	<menuitem id="menu_sms_time" parent="general_setting_id" sequence="" groups="" action="action_sms_time" />
+	<menuitem id="menu_sms_day" parent="general_setting_id" sequence="" groups="" action="action_sms_day" />
+	<menuitem id="menu_sms_timetable_slot" parent="general_setting_id" sequence="" groups="" action="action_sms_timetable_slot" />
+	<menuitem id="menu_sms_timetable" parent="menu_timetable_head_id" sequence="" groups="" action="action_sms_timetable" />
+	<menuitem id="menu_move_swap_wizard" name="" parent="menu_timetable_head_id"  sequence="" action="action_view_sms_move_swap_timetable" groups=""/>
+	<menuitem id="menu_timetable_entry_wizard" name="" parent="menu_timetable_head_id"  sequence="" action="action_view_sms_timetable_entry_wizard" groups=""/>
+
+	<menuitem id="menu_feestructure_id" parent="menu_fee_head_id" sequence="" groups="" action="action_feestructure_id"/>
+	<menuitem id="menu_admission_form_id" parent="menu_admission_head_id" sequence="1" groups="" action="action_admin_form"/>
+	<menuitem id="menu_action_student_draft" parent="menu_admission_head_id" sequence="2" groups="" action="action_student_draft"/>
+	<menuitem id="menu_action_student_withdrawled" parent="menu_admission_head_id" sequence="2" groups="" action="action_student_withdrawled"/>
+	<menuitem id="menu_sms_exam_type" parent="general_setting_id" sequence="" groups="" action="action_sms_exam_type" />
+	<menuitem id="menu_sms_exam" parent="general_setting_id" sequence="" groups="" action="action_sms_exam" />
+	<menuitem id="menu_examination_head_id" name="Examinations" parent="sms.menu_sms_root" sequence="2" groups=""/>	
+	<menuitem id="menu_sms_exam_entry_wizard" parent="menu_examination_head_id" sequence="" groups="" action="action_view_sms_exam_entry_wizard" />
+	<menuitem id="menu_sms_student_exam_lists_wizard" parent="menu_examination_head_id" sequence="" groups="" action="action_view_sms_student_exam_lists_wizard" />
+	<menuitem id="menu_sms_student_dmc_wizard" parent="menu_examination_head_id" sequence="" groups="" action="action_view_sms_student_dmc_wizard" />
+	<menuitem id="menu_sms_exam_datesheet_wizard" parent="menu_examination_head_id" sequence="" groups="" action="action_exam_datesheet_wizard" />
+	
+	<menuitem id="menu_sms_exam_datesheet" parent="general_setting_id" sequence="" groups="" action="action_exam_datesheet"/>
+	<menuitem id="menu_sms_exam_datesheet_active" parent="menu_examination_head_id" sequence="" groups="" action="action_exam_datesheet_active"/>
+	
+	<menuitem id="menu_sms_student_subject_assignment_wizard" parent="menu_sms_id" sequence="" groups="" action="action_view_sms_student_subject_assignment_wizard"/>
+
+	<menuitem id="menu_sms_load_student_wizard" parent="general_setting_id" sequence="" groups="" action="action_load_student_wizard"/>
+	
+</data>
+</openerp>

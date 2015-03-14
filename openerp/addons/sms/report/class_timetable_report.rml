@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template title="Crossovered Analytic" author="Bahar Ali" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="28.0" y1="28.0" width="570" height="786"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#e6e6e6" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+    </blockTableStyle>
+    
+    
+    <blockTableStyle id="Table2">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="para_heading" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_heading2" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_1" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_2" fontName="Helvetica" fontSize="6.0" leading="7" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  
+  </stylesheet>
+  <story>
+  <pto>
+   		    <para style="para_1">[[ repeatIn(get_class_timetable_heading('Form'),'h') ]]</para>	
+   		    <blockTable colWidths="50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0" repeatRows="1" style="Table2">
+		      <tr>
+		        <td>
+		          <para style="para_heading2">[[ h['day'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_1'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_2'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_3'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_4'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_5'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_6'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_7'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_8'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_9'] ]]</para>
+		        </td>
+		        <td>
+		          <para style="para_heading">[[ h['period_10'] ]]</para>
+		        </td>
+		      </tr>
+		</blockTable>
+
+	<section>
+    <para style="para_1">[[ repeatIn(get_class_timetable('Form'),'a') ]]</para>
+   	<blockTable colWidths="50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0,50.0" style="Table2">
+     	<tr>
+          <td>
+            <para style="para_1">[[ a['day'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_1'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_2'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_3'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_4'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_5'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_6'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_7'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_8'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_9'] ]]</para>
+          </td>
+          <td>
+            <para style="para_2">[[ a['period_10'] ]]</para>
+          </td>
+        </tr>
+      </blockTable>
+    </section>
+
+    </pto>
+  </story>
+</document>

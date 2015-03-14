@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+   
+	<!-- sms.subject  -->
+    <record id="sms_subjects_islamic_study" model="sms.subject">
+      <field name="name">Islamyat</field>
+      <field name="desc">Compulsory Subject</field>	
+      	
+    </record>
+
+   <record id="sms_subjects_pak_study" model="sms.subject">
+      <field name="name">Pakistan Study</field>
+      <field name="desc">Studies as Pakisstan studies and Social Studies</field>		
+    </record>
+
+	<record id="sms_subjects_social_study" model="sms.subject">
+      <field name="name">Social Study</field>
+      <field name="desc">Studies as Social Study </field>		
+    </record>
+
+   <record id="sms_subjects_english" model="sms.subject">
+      <field name="name">English</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_english_grammar" model="sms.subject">
+      <field name="name">English Grammar</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_physical_training" model="sms.subject">
+      <field name="name">Physical Training</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_library" model="sms.subject">
+      <field name="name">Library Class</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_club" model="sms.subject">
+      <field name="name">Club Class</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_urdu" model="sms.subject">
+      <field name="name">Urdu</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+<record id="sms_subjects_gscience" model="sms.subject">
+      <field name="name">General Science</field>
+      <field name="desc">Compulsory Subject</field>	
+       <field name="has_practicle">True</field>			
+    </record>
+    
+<record id="sms_subjects_physics" model="sms.subject">
+      <field name="name">Physics</field>
+      <field name="desc">Compulsory Subject</field>	
+      <field name="has_practicle">True</field>			
+    </record>
+    
+<record id="sms_subjects_mathematics" model="sms.subject">
+      <field name="name">Mathematics</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_chemistory" model="sms.subject">
+      <field name="name">Chemistory</field>
+      <field name="desc">Compulsory Subject</field>	
+      <field name="has_practicle">True</field>			
+    </record>
+    
+<record id="sms_subjects_biology" model="sms.subject">
+      <field name="name">Biology</field>
+      <field name="desc">Compulsory Subject</field>	
+      <field name="has_practicle">True</field>			
+    </record>
+    
+<record id="sms_subjects_pashto" model="sms.subject">
+      <field name="name">Pashto</field>
+      <field name="desc">Optional</field>		
+    </record>
+    
+<record id="sms_subjects_computer" model="sms.subject">
+      <field name="name">Computer</field>
+      <field name="desc">Compulsory Subject</field>
+      <field name="has_practicle">True</field>				
+    </record>
+<record id="sms_subjects_art" model="sms.subject">
+      <field name="name">Art</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_practicle" model="sms.subject">
+      <field name="name">Practicle</field>
+      <field name="desc">Select if a subject has Lab/Practicle</field>		
+    </record>
+
+ <!--          sms.classes  -->
+<record id="sms_classes_playgroup" model="sms.classes">
+	  <field name="name">Play Group</field>      
+      <field name="desc">Play Group Class</field>
+	  <field name="category">Primary</field>	
+	  <field name="alias">Play Group</field>   
+    </record>
+
+<record id="sms_classes_nursery" model="sms.classes">
+	  <field name="name">Nursery</field>      
+      <field name="desc">Nursery Class</field>
+	  <field name="category">Primary</field>	
+	  <field name="alias">Nursery</field>   
+    </record>
+
+<record id="sms_classes_prep" model="sms.classes">
+	  <field name="name">Prep</field>      
+      <field name="desc">Prep Class</field>
+	  <field name="category">Primary</field>
+	  <field name="alias">Prep</field>
+    </record>
+
+<record id="sms_classes_kg" model="sms.classes">
+	  <field name="name">KG</field>      
+      <field name="desc">KG Class</field>
+	  <field name="category">Primary</field>
+	  <field name="alias">KG</field>
+    </record>
+
+<record id="sms_classes_1" model="sms.classes">
+	  <field name="name">Class 1</field>      
+      <field name="desc">1st</field>
+	  <field name="category">Primary</field>
+	  <field name="alias">1</field>      
+      <field name="script">st</field>
+    </record>
+
+<record id="sms_classes_2" model="sms.classes">
+	  <field name="name">Class 2</field>      
+      <field name="desc">2nd</field>
+	 <field name="category">Primary</field>	
+	 <field name="alias">2</field>      
+     <field name="script">nd</field>
+    </record>
+
+<record id="sms_classes_3" model="sms.classes">
+	 <field name="name">Class 3</field>      
+     <field name="desc">3rd</field>
+	 <field name="category">Primary</field>
+	 <field name="alias">3</field>      
+     <field name="script">rd</field>
+    </record>
+
+<record id="sms_classes_4" model="sms.classes">
+	 <field name="name">Class 4</field>      
+     <field name="desc">4th</field>
+	<field name="category">Primary</field>
+	<field name="alias">4</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_5" model="sms.classes">
+	  <field name="name">Class 5</field>      
+      <field name="desc">5th</field>
+	 <field name="category">Primary</field>
+	<field name="alias">5</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_6" model="sms.classes">
+	  <field name="name">Class 6</field>      
+      <field name="desc">6th</field>
+	 <field name="category">Middle</field>
+	<field name="alias">6</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_7" model="sms.classes">
+	  <field name="name">Class 7</field>      
+      <field name="desc">7th</field>
+	 <field name="category">Middle</field>
+	<field name="alias">7</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_8" model="sms.classes">
+	  <field name="name">Class 8</field>      
+      <field name="desc">8th</field>
+	 <field name="category">Middle</field>
+	<field name="alias">8</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_9" model="sms.classes">
+	  <field name="name">Class 9</field>      
+      <field name="desc">9th</field>
+	 <field name="category">High</field>
+	<field name="alias">9</field>      
+    <field name="script">th</field>
+    </record>
+
+<record id="sms_classes_10" model="sms.classes">
+	  <field name="name">Class 10</field>      
+      <field name="desc">10th</field>
+	  <field name="category">High</field>
+	  <field name="alias">10</field>      
+      <field name="script">th</field>
+	  </record>
+ 
+ <record id="sms_classes_11" model="sms.classes">
+	  <field name="name">F.Sc I</field>      
+      <field name="desc">11th</field>
+	  <field name="category">Intermediate</field>
+	  <field name="alias">11</field>      
+      <field name="script">th</field>
+    </record>    
+
+<record id="sms_classes_12" model="sms.classes">
+	  <field name="name">F.Sc II</field>      
+      <field name="desc">12th</field>
+	  <field name="category">Intermediate</field>
+	  <field name="alias">12</field>      
+      <field name="script">th</field>
+    </record>  
+
+
+ <!-- Grading Policy -->
+
+    <record id="sms_grading_policy_playgroup_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+    <record id="sms_grading_policy_playgroup_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+    <record id="sms_grading_policy_playgroup_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+    <record id="sms_grading_policy_playgroup_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+    <record id="sms_grading_policy_playgroup_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+    <record id="sms_grading_policy_playgroup_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+
+    <record id="sms_grading_policy_playgroup_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_playgroup" />
+    </record>
+
+    <record id="sms_grading_policy_nursery_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+    <record id="sms_grading_policy_nursery_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+    <record id="sms_grading_policy_nursery_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+    <record id="sms_grading_policy_nursery_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+    <record id="sms_grading_policy_nursery_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+    <record id="sms_grading_policy_nursery_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+
+    <record id="sms_grading_policy_nursery_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_nursery" />
+    </record>
+
+    <record id="sms_grading_policy_prep_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+    <record id="sms_grading_policy_prep_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+    <record id="sms_grading_policy_prep_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+    <record id="sms_grading_policy_prep_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+    <record id="sms_grading_policy_prep_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+    <record id="sms_grading_policy_prep_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+	
+	<record id="sms_grading_policy_prep_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_prep" />
+    </record>
+
+    <record id="sms_grading_policy_kg_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+    <record id="sms_grading_policy_kg_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+    <record id="sms_grading_policy_kg_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+    <record id="sms_grading_policy_kg_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+    <record id="sms_grading_policy_kg_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+    <record id="sms_grading_policy_kg_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+
+	<record id="sms_grading_policy_kg_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_kg" />
+    </record>
+
+    <record id="sms_grading_policy_1_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+    <record id="sms_grading_policy_1_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+    <record id="sms_grading_policy_1_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+    <record id="sms_grading_policy_1_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+    <record id="sms_grading_policy_1_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+    <record id="sms_grading_policy_1_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+	<record id="sms_grading_policy_1_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_1" />
+    </record>
+
+    <record id="sms_grading_policy_2_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+    <record id="sms_grading_policy_2_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+    <record id="sms_grading_policy_2_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+    <record id="sms_grading_policy_2_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+    <record id="sms_grading_policy_2_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+    <record id="sms_grading_policy_2_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+	<record id="sms_grading_policy_2_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_2" />
+    </record>
+
+    <record id="sms_grading_policy_3_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+    <record id="sms_grading_policy_3_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+    <record id="sms_grading_policy_3_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+    <record id="sms_grading_policy_3_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+    <record id="sms_grading_policy_3_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+    <record id="sms_grading_policy_3_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+	<record id="sms_grading_policy_3_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_3" />
+    </record>
+
+    <record id="sms_grading_policy_4_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+    <record id="sms_grading_policy_4_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+    <record id="sms_grading_policy_4_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+    <record id="sms_grading_policy_4_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+    <record id="sms_grading_policy_4_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+    <record id="sms_grading_policy_4_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+	<record id="sms_grading_policy_4_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_4" />
+    </record>
+
+    <record id="sms_grading_policy_5_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+    <record id="sms_grading_policy_5_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+    <record id="sms_grading_policy_5_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+    <record id="sms_grading_policy_5_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+    <record id="sms_grading_policy_5_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+    <record id="sms_grading_policy_5_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+	<record id="sms_grading_policy_5_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_5" />
+    </record>
+
+    <record id="sms_grading_policy_6_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+    <record id="sms_grading_policy_6_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+    <record id="sms_grading_policy_6_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+    <record id="sms_grading_policy_6_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+    <record id="sms_grading_policy_6_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+    <record id="sms_grading_policy_6_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+	<record id="sms_grading_policy_6_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_6" />
+    </record>
+
+    <record id="sms_grading_policy_7_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+    <record id="sms_grading_policy_7_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+    <record id="sms_grading_policy_7_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+    <record id="sms_grading_policy_7_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+    <record id="sms_grading_policy_7_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+    <record id="sms_grading_policy_7_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+	<record id="sms_grading_policy_7_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_7" />
+    </record>
+
+    <record id="sms_grading_policy_8_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+    <record id="sms_grading_policy_8_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+    <record id="sms_grading_policy_8_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+    <record id="sms_grading_policy_8_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+    <record id="sms_grading_policy_8_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+    <record id="sms_grading_policy_8_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+  	<record id="sms_grading_policy_8_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_8" />
+    </record>
+
+    <record id="sms_grading_policy_9_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+    <record id="sms_grading_policy_9_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+    <record id="sms_grading_policy_9_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+    <record id="sms_grading_policy_9_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+    <record id="sms_grading_policy_9_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+    <record id="sms_grading_policy_9_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+	<record id="sms_grading_policy_9_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_9" />
+    </record>
+
+    <record id="sms_grading_policy_10_1" model="sms.grading.policy">
+      <field name="name">A+</field>
+      <field name="lower_limit">90</field>
+      <field name="upper_limit">100</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Outstanding</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+    <record id="sms_grading_policy_10_2" model="sms.grading.policy">
+      <field name="name">A</field>
+      <field name="lower_limit">80</field>
+      <field name="upper_limit">89</field>
+      <field name="grade_point">4</field>
+      <field name="subject_remarks">Excellent</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+    <record id="sms_grading_policy_10_3" model="sms.grading.policy">
+      <field name="name">B</field>
+      <field name="lower_limit">70</field>
+      <field name="upper_limit">79</field>
+      <field name="grade_point">3.5</field>
+      <field name="subject_remarks">Very Good</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+    <record id="sms_grading_policy_10_4" model="sms.grading.policy">
+      <field name="name">C</field>
+      <field name="lower_limit">60</field>
+      <field name="upper_limit">69</field>
+      <field name="grade_point">3</field>
+      <field name="subject_remarks">Good</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+    <record id="sms_grading_policy_10_5" model="sms.grading.policy">
+      <field name="name">D</field>
+      <field name="lower_limit">50</field>
+      <field name="upper_limit">59</field>
+      <field name="grade_point">2.5</field>
+      <field name="subject_remarks">Fair</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+    <record id="sms_grading_policy_10_6" model="sms.grading.policy">
+      <field name="name">E</field>
+      <field name="lower_limit">40</field>
+      <field name="upper_limit">49</field>
+      <field name="grade_point">2</field>
+      <field name="subject_remarks">Poor</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+	<record id="sms_grading_policy_10_7" model="sms.grading.policy">
+      <field name="name">F</field>
+      <field name="lower_limit">0</field>
+      <field name="upper_limit">39</field>
+      <field name="grade_point">0</field>
+      <field name="subject_remarks">Very Poor</field>
+      <field name="class_id" ref="sms_classes_10" />
+    </record>
+
+
+ <!-- sms.class section -->
+<record id="sms_section_a" model="sms.class.section">
+	  <field name="name">Section A</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_b" model="sms.class.section">
+	  <field name="name">Section B</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_c" model="sms.class.section">
+	  <field name="name">Section C</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_d" model="sms.class.section">
+	  <field name="name">Section D</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<!--          sms.groups  -->
+<record id="sms_section_no" model="sms.group">
+	  <field name="name">No group</field>  
+ 	  <field name="desc">Use this option for classes with no specialized group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_humanities" model="sms.group">
+	  <field name="name">Humanities</field>  
+ 	  <field name="desc">Arts Group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_sceince" model="sms.group">
+	  <field name="name">Science</field>  
+ 	  <field name="desc">Science Group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_computer" model="sms.group">
+	  <field name="name">Computer Science</field>  
+ 	  <field name="desc"> Computer Science Group</field>    
+      <field eval="True" name="active" />
+    </record>
+  </data>
+</openerp>

@@ -1,0 +1,466 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+	
+	<!--Company-->
+		<record model="ir.ui.view" id="view_cms_company_form2">
+	      <field name="name">res.company.form.inherit</field>
+	      <field name="model">res.company</field>
+	      <field name="inherit_id" ref="base.view_company_form"/>
+	      <field name="type">form</field>
+	      <field name="arch" type="xml">
+					<notebook>
+			  		<page string ="Fee Management">
+		              	  <separator string="Fee Accounts Configuration" colspan="4"/>
+			              <field name="enable_fm"/>
+						  <group>
+						  	<group>
+							<field name="fee_journal" colspan ="4" attrs="{'required':[('enable_fm','=',True)]}" domain="[('type','=','cash')]"/>
+							<field name="student_fee_income_acc" attrs="{'required':[('enable_fm','=',True)]}" colspan ="4" domain="[('type','=','other')]"/>
+							<field name="fee_reception_account_cash" attrs="{'required':[('enable_fm','=',True)]}"  colspan ="4" domain="[('type','=','liquidity')]"/>
+							</group>
+							<group>
+							 <field name="student_fee_expense_acc"   attrs="{'required':[('enable_fm','=',True)]}"  domain="[('type','=','other')]"/>
+						     <field name="fee_reception_account_bank" attrs="{'required':[('enable_fm','=',True)]}"   colspan ="4" domain="[('type','=','liquidity')]"/>
+							</group>	
+					      </group>
+		          	</page>
+				   </notebook>
+	      </field>
+	    </record>
+	
+
+	<!-- sms.student..inherited-->
+		<record model="ir.ui.view" id="inherit_view_sms_student_form">
+		      <field name="name">sms.student.inherit</field>
+		      <field name="model">sms.student</field>
+		      <field name="inherit_id" ref="sms.view_student_form"/>
+		      <field name="type">form</field>
+		      <field name="arch" type="xml">
+		      <field name="classes_history" position="after">
+			  	</field>
+				
+				<notebook>
+				
+					<page string = "Fee Details">
+					
+					<button name="%(report_class_unpaidfee_receipts_id)d" string="Fee Receipt" states="Admitted,admission_cancel,drop_out,deceased,passout" type="action" class="oe_highlight" groups=""/>
+					<group>
+						<group>					
+						<field name="fee_type"/>
+						<field name="latest_fee" readonly="1"/>
+						</group>
+						<group>
+						<field name="total_paybles" readonly="1"/>
+						</group>
+					</group>
+					<group readonly ="1">		    	 		
+					<field name="studen_fee_ids"  nolabel="1"/>
+					</group>
+			    	</page>
+			   </notebook>
+		      </field>
+		    </record>
+		<!-- sms.Classes Fee-->
+
+<!-- sms.academiccalendar..inherited-->
+		<record model="ir.ui.view" id="inherite_view_sms_acad_calform">
+		      <field name="name">sms.academiccalendar.inherit</field>
+		      <field name="model">sms.academiccalendar</field>
+		      <field name="inherit_id" ref="sms.view_session_classes_form"/>
+		      <field name="type">form</field>
+		      <field name="arch" type="xml">
+		      <field name="helptxt" position="before">
+			  </field>
+				<notebook>
+				<page string = "Fee Management">
+		    	<button name="manage_class_fee" string="Fee Structure" icon="gtk-execute" states="Draft,Active" type="object" class="oe_highlight" groups=""/>
+				<button name= "%(action_update_fee_register)d" string="Update Fee Register" states="Draft,Active"  icon="gtk-execute" type="action"/>
+				<button name="%(action_fee_receipts)d" string="Fee Receipts"  states="Draft,Active" type="action" icon="gtk-print"/> 
+				<group><newline/><field name="fee_update_till"/></group>
+						<notebook>
+						<page string = "Fee Structure"><field name="fee_structures"/></page>
+						<page readonly = "1" string = "Fee Register"><field name="fee_register" readonly ="1"/></page>
+						</notebook>
+			    </page>
+			   </notebook>
+		      </field>
+		    </record>
+
+<!-- sms.Classes Fee-->
+        <record model="ir.ui.view" id="view_classesfee_form">
+         <field name="name">smsfee.classes.fees.form</field>
+         <field name="model">smsfee.classes.fees</field>
+         <field name="arch" type="xml">
+            <form string="Classes Fee" version="7.0">
+ 			 <sheet>
+					<group string ="Classes Fees Details ">
+							<field name="fee_structure_id" />
+							<field name="fee_type_id" />
+							<field name="amount" />
+					</group>
+				</sheet>	 	
+              </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_classesfee_tree">
+            <field name="name">smsfee.classes.fees.tree</field>
+            <field name="model">smsfee.classes.fees</field>
+            <field name="arch" type="xml">
+                <tree string="Classes Fees" editable="top">
+							<field name="fee_structure_id"  />
+							<field name="fee_type_id" />
+							<field name="amount" />
+				 </tree>
+            </field>
+        </record>
+
+ <record id="view_sms_classesfees_search" model="ir.ui.view">
+            <field name="name">smsfee.classes.fees.search</field>
+            <field name="model">smsfee.classes.fees</field>
+            <field name="arch" type="xml">
+                <search string="Timetable Search">
+                    <field name="name" string="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_classesfee_id">
+            <field name="name">Classes Fees</field>
+            <field name="res_model">smsfee.classes.fees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+	        <field name="search_view_id" ref="view_sms_classesfees_search"/>
+        </record>
+
+<!--Classes Fee Register-->
+<record model="ir.ui.view" id="view_class_fee_register_tree">
+            <field name="name">smsfee.classfees.register.tree</field>
+            <field name="model">smsfee.classfees.register</field>
+            <field name="arch" type="xml">
+                <tree string="Class Fee Register">
+							<field name="academic_cal_id" />
+							<field name="month" />
+							<field name="month_forcasted_fee" />
+							<field name="month_fee_received" />
+				</tree>
+            </field>
+        </record>
+
+		<record id="view_clsfee_register_search" model="ir.ui.view">
+            <field name="name">smsfee.classfees.register</field>
+            <field name="model">smsfee.classfees.register</field>
+            <field name="arch" type="xml">
+                <search string="Fee Register">
+                    <field name="name" string="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_class_fee_register">
+            <field name="name">Class Fee Register</field>
+            <field name="res_model">smsfee.classfees.register</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="search_view_id" ref="view_clsfee_register_search"/>
+        </record>
+
+<!--Fee types-->
+	<record model="ir.ui.view" id="view_feetypes_form">
+         <field name="name">smsfee.feetypes.form</field>
+         <field name="model">smsfee.feetypes</field>
+         <field name="arch" type="xml">
+            <form string="Fee Types" version="7.0">
+ 			 <sheet>
+						<group string ="Fee Type">
+						<group>
+							<field name="name" />
+							<field name="description" />
+							<field name="subtype" on_change="onchange_feesubtype(subtype)" />
+						</group>
+						<group colspan="3">	
+							<field colspan="3" name="helptxt" nolabel ="1" />
+						</group>
+						</group>
+				</sheet>	 	
+              </form>
+            </field>
+        </record>
+
+<record model="ir.ui.view" id="view_feetypes_tree">
+            <field name="name">smsfee.feetypes.tree</field>
+            <field name="model">smsfee.feetypes</field>
+            <field name="arch" type="xml">
+                <tree string="Fee Types">
+							<field name="name" />
+							<field name="description" />
+							<field name="subtype" />
+				</tree>
+            </field>
+        </record>
+
+	<record id="view_feetype_search" model="ir.ui.view">
+            <field name="name">smsfee.feetypes.search</field>
+            <field name="model">smsfee.feetypes</field>
+            <field name="arch" type="xml">
+                <search string="Fee Types">
+                    <field name="name" string="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_feetypes">
+            <field name="name">Fee Types</field>
+            <field name="res_model">smsfee.feetypes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="search_studentfee_id" ref="view_feetype_search"/>
+        </record>
+
+
+	<!-- sms.studentfee-->
+        <record model="ir.ui.view" id="studentfee_tree">
+            <field name="name">smsfee.studentfee.tree</field>
+            <field name="model">smsfee.studentfee</field>
+            <field name="arch" type="xml">
+                <tree colors="red:reconcile == False" string="Student Fee">
+						<field name="receipt_no"/>
+						<field name="acad_cal_id"/>
+						<field name="fee_type"/>
+						<field name="fee_month"/>
+						<field name="fee_amount"/>
+						<field name="late_fee"/>
+						<field name="total_amount"/>
+						<field name="paid_amount"/>
+						<field name="discount"/>
+						<field name="net_total" invisible = "1"/>
+						<field name="reconcile"/>
+
+		    </tree>
+            </field>
+        </record>
+
+        <record id="view_studentfee_search" model="ir.ui.view">
+            <field name="name">smsfee.studentfee.search</field>
+            <field name="model">smsfee.studentfee</field>
+            <field name="arch" type="xml">
+                <search string="Day">
+                    <field name="name" string="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_studentfee">
+            <field name="name">Day</field>
+            <field name="res_model">smsfee.studentfee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="search_studentfee_id" ref="view_studentfee_search"/>
+        </record>
+
+<!--student withdraw process-->
+
+        <record model="ir.ui.view" id="view_withdrawprocess_form">
+         <field name="name">smsfee.std.withdraw.form</field>
+         <field name="model">smsfee.std.withdraw</field>
+         <field name="arch" type="xml">
+            <form string="Student Withdraw Process" version="7.0">
+			<header>
+			<button name="send_withdraw_request" string="Send Request" states="Draft" type="object"  class="oe_highlight" />
+			<button name="confirm_std_withdraw" string="Approve Request" states="waiting_approval" type="object"  class="oe_highlight" />
+			<button name="reject_std_withdraw" string="Reject Request" states="waiting_approval" type="object"  class="oe_highlight" />
+			
+			</header>
+			<sheet><group string ="Student Withdrawl">
+					<group>
+						<field name="student_class_id" domain="[('state','!=','Draft')]"  attrs="{'readonly':[('state','IN',['waiting_approval','Approved','Rejected'])]}"  required ="1" />
+						<field name="student_id" domain="[('current_class','=',student_class_id),('state','!=','Draft')]"  attrs="{'readonly':[('state','IN',['waiting_approval','Approved','Rejected'])]}" />
+						<field name="father_name"  readonly ="1" />
+						<field name="fee_structure"  readonly ="1" />
+							
+						<field name="request_type"/>
+					</group>
+		     		<group string ="">
+						<field name="name"  readonly ="1" />
+						<field name="request_date" attrs="{'readonly':[('state','IN',['waiting_approval','Approved','Rejected'])]}" />
+						<field name="state"  readonly ="1" />
+					</group>
+					</group>
+					<notebook>
+        				    <page string="Reason " >
+							<field name="reason_withdraw" attrs="{'readonly':[('state','IN',['waiting_approval','Approved','Rejected'])]}"  />
+							</page>
+							<page string="Fee" >
+							<field name="select_return_fee_ids" attrs="{'invisible':[('request_type','IN',['Withdraw','slc'])],'required':[('request_type','IN',['Admission_Cancel'])]}"  />
+							</page>
+					</notebook>
+					
+		</sheet>	 	
+              </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_withdrawprocess_tree">
+            <field name="name">smsfee.std.withdraw.tree</field>
+            <field name="model">smsfee.std.withdraw</field>
+            <field name="arch" type="xml">
+                <tree string="Classes Fees">
+							<field name="name" />
+							<field name="student_id" />
+							<field name="father_name" />
+							<field name="state" />
+				 </tree>
+            </field>
+        </record>
+
+ <record id="view_withdrawprocess_search" model="ir.ui.view">
+            <field name="name">smsfee.std.withdraw.search</field>
+            <field name="model">smsfee.std.withdraw</field>
+            <field name="arch" type="xml">
+                <search string="Timetable Search">
+                    <field name="name" string="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_withdrawprocess_id">
+            <field name="name">Withdraw Process</field>
+            <field name="res_model">smsfee.std.withdraw</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+	        <field name="search_view_id" ref="view_withdrawprocess_search"/>
+        </record>
+
+		
+<!-- sms.fee receipt book-->
+        <record model="ir.ui.view" id="view_receiptbook_form">
+         <field name="name">smsfee.receiptbook.form</field>
+         <field name="model">smsfee.receiptbook</field>
+         <field name="arch" type="xml">
+            <form string="Fee Receipt Book" version="7.0">
+			<header>
+			<button name="load_std_fee" string="Show Fees" states="Draft" type="object"  class="oe_highlight" />
+			<button name="confirm_fee_received" string="Receive Fee" states="fee_calculated" type="object"  class="oe_highlight" />
+			<button name="%(print_paid_fee_receipt_id)d" string="Print Receipt" states="fee_paid" type="action" class="oe_highlight" groups=""/>
+			<field name="state" widget="statusbar" statusbar_visible="Draft,fee_calculated,Paid"/>
+			</header>
+			<sheet><group string ="Receive Fee">
+					<group>
+						<field name="session_id"   />
+						<field name="student_class_id"   />
+						<field name="student_id" domain="[('current_class','=',student_class_id),('state','=','Admitted')]" attrs="{'readonly':[('state','IN',['fee_calculated','Paid'])]}" on_change="onchange_student(student_id)" />
+						<field name="father_name"  readonly ="1" />
+						
+						<field name="payment_method"  required ="1" />	
+						<field name="total_paid_amount" readonly ="1"/>
+					</group>
+		     		<group string ="">
+						<field name="name"  readonly ="1" />
+							<field name="receipt_date" attrs="{'readonly':[('state','IN',['fee_calculated','Paid'])]}"  />
+							<field name="fee_structure"  readonly ="1" />
+					</group>
+					</group>
+					<notebook>
+        				    <page string="Fee" >
+							<field name="receiptbook_lines_ids" attrs="{'readonly':[('state','IN',['Paid'])]}"  />
+							</page>
+							<page string="Accounting Enteries" >
+								<group>
+								<field name="vouchered"/>
+								<field name="vouchered_by"/>
+								</group>							
+								<group>
+								<field name="voucher_date"/>
+								<field name="voucher_no"/>
+								</group>
+							</page>
+					</notebook>
+					<group string ="">
+							<field name="state"  readonly ="1" />
+							<field name="fee_received_by"  readonly ="1" />
+					</group>
+		</sheet>	 	
+              </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_receiptbook_tree">
+            <field name="name">smsfee.receiptbook.tree</field>
+            <field name="model">smsfee.receiptbook</field>
+            <field name="arch" type="xml">
+                <tree string="Classes Fees">
+							<field name="name" />
+							<field name="student_id" domain="[('current_class','=',name)]" />
+							<field name="receipt_date" />
+							<field name="state" />
+							<field name="fee_received_by" />
+				 </tree>
+            </field>
+        </record>
+
+ <record id="view_receiptbook_search" model="ir.ui.view">
+            <field name="name">smsfee.receiptbook.search</field>
+            <field name="model">smsfee.receiptbook</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="student_id" string="name"/>
+					<field name="student_class_id" string="name"/>
+					<field name="name" string= "Receopt No" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_receiptbook_id">
+            <field name="name">Fee Receipt Book</field>
+            <field name="res_model">smsfee.receiptbook</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+	        <field name="search_view_id" ref="view_receiptbook_search"/>
+        </record>
+
+		
+
+<!-- sms.fee receipt book.lines -->
+    
+    <record model="ir.ui.view" id="sms_receiptbook_lines_tree">
+      <field name="name">smsfee.receiptbook.lines</field>
+      <field name="model">smsfee.receiptbook.lines</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string=" Fee Receiptbook lines"  editable="top">
+          <field name="name"  readonly ="1" />
+	      <field name="fee_type"  readonly ="1"  />
+          <field name="fee_month"  readonly ="1" />
+		  <field name="total" readonly ="1"/>  	
+          <field name="paid_amount" colspan="4" on_change="onchange_amount(total,paid_amount)"  />
+		  <field name="discount" on_change="onchange_discount(total,discount)"  />
+		  <field name="net_total" invisible ="1"/>
+          <field name="reconcile" />	
+        </tree>
+      </field>
+    </record>
+ <record model="ir.actions.act_window" id="action_receiptbooklines">
+            <field name="name">Fee Details</field>
+            <field name="res_model">smsfee.receiptbook.lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+        </record>
+    <!-- fee.receiptbook.lines END --> 
+           
+	</data>
+</openerp>

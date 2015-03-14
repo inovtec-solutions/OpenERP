@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Fee Reports -->
+
+        <record id="view_fee_receipts" model="ir.ui.view">
+            <field name="name">class.fee.receipts.unpaid.form</field>
+            <field name="model">class.fee.receipts.unpaid</field>
+            <field name="arch" type="xml">
+                <form string="Print Fee Receipts" version="7.0">
+                    <group>
+					<group>
+                        <h1><field name="class_id" readonly ="1" placeholder = "Class" nolabel = "1" /></h1>
+						<newline/><field nolabel = "1" required = "1" placeholder = "Date" name="today"/>
+                    </group>
+					<group><field  name="helptext" nolabel = "1" />
+					</group>
+					</group>
+                    <footer>
+                        <button string="Print" name="print_fee_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- action Fee Reports-->
+
+        <record id="action_fee_receipts" model="ir.actions.act_window">
+            <field name="name">Print Fee Receipts</field>
+            <field name="res_model">class.fee.receipts.unpaid</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_fee_receipts"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

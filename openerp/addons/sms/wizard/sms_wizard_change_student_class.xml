@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Change Student Class-->
+
+        <record id="view_change_student_class" model="ir.ui.view">
+            <field name="name">Change Student Class</field>
+            <field name="model">change.student.class</field>
+            <field name="arch" type="xml">
+                <form string="Change Student Class" version="7.0">
+                 <group>
+                    <group col="4">
+						<newline/><field name="student_class" nolabel = "1" placeholder = "Current Class" />
+						<newline/><field name="student_id" nolabel = "1" placeholder = "Student"/>
+						<newline/><field name="new_class_id"  on_change="onchange_acad_cal(new_class_id)" nolabel = "1" placeholder = "Assign A New Class"  />
+						<newline/><field name="fee_structure" nolabel = "1" placeholder = "Fee Structure"/>
+						<newline/><field name="fee_starting_month" nolabel = "1" placeholder = "Fee Starting month"  />
+					</group>
+					 <group>
+						 <newline/><p>Academic Session<field name="academic_session" on_change="onchange_academic_session(academic_session)" readonly = "1" placeholder = "Academic Session" nolabel = "1"/></p>
+                          <p class="oe_view_nocontent_create">Year of Admission:<field name="session" placeholder = "Year of Admission" nolabel = "1" readonly = "1"/></p>
+					</group>
+					</group>
+					
+					
+					 <group>
+					 <group>
+					<ul>
+                    <li>Use this wizard only if student was admitted to wrong class.</li>
+                    <li>Change student  class will remove his current class fee and subject details.</li>
+                    <li>.</li>
+                    </ul>
+                    </group>
+					</group>
+                    <footer>
+                        <button string="Change Class" name="change_student_class" type="object" confirm = "Continue with class change?" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Student Change Section -->
+
+        <record id="action_sms_change_student_class" model="ir.actions.act_window">
+            <field name="name">Change Student Class</field>
+            <field name="res_model">change.student.class</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_change_student_class"/>
+            <field name="target">new</field>
+        </record>
+</data>
+</openerp>

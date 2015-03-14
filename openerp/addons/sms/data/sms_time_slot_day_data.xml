@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+    <!--          sms.subject  -->
+    <record id="sms_subjects_islamic_study" model="sms.subject">
+      <field name="name">Islamyat</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+   <record id="sms_subjects_pak_study" model="sms.subject">
+      <field name="name">Pakistan Study</field>
+      <field name="desc">Studies as Pakisstan studies and Social Studies</field>		
+    </record>
+
+   <record id="sms_subjects_english" model="sms.subject">
+      <field name="name">English</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+	<record id="sms_subjects_urdu" model="sms.subject">
+      <field name="name">Urdu</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+<record id="sms_subjects_gscience" model="sms.subject">
+      <field name="name">General Science</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_physics" model="sms.subject">
+      <field name="name">Physics</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_mathematics" model="sms.subject">
+      <field name="name">Mathematics</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_chemistory" model="sms.subject">
+      <field name="name">Chemistory</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_biology" model="sms.subject">
+      <field name="name">Biology</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+    
+<record id="sms_subjects_pashto" model="sms.subject">
+      <field name="name">Pashto</field>
+      <field name="desc">Optional</field>		
+    </record>
+    
+<record id="sms_subjects_computer" model="sms.subject">
+      <field name="name">Computer</field>
+      <field name="desc">Compulsory Subject</field>		
+    </record>
+
+<record id="sms_classes_nursery" model="sms.classes">
+	  <field name="name">Nursery</field>      
+      <field name="desc">KG Class</field>
+    </record>
+
+<record id="sms_classes_kg" model="sms.classes">
+	  <field name="name">KG</field>      
+      <field name="desc">KG Class</field>
+    </record>
+
+<record id="sms_classes_1" model="sms.classes">
+	  <field name="name">Class 1</field>      
+      <field name="desc">1st</field>
+    </record>
+
+<record id="sms_classes_2" model="sms.classes">
+	  <field name="name">Class 2</field>      
+      <field name="desc">2nd</field>
+    </record>
+
+<record id="sms_classes_3" model="sms.classes">
+	  <field name="name">Class 3</field>      
+      <field name="desc">3rd</field>
+    </record>
+
+<record id="sms_classes_4" model="sms.classes">
+	  <field name="name">Class 4</field>      
+      <field name="desc">4th</field>
+    </record>
+
+<record id="sms_classes_5" model="sms.classes">
+	  <field name="name">Class 5</field>      
+      <field name="desc">5th</field>
+    </record>
+
+<record id="sms_classes_6" model="sms.classes">
+	  <field name="name">Class 6</field>      
+      <field name="desc">6th</field>
+    </record>
+
+<record id="sms_classes_7" model="sms.classes">
+	  <field name="name">Class 7</field>      
+      <field name="desc">7th</field>
+    </record>
+
+<record id="sms_classes_8" model="sms.classes">
+	  <field name="name">Class 8</field>      
+      <field name="desc">8th</field>
+    </record>
+
+<record id="sms_classes_9" model="sms.classes">
+	  <field name="name">Class 9</field>      
+      <field name="desc">9th</field>
+    </record>
+
+<record id="sms_classes_10" model="sms.classes">
+	  <field name="name">Class 10</field>      
+      <field name="desc">10th</field>
+    </record>
+
+ <!--          sms.class section  -->
+<record id="sms_section_a" model="sms.class.section">
+	  <field name="name">Section A</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_b" model="sms.class.section">
+	  <field name="name">Section B</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_c" model="sms.class.section">
+	  <field name="name">Section C</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_d" model="sms.class.section">
+	  <field name="name">Section D</field>      
+      <field eval="True" name="active" />
+    </record>
+
+<!--          sms.groups  -->
+<record id="sms_section_no" model="sms.group">
+	  <field name="name">No group</field>  
+ 	  <field name="desc">Use this option for classes with no specialized group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_humanities" model="sms.group">
+	  <field name="name">Humanities</field>  
+ 	  <field name="desc">Arts Group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_sceince" model="sms.group">
+	  <field name="name">Science</field>  
+ 	  <field name="desc">Science Group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<record id="sms_section_computer" model="sms.group">
+	  <field name="name">Computer Science</field>  
+ 	  <field name="desc"> Computer Science Group</field>    
+      <field eval="True" name="active" />
+    </record>
+
+<!--  sms.time  -->
+<record id="sms_time_06_00" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_05" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_10" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_15" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_20" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_06_25" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_30" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_06_35" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_40" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_45" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_50" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_06_55" model="sms.time">
+	  <field name="hour">06</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_00" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_05" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_10" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_15" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_20" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_07_25" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_30" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_07_35" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_40" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_45" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_50" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_07_55" model="sms.time">
+	  <field name="hour">07</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_00" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_05" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_10" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_15" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_20" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_08_25" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_30" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_08_35" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_40" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_45" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_50" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_08_55" model="sms.time">
+	  <field name="hour">08</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_00" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_05" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_10" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_15" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_20" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_09_25" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_30" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_09_35" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_40" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_45" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_50" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_09_55" model="sms.time">
+	  <field name="hour">09</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_00" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_05" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_10" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_15" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_20" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_10_25" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_30" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_10_35" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_40" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_45" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_50" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_10_55" model="sms.time">
+	  <field name="hour">10</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_00" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_05" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_10" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_15" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_20" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_11_25" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_30" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+<record id="sms_time_11_35" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_40" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_45" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_50" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_11_55" model="sms.time">
+	  <field name="hour">11</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">AM</field>    
+    </record>
+
+<record id="sms_time_12_00" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_05" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_10" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_15" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_20" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_12_25" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_30" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_12_35" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_40" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_45" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_50" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_12_55" model="sms.time">
+	  <field name="hour">12</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_00" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_05" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_10" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_15" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_20" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_01_25" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_30" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_01_35" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_40" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_45" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_50" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_01_55" model="sms.time">
+	  <field name="hour">01</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_00" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_05" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_10" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_15" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_20" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_02_25" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_30" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_02_35" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_40" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_45" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_50" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_02_55" model="sms.time">
+	  <field name="hour">02</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_00" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_05" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_10" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_15" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_20" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_03_25" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_30" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_03_35" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_40" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_45" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_50" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_03_55" model="sms.time">
+	  <field name="hour">03</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_00" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">00</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_05" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">05</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_10" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">10</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_15" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">15</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_20" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">20</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_04_25" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">25</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_30" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">30</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+<record id="sms_time_04_35" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">35</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_40" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">40</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_45" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">45</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+<record id="sms_time_04_50" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">50</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+	<record id="sms_time_04_55" model="sms.time">
+	  <field name="hour">04</field>  
+ 	  <field name="minute">55</field>    
+      <field name="am_pm">PM</field>    
+    </record>
+
+	
+	<!--  SMS Timetable Slot -->
+	<record id="sms.sm_period_1" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_08_00"/>
+	  <field name="end_time" ref="sms_time_08_40"/>    
+    </record>
+	
+	<record id="sms.sm_period_2" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_08_40"/>
+	  <field name="end_time" ref="sms_time_09_20"/>    
+    </record>
+
+	<record id="sms.sm_period_3" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_09_20"/>
+	  <field name="end_time" ref="sms_time_10_00"/>    
+    </record>
+
+	<record id="sms.sm_period_4" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_10_00"/>
+	  <field name="end_time" ref="sms_time_10_40"/>    
+    </record>
+
+	<record id="sms.sm_period_5" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_11_00"/>
+	  <field name="end_time" ref="sms_time_11_40"/>    
+    </record>
+
+	<record id="sms.sm_period_6" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_11_40"/>
+	  <field name="end_time" ref="sms_time_12_20"/>    
+    </record>
+
+	<record id="sms.sm_period_7" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_01_00"/>
+	  <field name="end_time" ref="sms_time_01_40"/>    
+    </record>
+
+	<record id="sms.sm_period_8" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_01_40"/>
+	  <field name="end_time" ref="sms_time_02_20"/>    
+    </record>
+
+	<record id="sms.sm_period_9" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_02_20"/>
+	  <field name="end_time" ref="sms_time_03_00"/>    
+    </record>
+
+	<record id="sms.sm_period_10" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_03_00"/>
+	  <field name="end_time" ref="sms_time_03_40"/>    
+    </record>
+
+	<record id="sms.sm_break_1" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_10_40"/>
+	  <field name="end_time" ref="sms_time_11_00"/>    
+    </record>
+
+	<record id="sms.sm_break_2" model="sms.timetable.slot">
+	  <field name="start_time" ref="sms_time_12_20"/>
+	  <field name="end_time" ref="sms_time_01_00"/>    
+    </record>
+
+	<!--  SMS Days -->
+	<record id="sms_day_1" model="sms.day">
+	  <field name="name">Monday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_2" model="sms.day">
+	  <field name="name">Tuesday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_3" model="sms.day">
+	  <field name="name">Wednesday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_4" model="sms.day">
+	  <field name="name">Thursday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_5" model="sms.day">
+	  <field name="name">Friday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_6" model="sms.day">
+	  <field name="name">Saturday</field>  
+ 	  <field name="active" eval="True"/>
+    </record>
+
+	<record id="sms_day_7" model="sms.day">
+	  <field name="name">Sunday</field>  
+ 	  <field name="active" eval="False"/>
+    </record>
+
+  </data>
+</openerp>

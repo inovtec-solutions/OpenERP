@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Load Students From Exel -->
+
+        <record id="view_sms_load_student_wizard" model="ir.ui.view">
+            <field name="name">Load Students From Excel</field>
+            <field name="model">load.student.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Load Student From Excel" version="7.0">
+                    <group col="4">
+						<field name="load_type"/>
+					</group>
+                    <footer>
+                        <button string="Load" name="load_students" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Load Student From Excel -->
+
+        <record id="action_load_student_wizard" model="ir.actions.act_window">
+            <field name="name">Load Student From Excel</field>
+            <field name="res_model">load.student.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_load_student_wizard"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

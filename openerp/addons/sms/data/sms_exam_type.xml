@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+<!-- Exam Type  -->
+
+	<record id="sms_exam_type_1" model="sms.exam.type">
+		<field name="name">Monthly Test</field>
+		<field name="sequence_no">1</field>
+	</record>
+
+	<record id="sms_exam_type_2" model="sms.exam.type">
+		<field name="name">Mid Term</field>
+		<field name="sequence_no">2</field>
+	</record>
+
+	<record id="sms_exam_type_3" model="sms.exam.type">
+		<field name="name">Final Term</field>
+		<field name="sequence_no">3</field>
+	</record>
+
+<!-- Exam Type  -->
+
+    </data>
+</openerp>

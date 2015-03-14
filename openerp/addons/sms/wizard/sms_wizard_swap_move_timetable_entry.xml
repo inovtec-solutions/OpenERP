@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Move Swap Timetable -->
+
+        <record id="view_sms_move_swap_timetable" model="ir.ui.view">
+            <field name="name">Move Swap Timetable</field>
+            <field name="model">move.swap.timetable</field>
+            <field name="arch" type="xml">
+                <form string="Move Swap Timetable" version="7.0">
+                    <group col="4">
+                         <field name="move_swap_type"/>
+                         <field name="timetable"/>
+                         <field name="day" attrs="{'required':[('move_swap_type','in',['Swap_Single','Move_Single'])], 'invisible':[('move_swap_type','in',['Move_All','Swap_All'])]}"/>
+                         <field name="timetable_from"/>
+                         <field name="timetable_with" attrs="{'required':[('move_swap_type','in',['Swap_All','Swap_Single'])], 'invisible':[('move_swap_type','in',['Move_All','Move_Single'])]}"/>
+                         <field name="timetable_slot" attrs="{'required':[('move_swap_type','in',['Move_All','Move_Single'])], 'invisible':[('move_swap_type','in',['Swap_All','Swap_Single'])]}"/>
+                         <field name="period_no" attrs="{'required':[('move_swap_type','in',['Move_All','Move_Single'])], 'invisible':[('move_swap_type','in',['Swap_All','Swap_Single'])]}"/>
+                    </group>
+                    <footer>
+                        <button string="Move/Swap" name="move_swap_timetable" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Move Swap Timetable -->
+
+        <record id="action_view_sms_move_swap_timetable" model="ir.actions.act_window">
+            <field name="name">Move Swap timetable</field>
+            <field name="res_model">move.swap.timetable</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_move_swap_timetable"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

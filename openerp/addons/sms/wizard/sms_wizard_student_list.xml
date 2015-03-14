@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Print Class Students list -->
+
+        <record id="view_studentlist" model="ir.ui.view">
+            <field name="name">sms.studentlist</field>
+            <field name="model">sms.studentlist</field>
+            <field name="arch" type="xml">
+                <form string="Students list" version="7.0">
+			    		<group col="4">
+						<newline/><field name="list_type"/>
+						<newline/><field name="acad_cal" attrs="{'invisible':[('list_type','=','check_admissions')], 'required':[('list_type','=','contact_list')]}"/>
+						</group>
+						<newline/><group  attrs="{'invisible':[('list_type','=','contact_list')]}">              			
+							<newline/><field name="start_date"  attrs="{ 'required':[('list_type','=','check_admissions')]}"/>
+							<newline/><field name="end_date"  attrs="{ 'required':[('list_type','=','check_admissions')]}"/>
+						</group>
+						<newline/><field name="export_to_excel"/>
+                    <footer>
+                        <button string="Print" name="print_list" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View CMS Student Admit -->
+
+        <record id="action_studentlist" model="ir.actions.act_window">
+            <field name="name">Students list</field>
+            <field name="res_model">sms.studentlist</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_studentlist"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+	<!-- Nursery Class Default TimeTable -->
+	<record id="sms_timetable_nursery" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_nursery"/>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_nursery_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_nursery_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_nursery"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+
+	<!-- Prep Class Default TimeTable -->
+	<record id="sms_timetable_prep" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_prep"/>
+    </record>
+
+	<record id="sms_timetable_lines_prep_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_prep_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_prep_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_prep"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 1 Class Default TimeTable -->
+	<record id="sms_timetable_class_1" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_1"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_1_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_1_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_1"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 2 Class Default TimeTable -->
+	<record id="sms_timetable_class_2" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_2"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_2_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_2_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_2"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 3 Class Default TimeTable -->
+	<record id="sms_timetable_class_3" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_3"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_3_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_3_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_3"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 4 Class Default TimeTable -->
+	<record id="sms_timetable_class_4" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_4"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_4_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_4_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_4"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 5 Class Default TimeTable -->
+	<record id="sms_timetable_class_5" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_5"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_5_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_5_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_5"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 6 Class Default TimeTable -->
+	<record id="sms_timetable_class_6" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_6"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_6_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_6_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_6"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 7 Class Default TimeTable -->
+	<record id="sms_timetable_class_7" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_7"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_7_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_7_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_7"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 8 Class Default TimeTable -->
+	<record id="sms_timetable_class_8" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_8"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_8_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_8_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_8"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 9 Class Default TimeTable -->
+	<record id="sms_timetable_class_9" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_9"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_9_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_9_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_9"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+	<!-- Class 10 Class Default TimeTable -->
+	<record id="sms_timetable_class_10" model="sms.timetable.default">
+      <field name="name" ref="sms.sms_classes_10"/>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_1" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_2" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_3" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_3"/>
+      <field name="period_break_no">3</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_4" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_4"/>
+      <field name="period_break_no">4</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_5" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_5"/>
+      <field name="period_break_no">5</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_6" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_6"/>
+      <field name="period_break_no">6</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_7" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_7"/>
+      <field name="period_break_no">7</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_8" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_8"/>
+      <field name="period_break_no">8</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_9" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_9"/>
+      <field name="period_break_no">9</field>
+      <field name="type">Period</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_10" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_period_10"/>
+      <field name="period_break_no">10</field>
+      <field name="type">Period</field>
+    </record>
+
+
+	<record id="sms_timetable_lines_class_10_11" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_1"/>
+      <field name="period_break_no">1</field>
+      <field name="type">Break</field>
+    </record>
+
+	<record id="sms_timetable_lines_class_10_12" model="sms.timetable.lines.default">
+      <field name="timetable_id" ref="sms.sms_timetable_class_10"/>
+	  <field name="timetable_slot_id" ref="sms.sm_break_2"/>
+      <field name="period_break_no">2</field>
+      <field name="type">Break</field>
+    </record>
+
+</data>
+</openerp>

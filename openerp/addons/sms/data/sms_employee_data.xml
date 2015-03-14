@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+    <!--
+    <record id="res_partner_function_principal" model="res.partner.function">
+      <field name="name">Principal</field>
+      <field name="code">Principal</field>
+    </record>
+    <record id="res_partner_function_Joint_Director" model="res.partner.function">
+      <field name="name">Voice Principal</field>
+      <field name="code">Voice Pricipal</field>
+    </record>
+    <record id="res_partner_function_Faculty" model="res.partner.function">
+      <field name="name">Faculty</field>
+      <field name="code">Faculty</field>
+    </record>
+    
+    <record id="res_partner_function_Officer" model="res.partner.function">
+      <field name="name">Officer</field>
+      <field name="code">Officer</field>
+    </record>
+	-->
+
+	<record id="hr_employee_principal_1" model="hr.employee">
+      <field name="name">Rahim Khan</field>
+	  <field name="father_name">Sher Rehman</field>
+	  <field name="identification_id">17301-3508710-3</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1973-5-27-</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+	  <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_voice_principal_1" model="hr.employee">
+      <field name="name">Ashiq Ur Rehman</field>
+      <field name="father_name">Habib Ur Rehman</field>
+	  <field name="identification_id">17301-0234871-5</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1984-10-20</field>
+	  <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_1" model="hr.employee">
+      <field name="name">Zulfiqar Khan</field>
+      <field name="father_name">Gulshad Khan</field>
+	  <field name="identification_id">17310-8920796-7</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1984-10-20</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_2" model="hr.employee">
+      <field name="name">Khalil Ahmad</field>
+      <field name="father_name">Din Muhammad</field>
+	  <field name="identification_id">21302-8080212-1</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1991-11-09-/</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_3" model="hr.employee">
+      <field name="name">Rooh Ul Amin</field>
+      <field name="father_name">Mir Ahmad</field>
+	  <field name="identification_id">17301-9584495-9</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">2013-05-31</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_4" model="hr.employee">
+      <field name="name">Israr Ahmad</field>
+      <field name="father_name">Abdur Raziq</field>
+	  <field name="identification_id">17301-8538338-9</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1983-05-31</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_5" model="hr.employee">
+      <field name="name">Muhammad Asif</field>
+      <field name="father_name">Zarawar Khan</field>
+	  <field name="identification_id">17301-9411970-9</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1985-4-1</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_6" model="hr.employee">
+      <field name="name">Latif</field>
+      <field name="father_name">Sahib Gul</field>
+	  <field name="identification_id">17301-7678412-7</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1970-01-10</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_7" model="hr.employee">
+      <field name="name">Kashif Hakeem</field>
+      <field name="father_name">Abdul Hakeem</field>
+	  <field name="identification_id">17301-3619943-3</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1994-1-14</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">male</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_8" model="hr.employee">
+      <field name="name">Salma</field>
+      <field name="father_name">Ishtiaq Hussain</field>
+	  <field name="identification_id">111</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday"></field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_9" model="hr.employee">
+      <field name="name">Sonia</field>
+      <field name="father_name">Wahid Ullah</field>
+	  <field name="identification_id">111</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1993-03-01</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+ 	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_10" model="hr.employee">
+      <field name="name">Sabrun Nisa</field>
+      <field name="father_name">Not Set</field>
+	  <field name="identification_id">111</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1988-01-03</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_11" model="hr.employee">
+      <field name="name">Nagina Khan</field>
+      <field name="father_name">Not Set</field>
+	  <field name="identification_id">17301-9546055-4</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1986-03-10</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_12" model="hr.employee">
+      <field name="name">Maryam</field>
+      <field name="father_name">Zaka Ullah</field>
+	  <field name="identification_id">111</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday">1994-3-31</field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+    <record id="hr_employee_Faculty_13" model="hr.employee">
+      <field name="name">Mehnaz</field>
+      <field name="father_name">Sikandar Khan</field>
+	  <field name="identification_id">111</field>
+      <field name="city">Peshawar</field>
+      <field name="birthday"></field>
+      <field name="faculty_member">Yes</field>
+      <field name="gender">female</field>
+      <field name="country_id" model="res.country" search="[('name','=','Pakistan')]"/>
+	  <field name="company_id" ref="base.main_company"/>
+      <field name="user_id" ref="base.user_root"/>
+    </record>
+
+
+	<!--
+    <record id="hr_contract_principal_1" model="hr.contract">
+      <field name="contract_type">Contractual</field>
+      <field name="wage_type_id" model="hr.contract.wage.type" search="[('name','=','Employee')]"/>
+      <field name="function" ref="res_partner_function_Director"/>
+      <field name="employee_id" ref="hr_employee_Director_1"/>
+      <field name="date_start">07/10/2003</field>
+      <field name="date_end">06/10/2011</field>
+      <field name="wage">1</field>
+    </record>
+    <record id="hr_contract_Joint_Director_2" model="hr.contract">
+      <field name="contract_type">Contractual</field>
+      <field name="wage_type_id" model="hr.contract.wage.type" search="[('name','=','Monthly Gross Wage')]"/>
+      <field name="function" ref="res_partner_function_Joint_Director"/>
+      <field name="employee_id" ref="hr_employee_Joint_Director_2"/>
+      <field name="date_start">01/03/2005</field>
+      <field name="date_end">12/31/2011</field>
+      <field name="wage">1</field>
+    </record>
+    <record id="hr_contract_Fac_Mem_3" model="hr.contract">
+      <field name="contract_type">Contractual</field>
+      <field name="wage_type_id" model="hr.contract.wage.type" search="[('name','=','Monthly Gross Wage')]"/>
+      <field name="function" ref="res_partner_function_Fac_Mem"/>
+      <field name="employee_id" ref="hr_employee_Fac_Mem_3"/>
+      <field name="date_start">09/18/2006</field>
+      <field name="date_end">12/31/2011</field>
+      <field name="wage">1</field>
+    </record>
+   -->
+
+  </data>
+</openerp>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+   <template pageSize="(700.0,920.0)" title="Crossovered Analytic" author="Inovtec" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="28.0" y1="28.0" width="570" height="786"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="Table1">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="0.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="0.0" start="0,0" stop="-1,-1"/>
+   
+	</blockTableStyle>
+    
+    <blockTableStyle id="Table2">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
+    <blockTableStyle id="Tablemini">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="7.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+	<paraStyle name="white" fontName="Helvetica" fontColor = "#111111" fontSize="7.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="12.0" alignment="CENTER"  leading="25" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="para_heading" fontName="Helvetica" fontSize="8.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_heading1" fontName="Helvetica" fontSize="8.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_heading2" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+	<paraStyle name="para_heading3" fontName="Helvetica" fontSize="11.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_1" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+
+    <paraStyle name="para_2" fontName="Helvetica" fontSize="6.0" leading="7" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="para_3" fontName="Helvetica" fontSize="11.0" leading="13" alignment="CENTER" spaceBefore="5.0" spaceAfter="5.0"/>
+    <paraStyle name="para_4" fontName="Helvetica" fontSize="11.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  
+  </stylesheet>
+  <story>
+  <pto>
+  <section>
+
+	<blockTable colWidths="500" style="Table1">
+  	<tr><td></td></tr>  
+	</blockTable>
+
+	<blockTable colWidths="150.0, 450.0" style="Table1">
+  	<tr><td>
+
+  	<blockTable colWidths="100.0,100.0" repeatRows="1" style="Tablemini">
+		<tr>
+		<td><para style="Caption">Grand Total:</para></td>
+		<td><para style="para_heading">[[ r['gtotal'] ]]</para></td>
+		</tr>
+		<tr>
+		<td><para style="Caption">Prepared By:</para></td>
+		<td><para style="Caption">[[ get_user_name(data['form'])]]</para></td>
+		</tr>
+	</blockTable>
+	</td>
+	<td></td>
+	</tr> 
+	</blockTable>
+
+	<blockTable colWidths="600" style="Table1">
+  	<tr><td><para style="Heading">Defaulter List</para></td></tr>
+	<tr><td><para style="Heading">[[get_class_name(data['form'])]]</para></td></tr>
+   	<tr><td><para style="para_1">[[ repeatIn(annual_defaulter_report_singleclass('Form'),'r') ]]</para>
+		   	<blockTable colWidths="21.0,80.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,34.0,42.0,34.0,34.0" repeatRows="1" style="Table2">
+		      <tr>
+				<td><para style="para_heading">[[ r['sno'] ]]</para></td>
+		        <td><para style="para_heading1">[[ r['name'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m1'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m2'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m3'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m4'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m5'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m6'] ]]</para></td>
+				<td><para style="para_heading">[[ r['m7'] ]]</para></td>
+				<td><para style="para_heading">[[ r['m8'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['m9'] ]]</para></td>
+				<td><para style="para_heading">[[ r['m10'] ]]</para></td>
+				<td><para style="para_heading">[[ r['m11'] ]]</para></td>
+				<td><para style="para_heading">[[ r['m12'] ]]</para></td>
+				<td><para style="para_heading">[[ r['session_total'] ]]</para></td>
+				<td><para style="para_heading">[[ r['other'] ]]</para></td>
+		        <td><para style="para_heading">[[ r['total'] ]]</para></td>
+		      </tr>
+		    </blockTable>
+		</td>
+	</tr>
+	<tr><td><para style="white">.</para></td></tr>
+	<tr><td><para style="para_heading3">Grand Total: [[ r['gtotal'] ]]/-</para></td></tr>
+	<tr><td><para style="Caption">Prepared By: [[ get_user_name(data['form'])]]</para></td></tr>
+	<tr><td><para style="Caption">Date:  [[ get_today(data['form'])]]</para></td></tr>
+    </blockTable>
+      
+    </section>
+    </pto>
+  </story>
+</document>

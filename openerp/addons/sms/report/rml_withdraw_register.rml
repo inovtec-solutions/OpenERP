@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+	<template pageSize="(750.0,800.0)" title="Test" author="BaharAli" allowSplitting="20">
+    <pageTemplate id="first">
+		<frame id="first" x1="20.0" y1="0.0" width="710" height="800.0"/>
+    </pageTemplate>
+  	</template>
+  	<stylesheet>
+  
+	<blockTableStyle id="Standard_Outline">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="Table_1">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+    <blockLeftPadding length="0.0" start="0,0" stop="-1,-1"/>
+	<blockTopPadding length="0.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="0.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="Table_maintable">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+	
+	<blockTableStyle id="Table_maintable_header">
+    <blockAlignment value="LEFT"/>
+    <blockValign value="TOP"/>
+	<blockTopPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
+    <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
+	<blockBackground colorName="#e6e6e6" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="12.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="9.0" leading="13" alignment="LEFT" textColor="#000000"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="7.0" leading="13" alignment="LEFT" textColor="#000000"/>
+    <paraStyle name="P4" fontName="Helvetica" fontSize="14.0" leading="14" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P5" fontName="Times-Roman" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P6" fontName="Times-Roman" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="P8" fontName="Times-Roman" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#000000"/>
+    <paraStyle name="Standard" fontName="Times-Roman"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Times-Roman" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Times-Roman" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Times-Roman"/>
+    <paraStyle name="Table Contents" fontName="Times-Roman"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="CENTER" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Times-Roman" alignment="CENTER"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9_italic" fontName="Helvetica-Oblique" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  </stylesheet>
+  <story>
+    <blockTable colWidths="710" style="Table_1" repeatRows="2" >
+    <tr><td>
+	<blockTable colWidths="710">
+      <tr>
+        <td><para style="P1"></para></td>
+      </tr>
+  	  <tr>
+  	  	<td><para style="P1">Withdrawl Register</para></td>
+  	  </tr>
+   	 </blockTable>
+   	</td></tr>
+   	<tr><td>
+	<blockTable colWidths="35.0,70.0,95.0,70.0,95.0,125.0,70.0,80.0,70.0" style="Table_maintable_header">
+	<tr>
+          <td><para style="P2">S.No</para></td>
+          <td><para style="P2">Reg.No</para></td>
+          <td><para style="P2">Student</para></td>
+          <td><para style="P2">Birth Date</para></td>
+		  <td><para style="P2">Father </para></td>
+		  <td><para style="P2">Address </para></td>
+	      <td><para style="P2">Date Admitted</para></td>
+	      <td><para style="P2">Admitted To</para></td>
+	      <td><para style="P2">Date Withdraw</para></td>
+      </tr>
+    </blockTable>
+
+	</td></tr>
+	<tr><td>
+	<blockTable colWidths="35.0,70.0,95.0,70.0,95.0,125.0,70.0,80.0,70.0" style="Table_maintable">
+	<para style="P2">[[repeatIn(print_withdrawal_register(data['form']),'s')]]</para> 
+   	<tr>
+          <td><para style="P2">[[(s['sno'])]]</para></td>
+          <td><para style="P2">[[(s['reg_no'])]] </para></td>
+          <td><para style="P2">[[(s['student'])]] </para></td>
+          <td><para style="P2">[[(s['dob'])]] </para></td>
+		  <td><para style="P2">[[(s['father'])]]</para></td>
+          <td><para style="P2">[[(s['address'])]]</para></td>
+  		  <td><para style="P2">[[(s['date_admitted'])]]</para></td>
+  		  <td><para style="P3">[[(s['admitted_to'])]]</para></td>
+          <td><para style="P3">[[(s['date_withdraw'])]]</para>
+          </td>
+		
+      </tr>
+    </blockTable>
+	</td></tr>
+	</blockTable>
+	</story>
+</document>

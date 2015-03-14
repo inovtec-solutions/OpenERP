@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Wizard Withdraw student  -->
+
+        <record id="view_withdraw_student" model="ir.ui.view">
+            <field name="name">withdraw.student</field>
+            <field name="model">withdraw.student</field>
+            <field name="arch" type="xml">
+                <form string="Withdraw Student" width = "200" version="7.0">
+                    <group>
+                     <group>
+                         <h1><field name="student"/></h1>
+						 <newline/><field colspan = "2" name="withdraw_type" nolabel = "1"  placeholder="Withdraw Type"/>
+						 <newline/><field colspan = "2" name="reason_withdraw" nolabel = "1" placeholder="Reason Withdraw"/>
+						 </group>
+						 <group><field name="helptext" readonly = "1" nolabel = "1" /></group>
+                    </group>
+                    <footer>
+                        <button string="Withdraw Now" confirm ="This student will be withdrawlled completely." name="withdraw_student" type="object" class="oe_highlight"/>
+                        or
+                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View CMS Student withdrawl -->
+
+        <record id="action_withdraw_student" model="ir.actions.act_window">
+            <field name="name">Withdraw Student</field>
+            <field name="res_model">withdraw.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_withdraw_student"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

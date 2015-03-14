@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Student Promotion -->
+
+        <record id="view_sms_student_promote" model="ir.ui.view">
+            <field name="name">Student Promotion</field>
+            <field name="model">student.promote</field>
+            <field name="arch" type="xml">
+                <form string="Student Promotion" version="7.0">
+                    <group col="4">
+						<field name="academiccalendar_id" on_change="onchange_academiccalendar(academiccalendar_id)"/>
+						<field name="exam_type"/>
+						<field name="academiccalendar_to_id"/>
+					</group>
+                    <footer>
+                        <button string="Next" name="student_promote" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Student Promotion -->
+
+        <record id="action_view_sms_student_promote_wizard" model="ir.actions.act_window">
+            <field name="name">Class Annual Promotion</field>
+            <field name="res_model">student.promote</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_student_promote"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

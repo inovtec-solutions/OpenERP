@@ -1,0 +1,15 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+"1","smsfee.classes.fees","model_smsfee_classes_fees","sms.group_sms_admin",1,1,1,1
+"2","smsfee.classfees.register","model_smsfee_classfees_register","sms.group_sms_admin",1,1,1,1
+"3","smsfee.feetypes","model_smsfee_feetypes","sms.group_sms_admin",1,1,1,1
+"4","smsfee.studentfee","model_smsfee_studentfee","sms.group_sms_admin",1,1,1,1
+"5","smsfee.receiptbook","model_smsfee_receiptbook","sms.group_sms_admin",1,1,1,1
+"6","smsfee.receiptbook.lines","model_smsfee_receiptbook_lines","sms.group_sms_admin",1,1,1,1
+
+"7","smsfee.classes.fees","model_smsfee_classes_fees","sms.group_sms_admission_manager",1,1,1,1
+"9","smsfee.feetypes","model_smsfee_feetypes","sms.group_sms_admission_manager",1,1,1,0
+"10","smsfee.studentfee","model_smsfee_studentfee","sms.group_sms_admission_manager",1,1,1,0
+"11","smsfee.receiptbook","model_smsfee_receiptbook","sms.group_sms_admission_manager",1,1,1,0
+"12","smsfee.receiptbook.lines","model_smsfee_receiptbook_lines","sms.group_sms_admission_manager",1,1,1,1
+"13","smsfee.classfees.register","model_smsfee_classfees_register","sms.group_sms_admission_manager",1,1,1,0

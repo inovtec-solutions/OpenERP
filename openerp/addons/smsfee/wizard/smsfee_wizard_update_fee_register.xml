@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Update Fee Register -->
+        <record id="view_update_fee_reg" model="ir.ui.view">
+            <field name="name">update.fee.register.form</field>
+            <field name="model">update.fee.register</field>
+            <field name="arch" type="xml">
+                <form string="Class Fee Register" version="7.0">
+                    <group>
+						<group>
+	                          <h2><field name="name"/></h2>
+							 <newline/><field name="session" invisible = "1" nolabel ="1" />
+							 <newline/><field name="updated_till"  nolabel="1"/>
+  							 <newline/><field name="action" placeholder = "Action"  nolabel ="1" />
+ 							 <newline/><field name="update_upto" nolabel ="1" placeholder = "Update Upto"  attrs="{'required':[('action','IN',['update_class_monthly_fee'])],'invisible':[('action','IN',['add_fee'])]}"/>
+							 <newline/><field name="fee_type"  widget = "selection" nolabel ="1" placeholder = "Fee Type" attrs="{'required':[('action','IN',['add_fee'])],'invisible':[('action','IN',['update_class_monthly_fee'])]}" />
+							 <newline/><field name="month_of_dues" placeholder = "Dues Month"  nolabel ="1" attrs="{'required':[('action','IN',['add_fee'])],'invisible':[('action','IN',['update_class_monthly_fee'])]}" />
+							 <newline/><p>Amount</p>
+							 <newline/><field name="fee_amount" nolabel ="1" placeholder = "Amount"  />
+							  
+	                    </group>
+	                    <group>
+							 <p><strong>You Can:</strong><br/>1.Update Class Fee Register till selected month. <br/>2.Add Fee to a class.<br/></p>
+	                    </group>
+	                    
+					</group>
+                    <footer>
+                        <button string="Update" name="update_feeregister" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+  <!-- Update fee Register-->
+
+        <record id="action_update_fee_register" model="ir.actions.act_window">
+            <field name="name">Update Fee Register</field>
+            <field name="res_model">update.fee.register</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_update_fee_reg"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>
