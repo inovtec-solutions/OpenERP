@@ -1,0 +1,29 @@
+pychart
+babel
+docutils
+feedparser
+gdata
+Jinja2
+lxml
+mako
+mock
+PIL
+psutil
+psycopg2 >= 2.2
+pydot
+python-dateutil < 2
+python-ldap
+python-openid
+pytz
+pywebdav
+pyyaml
+reportlab
+simplejson
+unittest2
+vatnumber
+vobject
+werkzeug
+xlwt
+
+[SSL]
+pyopenssl
