@@ -2344,11 +2344,7 @@
           <field name="father_name"/>
 		  <field name="obtained_marks"/>
 		  <field name="total_marks"/>
-		  <field name="promote"/>
-		  <field name="promote_conditionally"/>
-		  <field name="discontinue"/>
-		  <field name="failed"/>
-          <field name="pending"/>
+		  <field name="decision"/>
         </form>
       </field>
     </record>
@@ -2363,11 +2359,7 @@
           <field name="father_name"/>
 		  <field name="obtained_marks"/>
 		  <field name="total_marks"/>
-		  <field name="promote"  on_change="onchange_promote_discontinue_failed('promote', promote,promote_conditionally,discontinue,failed,pending)"/>
-		  <field name="promote_conditionally"  on_change="onchange_promote_discontinue_failed('promote_conditionally', promote,promote_conditionally,discontinue,failed,pending)"/>
-		  <field name="discontinue" on_change="onchange_promote_discontinue_failed('discontinue', promote,promote_conditionally,discontinue,failed,pending)"/>
-		  <field name="failed" on_change="onchange_promote_discontinue_failed('failed', promote,promote_conditionally,discontinue,failed,pending)"/>
-		  <field name="pending" on_change="onchange_promote_discontinue_failed('pending', promote,promote_conditionally,discontinue,failed,pending)"/>
+		  <field name="decision"/>
         </tree>
       </field>
     </record>
