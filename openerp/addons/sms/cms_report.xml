@@ -108,6 +108,15 @@
             multi="True"
             rml="sms/report/sms_student_dmc.rml"
             string="Student DMC"/>
+            
+        <!-- Print Students DMC FORMAT 2 -->
+		<report
+            id="report_student_dmc_format2"
+            model="sms.student"
+            name="sms.student.dmc_formate2.name"
+            multi="True"
+            rml="sms/report/sms_dmc_multiple_format.rml"
+            string="Student DMC"/>
 
 		<!--Print Students Date Sheet-->
 		<report

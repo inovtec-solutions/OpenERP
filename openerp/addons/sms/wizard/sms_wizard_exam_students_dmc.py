@@ -33,8 +33,14 @@ class sms_student_exam_dmc(osv.osv_memory):
     def print_dmc(self, cr, uid, ids, context=None):
         current_obj = self.browse(cr, uid, ids, context=context)
         
-        for obj in current_obj:           
-            report = 'sms.student.dmc.name'
+        for obj in current_obj: 
+            user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
+            if user.company_id.default_dmc_format == 'format1':
+                report = 'sms.student.dmc.name'
+            elif user.company_id.default_dmc_format == 'format2':
+                report = 'sms.student.dmc_formate2.name'
+            else:
+                raise osv.except_osv(('DMC Format not defined'),('Go to Examination section in Company Setting and define a DMC format.'))
                 
         datas = {
             'ids': [],

@@ -30,7 +30,7 @@
 						   </group>
 				<notebook>
                 <page string="Sessions Years">
-                    <field name="session_ids" nolabel = "1" />
+                    <field name="session_ids" readonly = "1" nolabel = "1" />
 			   </page>
 			   </notebook>
 			</sheet>	 	
@@ -43,7 +43,7 @@
             <field name="model">sms.academics.session</field>
             <field name="arch" type="xml">
                 <tree string="Academic Sessions">
-                    <field name="name"/>
+                    <field name="name" readonly ="1"/>
 					<field name="date_started" readonly ="1"/>
 					<field name="started_by" readonly ="1"/>
 					<field name="date_closed" readonly ="1"/>
@@ -91,9 +91,9 @@
 				 <group >
                   <group string="Session">
                     <field name="name"/>
-                    <field name="academic_session_id"/>
-                    <field name="start_date" attrs="{'readonly':[('state','=','Previous')]}"/>
-					<field name="end_date" attrs="{'readonly':[('state','=','Previous')]}"/>
+                    <field name="academic_session_id" readonly ="1" />
+                    <field name="start_date" readonly ="1"/>
+					<field name="end_date" readonly ="1"/>
 					<field name="date_session_stared" readonly ="1"/>
 					<field name="session_started_by" readonly ="1"/>
 					<field name="date_session_closed" readonly ="1"/>
@@ -2464,6 +2464,12 @@
 						  <group col="4" colspan="4">
 		              	  <separator string="Admissions" colspan="4"/>
 						  <newline/><field name="default_gender" colspan ="4"/>
+					      </group>
+		          	  </page>
+					<page string ="Examination">
+						  <group col="4" colspan="4">
+		              	  <separator string="Configure Examination" colspan="4"/>
+						  <newline/><field name="default_dmc_format" colspan ="4"/>
 					      </group>
 		          	  </page>
 				</notebook>

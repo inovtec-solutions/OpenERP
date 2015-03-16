@@ -153,7 +153,7 @@
             <field name="model">smsfee.generic.classes.fees</field>
             <field name="arch" type="xml">
                 <tree string="Classes Fees" colors="blue:fee_structure_id==1;grey:fee_structure_id ==2;green:fee_structure_id==3" editable="top">
-							<field name="sms_class_id"  />
+							<field name="sms_class_id"   />
 							<field name="fee_structure_id"  />
 							<field name="fee_type_id" />
 							<field name="amount" />
@@ -182,11 +182,11 @@
             <field name="name">smsfee.classes.fees.tree</field>
             <field name="model">smsfee.classes.fees</field>
             <field name="arch" type="xml">
-                <tree string="Classes Fees" colors="blue:fee_structure_id==1;grey:fee_structure_id ==2;green:fee_structure_id==3" editable="top">
-							<field name="academic_cal_id"  />
-							<field name="fee_structure_id"  />
-							<field name="fee_type_id" />
-							<field name="amount" />
+                <tree string="Classes Fees" colors="blue:fee_structure_id=='1';grey:fee_structure_id =='2';green:fee_structure_id=='3'" editable="top">
+							<field name="academic_cal_id" readonly ="1" />
+							<field name="fee_structure_id" readonly ="1" />
+							<field name="fee_type_id" readonly ="1" />
+							<field name="amount"/>
 				 </tree>
             </field>
         </record>

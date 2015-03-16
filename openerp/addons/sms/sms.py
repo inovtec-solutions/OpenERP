@@ -17,7 +17,8 @@ class res_company(osv.osv):
     'character_certificate_text': fields.text('Character Certificate Text'),
     'provisional_certificate_text': fields.text('Provisional Certificate Text'),
     'sports_certificate_text': fields.text('Sports Certificate Text'),
-    'default_gender':fields.selection([('Male','Male'),('Female','Female')],'Defaulter Gender',required = True)
+    'default_gender':fields.selection([('Male','Male'),('Female','Female')],'Defaulter Gender',required = True),
+    'default_dmc_format':fields.selection([('format1','Format 1'),('format2','Format 2')],'DMC Format',required = True)
     }
     
     _defaults = {
@@ -3182,11 +3183,7 @@ class sms_student_promotion(osv.osv):
         'father_name': fields.char('Father Name',size=25, readonly=True),
         'obtained_marks': fields.integer('Obtained Marks', readonly=True),
         'total_marks': fields.integer('Total Marks', readonly=True),
-        'promote':fields.boolean('Promote'),
-        'promote_conditionally':fields.boolean('Promote Conditionally'),
-        'discontinue':fields.boolean('Promote & Discontinue'),
-        'failed':fields.boolean('Failed'),
-        'pending':fields.boolean('Pending'),
+        'decision': fields.selection([('Ptomote', 'Ptomote'),('Promote_Conditionally', 'Promote Conditionally'),('Failed', 'Failed'),('Pending', 'Pending')], 'Decision', required=True),
     }
     
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):

@@ -7,7 +7,7 @@ class student_promote(osv.osv_memory):
     _name = "student.promote"
     _description = "Student Promotion"
     _columns = {
-                'academiccalendar_id': fields.many2one('sms.academiccalendar','Promote from Class', domain="[('state','!=','Draft')]", required=True),
+                'academiccalendar_id': fields.many2one('sms.academiccalendar','Promote from Class', domain="[('state','not in',['Draft','Complete'])]", required=True),
                 'exam_type': fields.many2one('sms.exam.datesheet','Exam To Show', required=True, domain="[('academiccalendar','=',academiccalendar_id)]"),
                 'academiccalendar_to_id': fields.many2one('sms.academiccalendar','Promoted to Class', required=True),
               }
