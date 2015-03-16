@@ -5,3 +5,5 @@ encoding//openerp/addons/account_bank_statement_extensions/wizard/cancel_stateme
 encoding//openerp/addons/hr/hr.py=utf-8
 encoding//openerp/addons/resource/resource.py=utf-8
 encoding//openerp/addons/sms/report/sms_parser.py=utf-8
+encoding//openerp/modules/registry.py=utf-8
+encoding//openerp/osv/orm.py=utf-8

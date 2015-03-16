@@ -2894,60 +2894,11 @@ class sms_exam_datesheet_lines(osv.osv):
         return {} 
        
 sms_exam_datesheet_lines()    
+
 class sms_student_promotion(osv.osv):
     _name= "sms.student.promotion"
     _descpription = "Manage Student Promotion"
-    
-    def onchange_promote_discontinue_failed(self, cr, uid, ids, option, promote, promote_conditionally, 
-                                            discontinue, failed, pending, context={}):
-        vals = {}
-        if option=='promote':
-            if promote:
-                vals['promote_conditionally'] = False
-                vals['discontinue'] = False
-                vals['failed'] = False
-                vals['pending'] = False
-            elif not (promote_conditionally or discontinue or failed or pending):
-               vals['promote'] = True  
-               
-        elif option=='promote_conditionally':
-            if promote_conditionally:
-                vals['promote'] = False
-                vals['discontinue'] = False
-                vals['failed'] = False
-                vals['pending'] = False
-            elif not (promote or discontinue or failed or pending):
-                vals['promote_conditionally'] = True 
-               
-        elif option == 'discontinue':
-            if discontinue:
-                vals['promote'] = False
-                vals['promote_conditionally'] = False
-                vals['failed'] = False
-                vals['pending'] = False
-            elif not (promote or promote_conditionally or failed or pending):
-                vals['discontinue'] = True 
-              
-        elif option == 'failed':
-            if failed:
-                vals['promote'] = False
-                vals['promote_conditionally'] = False
-                vals['discontinue'] = False
-                vals['pending'] = False
-            elif not (promote or promote_conditionally or discontinue or pending):
-                vals['failed'] = True 
-            
-        elif option == 'pending':
-            if pending:
-                vals['promote'] = False
-                vals['promote_conditionally'] = False
-                vals['discontinue'] = False
-                vals['failed'] = False
-            elif not (promote or promote_conditionally or discontinue or failed):
-                vals['pending'] = True 
-              
-        return { 'value':vals }   
-    
+        
     def change_student_class_Journal_enteries(self, cr, uid, ids,current_class_id):
         ftlist = []
         print "student_id,", ids
@@ -3027,9 +2978,6 @@ class sms_student_promotion(osv.osv):
                 return True
             else:
                 return False
-                   
-   
-    #---------------------------------------------------------------------------------------------------------------------------------------
     
     def change_student_class_delete_student_data(self, cr, uid, ids,class_id,new_class_id):
         ftlist = []
@@ -3149,28 +3097,7 @@ class sms_student_promotion(osv.osv):
                                     
                         else:
                             raise osv.except_osv(('No Fee Found'),('Please Define a Fee For students promotion'))
-   
-        
-        return
-    
-    
-    def write(self, cr, uid, ids, vals, context=None):
-        super(osv.osv, self).write(cr, uid, ids, vals, context)
-        objs = self.browse(cr, uid, ids, context=context)
-        for f in objs:
-            if f.action =='change_class':
-                self.change_student_class(cr,uid,ids,context)
-        return
-    
-    
-    
-    
-    
-    
-    
-    #-------------------------------------------------------------------------------------------------------------------------------------
-    
-    
+        return 
     
     _columns = { 
         'student':fields.many2one('sms.student','StudentID', readonly=True),
@@ -3183,7 +3110,7 @@ class sms_student_promotion(osv.osv):
         'father_name': fields.char('Father Name',size=25, readonly=True),
         'obtained_marks': fields.integer('Obtained Marks', readonly=True),
         'total_marks': fields.integer('Total Marks', readonly=True),
-        'decision': fields.selection([('Ptomote', 'Ptomote'),('Promote_Conditionally', 'Promote Conditionally'),('Failed', 'Failed'),('Pending', 'Pending')], 'Decision', required=True),
+        'decision': fields.selection([('Promote', 'Promote'),('Promote_Conditionally', 'Promote Conditionally'),('Suspended', 'Suspended'),('Failed', 'Failed'),('Pending', 'Pending')], 'Decision', required=True),
     }
     
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
@@ -3196,19 +3123,20 @@ class sms_student_promotion(osv.osv):
 #                 cur_strength = cal_obj.cur_strength
 #                 cur_strength = cur_strength + 1
 #                 update_acad_cal = self.pool.get('sms.academiccalendar').write(cr, uid, f.name.id, {'cur_strength':cur_strength})
+
             state = ""
-            if obj.promote:
+            if obj.decision == 'Promote':
                 self.pool.get('sms.academiccalendar.student').write(cr, uid, [obj.sms_academiccalendar_student.id], {'state':'Promoted',})
-            elif obj.promote_conditionally:
+            elif obj.decision == 'Promote_Conditionally':
                 self.pool.get('sms.academiccalendar.student').write(cr, uid, [obj.sms_academiccalendar_student.id], {'state':'Conditionally_Promoted',})
-            elif obj.discontinue:
+            elif obj.decision == 'Promote':
                 self.pool.get('sms.academiccalendar.student').write(cr, uid, [obj.sms_academiccalendar_student.id], {'state':'Suspended',})
-            elif obj.failed:
+            elif obj.decision == 'Failed':
                 self.pool.get('sms.academiccalendar.student').write(cr, uid, [obj.sms_academiccalendar_student.id], {'state':'Failed',})
                 self.pool.get('sms.student').write(cr, uid, [obj.student.id], {'current_state':'Failed'})
+   
                 
-            if obj.promote or obj.promote_conditionally:
-                
+            if obj.decision == 'Promote' or obj.decision == 'Promote_Conditionally':
                 academiccalendar_student = self.pool.get('sms.academiccalendar.student').create(cr,uid,{
                     'name':obj.sms_academiccalendar_to.id,                                                       
                     'std_id':obj.student.id,
@@ -3313,8 +3241,8 @@ class sms_student_promotion(osv.osv):
                 if not std_reg_type_exist:
                     std_reg_nos = self.pool.get('sms.registration.nos').search(cr, uid,[('student_id', '=', obj.student.id)])
                     self.pool.get('sms.registration.nos').write(cr, uid, std_reg_nos, {'is_active':False,})
-                    admn_no = self.pool.get('sms.academiccalendar.student')._set_admission_no(cr,uid,std_class[0])
-
+                    admn_no = self.pool.get('sms.academiccalendar.student')._set_admission_no(cr,uid,std_class[0],acad_std.name.id)
+                    
                     self.pool.get('sms.registration.nos').create(cr, uid, {
                         'student_id': obj.student.id,
                         'name': admn_no,
@@ -3327,11 +3255,7 @@ class sms_student_promotion(osv.osv):
         return {} 
        
     _defaults = {
-        'promote': lambda *a: False,
-        'promote_conditionally': lambda *a: False,
-        'discontinue': lambda *a: False,
-        'failed': lambda *a: False,
-        'pending': lambda *a: True,
+        'decision' : 'Pending',
     }
 
 #########################################################
