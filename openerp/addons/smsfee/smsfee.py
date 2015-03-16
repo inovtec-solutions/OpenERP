@@ -98,13 +98,13 @@ class sms_student(osv.osv):
     def action_pay_student_fee(self, cr, uid, ids, context=None):
         context = {
         'student_id':ids[0],
- #       'student_id':5, 
+        'student_id':5, 
         'total_paybles':125.025
 #          'student_class_id': [(0, 0, {'product_id': product_id, 'product_qty': 1})],   
         }
         ctx = context.copy()
         ctx.update({ 'student_id':ids[0], 'total_paybles': 22.54, })
-        print "context, ", context
+        
         result = {
         'type': 'ir.actions.act_window',
         'name': 'Collect Fees',
@@ -116,7 +116,7 @@ class sms_student(osv.osv):
         'target': 'current',
         'context': ctx,
         }
-        print "result",result
+        print "resssssssul",result
         return result 
     
     def set_paybles(self, cr, uid, ids, context={}, arg=None, obj=None):
@@ -161,7 +161,7 @@ class sms_student(osv.osv):
     _columns = {
             'studen_fee_ids':fields.one2many('smsfee.studentfee', 'student_id','Student Fee'),
             'latest_fee':fields.many2one('sms.session.months','Fee Register'),
-            'total_paybles':fields.function(set_paybles, method=True, string='Payables', type='char', size=300),
+            'total_paybles':fields.function(set_paybles, method=True, string='Paybles', type='char', size=300),
             'total_paid_amount':fields.function(set_paid_amount, method=True, string='Total Paid', type='char', size=300),
 
     }

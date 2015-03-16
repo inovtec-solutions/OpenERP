@@ -69,7 +69,7 @@
     <tr><td>
 	<blockTable colWidths="585">
       <tr><td><para style="P1"></para></td></tr>
-	<tr><td><para style="P1"> Award List</para></td></tr>
+	<tr><td><para style="P1"> Signature Sheet</para></td></tr>
 	<tr><td><para style="P1">[[ get_exam_type(data['form'])]]</para></td></tr>
     <tr><td><para style="P1"></para></td></tr>
   	<tr><td><para style="P3">[[ get_class(data['form'])]]</para></td></tr>
@@ -105,7 +105,7 @@
 	</td></tr>
 	<tr><td>
 	<blockTable colWidths="35.0,70.0,130.0,130.0,95.0,125.0" style="Table_maintable">
-	<para style="P1">[[repeatIn(get_student_award_list(data['form']),'s')]]</para> 
+	<para style="P1">[[repeatIn(get_student_signature_list(data['form']),'s')]]</para> 
    	<tr>
           <td>
             <para style="P2">[[(s['SNO'])]]</para>
@@ -131,5 +131,4 @@
 	</td></tr>
 	</blockTable>
    	</story>
-   	Page <pageNumber /> / <getName id="lastPage" default="0" />
 </document>

@@ -109,5 +109,4 @@
    	</blockTable>
 	
 	</story>
-	Page <pageNumber /> / <getName id="lastPage" default="0" />
 </document>

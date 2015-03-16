@@ -26,6 +26,7 @@ import sms_report_studentslist
 import sms_report_withdraw_register
 import sms_report_expense_report
 import sms_report_requested_certificate_form
+import sms_dmc_multiple_format_parser
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

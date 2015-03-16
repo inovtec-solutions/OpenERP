@@ -342,6 +342,7 @@ class crossovered_analytic(report_sxw.rml_parse):
             and sms_academiccalendar_student.state = 'Current'
             ORDER BY subject_status, sms_student.name, sms_student.father_name"""
         
+        print students_sql
         self.cr.execute(students_sql)
         students_rows = self.cr.fetchall()
         
@@ -358,7 +359,6 @@ class crossovered_analytic(report_sxw.rml_parse):
             my_dict["father_name"] = father_name
             my_dict["SNO"] = k
             my_dict["remarks"] = ''
-            my_dict["marks"] = ''
             
             k = k + 1
             result.append(my_dict)
@@ -683,7 +683,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                 
                 s_no = s_no + 1
             
-            final_dict = {'result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','cadidate_no':'','student_name':'','father_name':'','gender':'','total_obtained_marks':'','total_obtained_percentage':'','class_total_marks':''}
+            final_dict = {'result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','cadidate_no':'','student_name':'','father_name':'','gender':'','total_obtained_marks':'','total_obtained_percentage':''}
             
             sql = """SELECT sms_student.registration_no, sms_student.name, 
                 sms_student.father_name, sms_student.gender from sms_student
@@ -757,9 +757,9 @@ class crossovered_analytic(report_sxw.rml_parse):
                 
                 my_dict = {'s_no':'','title':'', 'theory':'', 'practical':'', 'obtained_marks':0,'total_marks':'','percentage':''}
                
-#                 my_dict = {'s_no':'Total','title':'', 'theory':'', 'practical':'', 'obtained_marks':round(total_obatined_marks,2),
-#                            'total_marks':round(class_total_marks,2),'percentage':percentage}
-#                 result.append(my_dict)
+                my_dict = {'s_no':'Total','title':'', 'theory':'', 'practical':'', 'obtained_marks':round(total_obatined_marks,2),
+                           'total_marks':round(class_total_marks,2),'percentage':percentage}
+                result.append(my_dict)
             
 
                 if row[3]=='Male':
@@ -770,7 +770,7 @@ class crossovered_analytic(report_sxw.rml_parse):
             final_result.append(final_dict)
             
         return final_result
-    
+        
     def get_student_date_sheet(self,form):
         result = []
         exam_offered = self.datas['form']['exam_offered'][0]
@@ -810,13 +810,13 @@ class crossovered_analytic(report_sxw.rml_parse):
             result.append(dict)
         return result
     
-report_sxw.report_sxw('report.sms.class.timetable.report', 'sms.timetable', 'addons/sms/class_timetable_report.rml',parser = crossovered_analytic, header='internal')
-report_sxw.report_sxw('report.sms.teacher.timetable.report', 'sms.timetable', 'addons/sms/teacher_timetable_report.rml',parser = crossovered_analytic, header='internal')
-report_sxw.report_sxw('report.sms.student.signature.list.name', 'sms.student', 'addons/sms/student_signature_list_report.rml',parser = crossovered_analytic, header='internal')
-report_sxw.report_sxw('report.sms.student.award.list.name', 'sms.student', 'addons/sms/student_award_list_report.rml',parser = crossovered_analytic, header='internal')
+report_sxw.report_sxw('report.sms.class.timetable.report', 'sms.timetable', 'addons/sms/class_timetable_report.rml',parser = crossovered_analytic, header='external')
+report_sxw.report_sxw('report.sms.teacher.timetable.report', 'sms.timetable', 'addons/sms/teacher_timetable_report.rml',parser = crossovered_analytic, header='external')
+report_sxw.report_sxw('report.sms.student.signature.list.name', 'sms.student', 'addons/sms/student_signature_list_report.rml',parser = crossovered_analytic, header='external')
+report_sxw.report_sxw('report.sms.student.award.list.name', 'sms.student', 'addons/sms/student_award_list_report.rml',parser = crossovered_analytic, header='external')
 report_sxw.report_sxw('report.sms.student.result.list.name', 'sms.student', 'addons/sms/student_result_list_report.rml',parser = crossovered_analytic, header='internal')
 report_sxw.report_sxw('report.sms.student.result.sheet.name', 'sms.student', 'addons/sms/student_result_sheet_report.rml',parser = crossovered_analytic, header=False)
-report_sxw.report_sxw('report.sms.student.dmc.name', 'sms.student', 'addons/sms/student_dmc_report.rml',parser = crossovered_analytic, header='external')
+report_sxw.report_sxw('report.sms.student.dmc.name', 'sms.student', 'addons/sms/student_dmc_report.rml',parser = crossovered_analytic, header='internal landscape')
 report_sxw.report_sxw('report.sms.student.date.sheet.name', 'sms.student', 'addons/sms/student_date_sheet_report.rml',parser = crossovered_analytic, header=False)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
