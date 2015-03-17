@@ -7,6 +7,7 @@ import sms_wizard_student_list
 import sms_wizard_exam_entry
 import sms_wizard_exam_students_lists
 import sms_wizard_exam_students_dmc
+import sms_wizard_exam_students_dmc_multiple
 import sms_wizard_exam_datesheet
 import sms_wizard_students_subject_assignment
 import sms_wizard_students_subject_removal

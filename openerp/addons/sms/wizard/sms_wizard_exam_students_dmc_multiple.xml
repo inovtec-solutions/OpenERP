@@ -4,16 +4,16 @@
 
     <!-- Student DMC -->
 
-        <record id="view_sms_student_exam_dmc" model="ir.ui.view">
+        <record id="view_sms_student_exam_dmc_multiple" model="ir.ui.view">
             <field name="name">Student DMC</field>
-            <field name="model">sms.student.exam.dmc</field>
+            <field name="model">sms.student.exam.dmc.multiple</field>
             <field name="arch" type="xml">
                 <form string="Student DMC" version="7.0">
                     <group col="4">
-						<field name="dmc_type"/>
+						<field name="report_type"/>
 						<field name="academiccalendar_id" on_change="onchange_academiccalendar(academiccalendar_id)"/>
-						<field name="student_id" attrs="{'required':[('dmc_type','=','Single_DMC')], 'invisible':[('dmc_type','!=','Single_DMC')]}"/>
-						<field name="exam_type"/>
+						<field name="student_id" attrs="{'required':[('report_type','=','Single_Report')], 'invisible':[('report_type','!=','Single_Report')]}"/>
+						<!-- <field name="exam_type"/> -->
 					</group>
                     <footer>
                         <button string="Print" name="print_dmc" type="object" class="oe_highlight"/>
@@ -26,12 +26,12 @@
 
   <!-- View Student DMC -->
 					
-        <record id="action_view_sms_student_dmc_wizard" model="ir.actions.act_window">
-            <field name="name">Print DMCs</field>
-            <field name="res_model">sms.student.exam.dmc</field>
+        <record id="action_view_sms_student_dmc_multiple_wizard" model="ir.actions.act_window">
+            <field name="name">Print Progress Report</field>
+            <field name="res_model">sms.student.exam.dmc.multiple</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-           <field name="view_id" ref="view_sms_student_exam_dmc"/>
+           <field name="view_id" ref="view_sms_student_exam_dmc_multiple"/>
            <field name="target">new</field>
         </record>
 </data>
