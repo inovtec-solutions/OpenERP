@@ -146,7 +146,6 @@ spaceAfter="0.0" textColor="#000000"/>
 		<blockTable colWidths="410" style="Table1">
 			 <tr><td><para style="ParaWhite">.</para></td></tr>
 			 <tr><td><para style="ParaWhite">.</para></td></tr>
-			 <tr><td><para style="P5">[[get_exam_type(data['form'])]]</para></td></tr>
 			 <tr><td><para style="P5"><u>[[get_class(data['form'])]]</u></para></td></tr> 
 			 <tr><td><para style="ParaBlack"><u>[[(r['student_class_status'])]]</u></para></td></tr>
 			 <tr><td><para style="ParaWhite"></para></td></tr>
@@ -162,158 +161,146 @@ spaceAfter="0.0" textColor="#000000"/>
 		
 		<section>
 			<blockTable colWidths="550" style="Table1">
-		    <tr><td>
-		    
-			<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable_header">
-			<tr>
-		          <td>
-		            <para style="P6">S.No</para>
-		          </td>
-		          <td>
-		            <para style="P6">TITLE OF SUBJECT</para>
-		          </td>
-		          <td>
-		            <para style="P7">Theory</para>
-		          </td>
-		          <td>
-		            <para style="P7">Practical</para>
-		          </td>
-		          
-		          <td>
-		            <para style="P7">M. OBTAINED</para>
-		          </td>
-				<td>
-		            <para style="P7">T.MARKS</para>
-		          </td>
-			  <td>
-		            <para style="P7">PERCENTAGE</para>
-		          </td>
-				
-		      </tr>
-		    </blockTable>
-			</td></tr>
-			<tr><td>
+		    	<tr><td>
+					<blockTable colWidths="550" style="Table1">
+					<para style="P1">[[repeatIn((r['exam_result']),'s')]]</para> 
+					<tr><td>
+						<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable_header">
+						<tr>
+					          <td>
+					            <para style="P6">S.No</para>
+					          </td>
+					          <td>
+					            <para style="P6">TITLE OF SUBJECT</para>
+					          </td>
+					          <td>
+					            <para style="P7">Theory</para>
+					          </td>
+					          <td>
+					            <para style="P7">Practical</para>
+					          </td>
+					          
+					          <td>
+					            <para style="P7">M. OBTAINED</para>
+					          </td>
+							<td>
+					            <para style="P7">T.MARKS</para>
+					          </td>
+						  <td>
+					            <para style="P7">PERCENTAGE</para>
+					      </td>
+						  </tr>
+					    </blockTable>
+					</td></tr>
+					<tr><td>
+					
+					   	<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable">
+						<para style="P1">[[repeatIn((s['subject_result']),'t')]]</para> 
+						<tr>
+							<td>
+								<para style="P26">[[(t['s_no'])]]</para>
+							</td>
+							<td>
+								<para style="P26">[[(t['title'])]]</para>
+							</td>
+							<td>
+								<para style="P2">[[(t['theory'])]]</para>
+							</td>
+							
+							<td>
+								<para style="P2">[[(t['practical'])]]</para>
+							</td>
+							
+							<td>
+								<para style="P2">[[(t['obtained_marks'])]]</para>
+							</td>
+							<td>
+								<para style="P2">[[(t['total_marks'])]]</para>
+							</td>
+							<td>
+								<para style="P2">[[(t['percentage'])]]</para>
+							</td>
+						</tr>
+					   </blockTable>
+					
+					</td></tr>
+					<tr><td>
+				    
+						<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable_header">
+						<tr>
+					          <td>
+					            <para style="P6">Total</para>
+					          </td>
+					          <td>
+					            <para style="P6"></para>
+					          </td>
+					          <td>
+					            <para style="P7"></para>
+					          </td>
+					          <td>
+					            <para style="P7"></para>
+					          </td>
+					          
+					          <td>
+					            <para style="P7">[[(s['total_obtained_marks'])]]</para>
+					          </td>
+							<td>
+					            <para style="P7">[[(s['class_total_marks'])]]</para>
+					          </td>
+						  <td>
+					            <para style="P7">[[(s['total_obtained_percentage'])]] %</para>
+					          </td>
+							
+					      </tr>
+					    </blockTable>
+					</td></tr>
 			
-		   	<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable">
-			<para style="P1">[[repeatIn((r['result']),'s')]]</para> 
-			<tr>
-				<td>
-					<para style="P26">[[(s['s_no'])]]</para>
-				</td>
-				<td>
-					<para style="P26">[[(s['title'])]]</para>
-				</td>
-				<td>
-					<para style="P2">[[(s['theory'])]]</para>
-				</td>
-				
-				<td>
-					<para style="P2">[[(s['practical'])]]</para>
-				</td>
-				
-				<td>
-					<para style="P2">[[(s['obtained_marks'])]]</para>
-				</td>
-				<td>
-					<para style="P2">[[(s['total_marks'])]]</para>
-				</td>
-				<td>
-					<para style="P2">[[(s['percentage'])]]</para>
-				</td>
-			</tr>
-		   </blockTable>
-		   	</td></tr>
-
-			<tr><td>
-		    
-			<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable_header">
-			<tr>
-		          <td>
-		            <para style="P6">Total</para>
-		          </td>
-		          <td>
-		            <para style="P6"></para>
-		          </td>
-		          <td>
-		            <para style="P7"></para>
-		          </td>
-		          <td>
-		            <para style="P7"></para>
-		          </td>
-		          
-		          <td>
-		            <para style="P7">[[(r['total_obtained_marks'])]]</para>
-		          </td>
-				<td>
-		            <para style="P7">[[(r['class_total_marks'])]]</para>
-		          </td>
-			  <td>
-		            <para style="P7">[[(r['total_obtained_percentage'])]] %</para>
-		          </td>
-				
-		      </tr>
-		    </blockTable>
-			</td></tr>
-		   </blockTable>
-		
-		</section>  
+					<tr><td>
+						<blockTable colWidths="110,60,80,60" style="Table12">
+							<tr>
+								<td><para style="P3">Max.Marks</para></td>
+								<td><para style="P3">[[(r['class_total_marks'])]]</para></td>
+								<td><para style="P3">Percentage</para></td>
+								<td><para style="P3">[[(r['total_obtained_percentage'])]] %</para></td>
+							</tr>
+							<tr>
+								<td><para style="P3">Marks Obatained</para></td>
+								<td><para style="P3">[[(r['total_obtained_marks'])]]</para></td>
+								<td><para style="P3">Position</para></td>
+								<td><para style="P3">[[(r['position'])]]</para></td>
+							</tr>
+						</blockTable>
+					</td></tr>
+					<tr><td>
+						<blockTable colWidths="60,180" style="Table1">
+							<tr>
+								<td><para style="P3">Remarks:</para></td>
+								<td><para style="P3">[[(r['remarks'])]]</para></td>
+							</tr>
+						</blockTable>
+					</td></tr>
+					</blockTable>
+				</td></tr>
+			</blockTable>
+ 		</section>  
 			
-<!--	<blockTable colWidths="550" style="Table1">
-			<tr><td><para style="P3">Student secured <u>[[(r['total_obtained_percentage'])]] %</u> Marks and is grade <u>[[(r['grade'])]]</u></para></td></tr>
-		  	<tr><td><para style="P3">Postition in  class <u>[[(r['position'])]]</u> Out of <u>[[(r['total_students'])]]</u> Students</para></td></tr>
-		  	<tr><td><para style="P3">Remarks: [[(r['remarks'])]]</para></td></tr>
-		 </blockTable>
--->
-
-		 <blockTable colWidths="310,240" style="Table1">
-			<tr>
-				<td>
-				<blockTable colWidths="110,60,80,60" style="Table12">
-					<tr>
-						<td><para style="P3">Max.Marks</para></td>
-						<td><para style="P3">[[(r['class_total_marks'])]]</para></td>
-						<td><para style="P3">Percentage</para></td>
-						<td><para style="P3">[[(r['total_obtained_percentage'])]] %</para></td>
-					</tr>
-					<tr>
-						<td><para style="P3">Marks Obatained</para></td>
-						<td><para style="P3">[[(r['total_obtained_marks'])]]</para></td>
-						<td><para style="P3">Position</para></td>
-						<td><para style="P3">[[(r['position'])]]</para></td>
-					</tr>
-				</blockTable>
-				</td>
-				<td>
-				<blockTable colWidths="60,180" style="Table1">
-					<tr>
-						<td><para style="P3">Remarks:</para></td>
-						<td><para style="P3">[[(r['remarks'])]]</para></td>
-					</tr>
-				</blockTable>
-				</td>
-			</tr>
-		</blockTable>
- 
-		  <blockTable colWidths="380.0,170.0" style="Table1">
-			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
-			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
-			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
-			<tr>
-				<td><para style="P3"><u></u></para></td>
-				<td><para style="P3"><u>Principal</u></para></td>
-		    </tr>
-		   </blockTable>
-		  	
-		  	<blockTable colWidths="180.0,170,200" style="Table1">
-			<tr><td><para style="ParaWhite">.</para></td><td></td><td></td></tr>
-			<tr>
-				<td><para style="P22">Date Issued: [[get_today_formatted(data['form'])]]</para></td>
-				<td><para style="P22"></para></td>
-				<td><para style="P22"></para></td>
-		    </tr>
-		  	
-		  	</blockTable>
-			
-     </story>
+	  <blockTable colWidths="380.0,170.0" style="Table1">
+		<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
+		<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
+		<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
+		<tr>
+			<td><para style="P3"><u></u></para></td>
+			<td><para style="P3"><u>Principal</u></para></td>
+	    </tr>
+	  </blockTable>
+	  <blockTable colWidths="180.0,170,200" style="Table1">
+		<tr><td><para style="ParaWhite">.</para></td><td></td><td></td></tr>
+		<tr>
+			<td><para style="P22">Date Issued: [[get_today_formatted(data['form'])]]</para></td>
+			<td><para style="P22"></para></td>
+			<td><para style="P22"></para></td>
+	    </tr>
+	  </blockTable>
+    </story>
 </document>
 

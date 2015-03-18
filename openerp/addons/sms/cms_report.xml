@@ -107,7 +107,6 @@
             name="sms.student.dmc.name"
             multi="True"
             rml="sms/report/sms_student_dmc.rml"
-<<<<<<< HEAD
             string="Print DMCs"/>
 
 		<!-- Print Students DMC Multiple-->
@@ -118,19 +117,8 @@
             multi="True"
             rml="sms/report/sms_student_dmc_multiple.rml"
             string="Print Progress Report"/>
-=======
             string="Student DMC"/>
             
-        <!-- Print Students DMC FORMAT 2 -->
-		<report
-            id="report_student_dmc_format2"
-            model="sms.student"
-            name="sms.student.dmc_formate2.name"
-            multi="True"
-            rml="sms/report/sms_dmc_multiple_format.rml"
-            string="Student DMC"/>
->>>>>>> 8cf50cc1524b0dea5d1be3a895700b6cfef14160
-
 		<!--Print Students Date Sheet-->
 		<report
             id="report_student_date_sheet"
