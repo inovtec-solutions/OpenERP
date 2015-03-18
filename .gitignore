@@ -4,7 +4,7 @@
 *.pydev
 *.*~
 *.po
-
+.settings/
 l10n_ar/
 l10n_at/
 l10n_be/
