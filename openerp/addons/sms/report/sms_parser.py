@@ -776,7 +776,7 @@ class crossovered_analytic(report_sxw.rml_parse):
         
         final_result = []
         report_type = str(form['report_type'])
-        academiccalendar_id = str(form['academiccalendar_id'][0])
+        academiccalendar_id = form['academiccalendar_id'][0]
         #exam_type = str(form['exam_type'][0])
         
         student_query = ""
@@ -812,16 +812,10 @@ class crossovered_analytic(report_sxw.rml_parse):
             self.cr.execute(sql)
             lower_grade = self.cr.fetchone()[0]
             
-            
-            
-            examtype_sql = """SELECT id From sms_exam_datesheet
-                Where academiccalendar = """ + str(academiccalendar_id) + """
-                ORDER BY start_date"""
-            
-            self.cr.execute(examtype_sql)
-            examtype_rows = self.cr.fetchall()
-            
-            for examtype_row in examtype_rows:
+            exam_ids = self.pool.get('sms.exam.datesheet').search(self.cr, self.uid,[('academiccalendar','=',academiccalendar_id)], order='start_date asc')
+            exam_objs = self.pool.get('sms.exam.datesheet').browse(self.cr, self.uid,exam_ids)
+          
+            for exam_obj in exam_objs:
                 subject_result = []
                     
                 std_subs_sql = """SELECT sms_subject.name, sms_exam_lines.obtained_marks, sms_exam_lines.total_marks, 
@@ -840,7 +834,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                     on 
                     sms_subject.id = sms_academiccalendar_subjects.subject_id
                     where sms_academiccalendar_student.std_id = """ + str(student_id) + """
-                    and sms_exam_lines.name =  """ + str(examtype_row[0]) + """
+                    and sms_exam_lines.name =  """ + str(exam_obj.id) + """
                     and sms_academiccalendar_student.name = """ + str(academiccalendar_id) + """
                     and sms_academiccalendar_subjects.reference_practical_of is null"""
                 
@@ -875,7 +869,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                             on 
                             sms_subject.id = sms_academiccalendar_subjects.subject_id
                             where sms_academiccalendar_student.std_id = """ + str(student_id) + """
-                            and sms_exam_lines.name =  """ + str(examtype_row[0]) + """
+                            and sms_exam_lines.name =  """ + str(exam_obj.id) + """
                             and sms_academiccalendar_student.name = """ + str(academiccalendar_id) + """
                             and sms_academiccalendar_subjects.reference_practical_of is not null
                             and sms_student_subject.reference_practical_of = """ + str(std_subs_row[4])
@@ -921,7 +915,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                     
                     s_no = s_no + 1
                 
-                exam_dict = {'subject_result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','total_obtained_marks':'','total_obtained_percentage':'','class_total_marks':''}
+                exam_dict = {'subject_result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','total_obtained_marks':'','total_obtained_percentage':'','class_total_marks':'','exam_name':''}
                 exam_dict['subject_result'] = subject_result
                 exam_dict['total_obtained_marks'] =  round(total_obatined_marks,2)
                 exam_dict['class_total_marks'] =  round(class_total_marks,2)
@@ -931,6 +925,11 @@ class crossovered_analytic(report_sxw.rml_parse):
                     percentage = round((total_obatined_marks/class_total_marks) * 100,2)
                     
                 exam_dict['total_obtained_percentage'] = percentage
+                
+                paper_date = datetime.strptime(exam_obj.exam_offered.start_date, '%Y-%m-%d')
+                monthyear = paper_date.strftime('%B, %Y')
+            
+                exam_dict['exam_name'] = str(exam_obj.exam_offered.exam_type.name) + ": " + str(monthyear)
                 
                 if count_fail < 3:
                     exam_dict['student_class_status'] = 'Pass'
@@ -954,7 +953,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                     (SELECT sum(obtained_marks) from sms_exam_lines where student_subject in 
                     (SELECT id from sms_student_subject where  student in 
                     (SELECT id from sms_academiccalendar_student where std_id = sms_student.id))
-                    and sms_exam_lines.name = """ + str(examtype_row[0]) + """) as marks
+                    and sms_exam_lines.name = """ + str(exam_obj.id) + """) as marks
                     from sms_student 
                     inner join sms_academiccalendar_student
                     on sms_student.id = sms_academiccalendar_student.std_id
@@ -969,7 +968,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                     (SELECT sum(obtained_marks) from sms_exam_lines where student_subject in 
                     (SELECT id from sms_student_subject where  student in 
                     (SELECT id from sms_academiccalendar_student where std_id = sms_student.id))
-                    and sms_exam_lines.name = """ + str(examtype_row[0]) + """) as marks
+                    and sms_exam_lines.name = """ + str(exam_obj.id) + """) as marks
                     from sms_student 
                     inner join sms_academiccalendar_student
                     on sms_student.id = sms_academiccalendar_student.std_id
@@ -992,9 +991,9 @@ class crossovered_analytic(report_sxw.rml_parse):
             row= self.cr.fetchone()
    
             final_dict['exam_result'] = exam_result
-            final_dict['cadidate_no'] = row[0]
-            final_dict['student_name'] = row[1]
-            final_dict['father_name'] = row[2]
+            final_dict['cadidate_no'] = str(row[0]).upper()
+            final_dict['student_name'] = str(row[1]).upper()
+            final_dict['father_name'] = str(row[2]).upper()
             if row[3]=='Male':
                 final_dict['gender'] = 'S/o'
             else:
@@ -1049,7 +1048,7 @@ report_sxw.report_sxw('report.sms.student.award.list.name', 'sms.student', 'addo
 report_sxw.report_sxw('report.sms.student.result.list.name', 'sms.student', 'addons/sms/student_result_list_report.rml',parser = crossovered_analytic, header='internal')
 report_sxw.report_sxw('report.sms.student.result.sheet.name', 'sms.student', 'addons/sms/student_result_sheet_report.rml',parser = crossovered_analytic, header=False)
 report_sxw.report_sxw('report.sms.student.dmc.name', 'sms.student', 'addons/sms/student_dmc_report.rml',parser = crossovered_analytic, header='external')
-report_sxw.report_sxw('report.sms.student.dmc.multiple.name', 'sms.student', 'addons/sms/student_dmc_multiple_report.rml',parser = crossovered_analytic, header='external')
+report_sxw.report_sxw('report.sms.student.dmc.multiple.name', 'sms.student', 'addons/sms/student_dmc_multiple_report.rml',parser = crossovered_analytic, header=False)
 report_sxw.report_sxw('report.sms.student.date.sheet.name', 'sms.student', 'addons/sms/student_date_sheet_report.rml',parser = crossovered_analytic, header=False)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

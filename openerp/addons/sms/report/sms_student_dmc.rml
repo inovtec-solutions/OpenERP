@@ -198,7 +198,7 @@ spaceAfter="0.0" textColor="#000000"/>
 			
 		   <blockTable colWidths="550" style="Table1">
 			<tr><td><para style="P3">Student secured <u>[[(r['total_obtained_percentage'])]] %</u> Marks and is grade <u>[[(r['grade'])]]</u></para></td></tr>
-		  	<tr><td><para style="P3">Postition in  class <u>[[(r['position'])]]</u> Out of <u>[[(r['total_students'])]]</u> Students</para></td></tr>
+		  	<tr><td><para style="P3">Position in  class <u>[[(r['position'])]]</u> Out of <u>[[(r['total_students'])]]</u> Students</para></td></tr>
 		  	<tr><td><para style="P3">Remarks: [[(r['remarks'])]]</para></td></tr>
 		  </blockTable>
 		  	
