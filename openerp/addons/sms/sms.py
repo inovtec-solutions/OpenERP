@@ -3120,10 +3120,6 @@ class sms_student_promotion(osv.osv):
         for obj in objs:
             new_cal_obj = self.pool.get('sms.academiccalendar').browse(cr,uid,obj.sms_academiccalendar_to.id)
             
-#                 cur_strength = cal_obj.cur_strength
-#                 cur_strength = cur_strength + 1
-#                 update_acad_cal = self.pool.get('sms.academiccalendar').write(cr, uid, f.name.id, {'cur_strength':cur_strength})
-
             state = ""
             if obj.decision == 'Promote':
                 self.pool.get('sms.academiccalendar.student').write(cr, uid, [obj.sms_academiccalendar_student.id], {'state':'Promoted',})
