@@ -89,14 +89,14 @@
   <story>
 	<para style="P1">[[repeatIn(get_students_dmc_multiple(data['form']),'r')]]</para> 
 		<blockTable colWidths="530" style="Table1">
-			 <tr><td><para style="P5"><u>[[get_class(data['form'])]]</u></para></td></tr> 
+			 <tr><td><para style="P5"><u>Progress Report</u></para></td></tr> 
 			 <tr><td><para style="ParaWhite">.</para></td></tr>
 			 <tr><td><para style="ParaWhite"></para></td></tr>
 		</blockTable>
 		
-		<blockTable colWidths="100.0,140.0,115.0,140.0" style="Table1">
-		   	 <tr><td><para style="P3">ADMISSION NO:</para></td><td><para style="P4">[[(r['cadidate_no'])]]</para></td><td><para style="P3"></para></td><td><para style="P4"></para></td></tr>  
-		   	 <tr><td><para style="P3">NAME:</para></td><td><para style="P4">[[(r['student_name'])]]</para></td><td><para style="P3"><u>FATHER'S NAME:</u></para></td><td><para style="P4">[[(r['father_name'])]]</para></td></tr>
+		<blockTable colWidths="100.0,140.0,105.0,185.0" style="Table1">
+		   	 <tr><td><para style="P3">ADMISSION NO:</para></td><td><para style="P4">[[(r['cadidate_no'])]]</para></td><td><para style="P3">Class:</para></td><td><para style="P4">[[get_class(data['form'])]]</para></td></tr>  
+		   	 <tr><td><para style="P3">NAME:</para></td><td><para style="P4">[[(r['student_name'])]]</para></td><td><para style="P3">FATHER'S NAME:</para></td><td><para style="P4">[[(r['father_name'])]]</para></td></tr>
 		</blockTable>
 		
 		<section>

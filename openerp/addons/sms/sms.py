@@ -2869,9 +2869,9 @@ class sms_exam_datesheet_lines(osv.osv):
     _name= "sms.exam.datesheet.lines"
     _descpription = "Stores exam date sheets"
     _columns = { 
-        'name': fields.many2one('sms.exam.datesheet', 'Date Sheet',required=True),
-        'subject': fields.many2one('sms.academiccalendar.subjects', 'Subject',required=True, ),
-        'total_marks': fields.integer('Total Marks',readonly = True),
+        'name': fields.many2one('sms.exam.datesheet', 'Date Sheet',required=True,readonly = True),
+        'subject': fields.many2one('sms.academiccalendar.subjects', 'Subject',required=True,readonly = True),
+        'total_marks': fields.integer('Total Marks'),
         'paper_date': fields.date('Date'),
         'invigilator':fields.many2one('hr.employee', 'Invigilator'),
     }
