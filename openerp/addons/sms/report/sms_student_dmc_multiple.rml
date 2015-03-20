@@ -2,7 +2,7 @@
 <document filename="test.pdf">
  <template pageSize="(800.0,1100.0)" title="Crossovered Analytic" author="Inovtec" allowSplitting="20">
     <pageTemplate id="first">
-      <frame id="first" x1="145.0" y1="0.0" width="510" height="1080"/>
+      <frame id="first" x1="145.0" y1="0.0" width="530" height="1080"/>
     </pageTemplate>
   </template>
   <stylesheet>
@@ -20,61 +20,54 @@
 	  <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
       </blockTableStyle>
 
-	<blockTableStyle id="Table_maintable">
+	<blockTableStyle id="Table_outer">
     	<blockAlignment value="LEFT"/>
     	<blockValign value="TOP"/>
 		<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
 	    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,-1" stop="6,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="6,-1" stop="6,-1"/>
+		<lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
-	
+
+	<blockTableStyle id="Table_exam_name">
+    	<blockAlignment value="LEFT"/>
+    	<blockValign value="TOP"/>
+		<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+	    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+	    <lineStyle kind="LINEBELOW" colorName="#222222" start="0,-1" stop="0,-1"/>
+	    <lineStyle kind="LINEBELOW" colorName="#222222" start="1,-1" stop="1,-1"/>
+	    <lineStyle kind="LINEBELOW" colorName="#222222" start="2,-1" stop="2,-1"/>
+	    <lineStyle kind="LINEBELOW" colorName="#222222" start="3,-1" stop="3,-1"/>
+ 	   	<lineStyle kind="LINEBELOW" colorName="#222222" start="4,-1" stop="4,-1"/>
+     	<lineStyle kind="LINEBELOW" colorName="#222222" start="5,-1" stop="5,-1"/>
+    	<lineStyle kind="LINEBELOW" colorName="#222222" start="6,-1" stop="6,-1"/>
+	</blockTableStyle>
+
+	<blockTableStyle id="Table_total">
+    	<blockAlignment value="LEFT"/>
+    	<blockValign value="TOP"/>
+		<blockTopPadding length="3.0" start="0,0" stop="-1,-1"/>
+	    <blockBottomPadding length="2.0" start="0,0" stop="-1,-1"/>
+	    <lineStyle kind="LINEABOVE" colorName="#222222" start="0,-1" stop="0,-1"/>
+	    <lineStyle kind="LINEABOVE" colorName="#222222" start="1,-1" stop="1,-1"/>
+	    <lineStyle kind="LINEABOVE" colorName="#222222" start="2,-1" stop="2,-1"/>
+	    <lineStyle kind="LINEABOVE" colorName="#222222" start="3,-1" stop="3,-1"/>
+ 	   	<lineStyle kind="LINEABOVE" colorName="#222222" start="4,-1" stop="4,-1"/>
+     	<lineStyle kind="LINEABOVE" colorName="#222222" start="5,-1" stop="5,-1"/>
+    	<lineStyle kind="LINEABOVE" colorName="#222222" start="6,-1" stop="6,-1"/>
+	</blockTableStyle>
+
+	<blockTableStyle id="Table_maintable">
+    	<blockAlignment value="LEFT"/>
+    	<blockValign value="TOP"/>
+		<blockTopPadding length="0.0" start="0,0" stop="-1,-1"/>
+	    <blockBottomPadding length="0.0" start="0,0" stop="-1,-1"/>
+	</blockTableStyle>
+
 	<blockTableStyle id="Table_maintable_header">
 	    <blockAlignment value="LEFT"/>
 	    <blockValign value="TOP"/>
 		<blockTopPadding length="1.0" start="0,0" stop="-1,-1"/>
 	    <blockBottomPadding length="1.0" start="0,0" stop="-1,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEABOVE" colorName="#000000" start="6,-1" stop="6,-1"/>
-		<lineStyle kind="LINEBEFORE" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,-1" stop="6,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="0,-1" stop="0,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="1,-1" stop="1,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="2,-1" stop="2,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="3,-1" stop="3,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="4,-1" stop="4,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="5,-1" stop="5,-1"/>
-	    <lineStyle kind="LINEAFTER" colorName="#000000" start="6,-1" stop="6,-1"/>
-		<blockBackground colorName="#ffffff" start="0,0" stop="-1,-1"/>
 	</blockTableStyle>
     
     <initialize>
@@ -95,7 +88,7 @@
   </stylesheet>
   <story>
 	<para style="P1">[[repeatIn(get_students_dmc_multiple(data['form']),'r')]]</para> 
-		<blockTable colWidths="510" style="Table1">
+		<blockTable colWidths="530" style="Table1">
 			 <tr><td><para style="P5"><u>[[get_class(data['form'])]]</u></para></td></tr> 
 			 <tr><td><para style="ParaWhite">.</para></td></tr>
 			 <tr><td><para style="ParaWhite"></para></td></tr>
@@ -107,13 +100,13 @@
 		</blockTable>
 		
 		<section>
-			<blockTable colWidths="510" style="Table1">
+			<blockTable colWidths="530" style="Table_outer">
 		    	<tr><td>
 					<blockTable colWidths="510" style="Table1">
 					<para style="P1">[[repeatIn((r['exam_result']),'s')]]</para>
 
 					<tr><td>
-						<blockTable colWidths="410,100" style="Table1">
+						<blockTable colWidths="410,100" style="Table_exam_name">
 		 					<tr><td><para style="ParaWhite">.</para></td><td><para style="ParaWhite">.</para></td></tr>
 							<tr>
 								<td><para style="P3">[[(s['exam_name'])]]</para></td>
@@ -184,7 +177,7 @@
 					</td></tr>
 					<tr><td>
 				    
-						<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_maintable_header">
+						<blockTable colWidths="40.0,110.0,70.0,70.0,80.0,70.0,70.0" style="Table_total">
 						<tr>
 					          <td>
 					            <para style="P6">Total</para>
@@ -213,7 +206,7 @@
 					    </blockTable>
 					</td></tr>
 			
-					<tr><td>
+<!--					<tr><td>
 						<blockTable colWidths="110,60,80,60,60,140" style="Table2">
 							<tr>
 								<td><para style="P3">Max.Marks</para></td>
@@ -232,7 +225,7 @@
 							</tr>
 						</blockTable>
 					</td></tr>
-					</blockTable>
+-->					</blockTable>
 				</td></tr>
 			</blockTable>
  		</section>  
