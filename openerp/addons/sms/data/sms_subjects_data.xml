@@ -207,7 +207,7 @@
       <field name="script">th</field>
 	  </record>
  
- <record id="sms_classes_11" model="sms.classes">
+<!-- <record id="sms_classes_11" model="sms.classes">
 	  <field name="name">F.Sc I</field>      
       <field name="desc">11th</field>
 	  <field name="category">Intermediate</field>
@@ -222,7 +222,7 @@
 	  <field name="alias">12</field>      
       <field name="script">th</field>
     </record>  
-
+-->
 
  <!-- Grading Policy -->
 

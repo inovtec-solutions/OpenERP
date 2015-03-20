@@ -614,8 +614,10 @@ class crossovered_analytic(report_sxw.rml_parse):
             class_total_marks = 0.0
             count_fail = 0
             
+            empty_lines = "..\n.\n.\n.\n.\n.\n.\n.\n.\n.\n."
+            
             for std_subs_row in std_subs_rows:
-                
+                empty_lines = empty_lines.replace("..\n", ".")
                 my_dict = {'s_no':'','title':'', 'theory':'', 'practical':'', 'obtained_marks':0,'total_marks':'','percentage':''}
                 practical_marks = 0.0
                 practical_total = 0.0
@@ -684,7 +686,7 @@ class crossovered_analytic(report_sxw.rml_parse):
                 
                 s_no = s_no + 1
             
-            final_dict = {'result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','cadidate_no':'','student_name':'','father_name':'','gender':'','total_obtained_marks':'','total_obtained_percentage':''}
+            final_dict = {'empty_lines':'','result':'','total_students':'','position':'','grade':'','remarks':'','student_class_status':'','cadidate_no':'','student_name':'','father_name':'','gender':'','total_obtained_marks':'','total_obtained_percentage':''}
             
             sql = """SELECT sms_student.registration_no, sms_student.name, 
                 sms_student.father_name, sms_student.gender from sms_student
@@ -696,6 +698,7 @@ class crossovered_analytic(report_sxw.rml_parse):
             self.cr.execute(sql)
             row= self.cr.fetchone()
             if row:
+                final_dict['empty_lines'] = empty_lines
                 final_dict['result'] = result
                 final_dict['cadidate_no'] = row[0]
                 final_dict['student_name'] = row[1]
