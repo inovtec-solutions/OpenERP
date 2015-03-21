@@ -77,14 +77,9 @@
   <story>
 	<para style="P1">[[repeatIn(get_students_dmc(data['form']),'r')]]</para> 
 		<blockTable colWidths="510" style="Table1">
-			 <tr><td><para style="ParaWhite">.</para></td></tr>
-			 <tr><td><para style="ParaWhite">.</para></td></tr>
+			 <tr><td><para style="P5"><u>DETAILED MARKS CERTIFICATE</u></para></td></tr> 
 			 <tr><td><para style="P5">[[get_exam_type(data['form'])]]</para></td></tr>
-			 <tr><td><para style="P5"><u>[[get_class(data['form'])]]</u></para></td></tr> 
 			 <tr><td><para style="ParaBlack"><u>[[(r['student_class_status'])]]</u></para></td></tr>
-			 <tr><td><para style="ParaWhite"></para></td></tr>
-			 <tr><td><para style="ParaWhite"></para></td></tr>
-			 <tr><td><para style="ParaWhite"></para></td></tr>
 		</blockTable>
 		
 		<blockTable colWidths="115.0,140.0,115.0,140.0" style="Table1">
@@ -167,8 +162,6 @@
 		  	
 		  <blockTable colWidths="360.0,150.0" style="Table1">
 			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
-			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
-			<tr><td><para style="ParaWhite">.</para></td><td></td></tr>
 			<tr>
 				<td><para style="P8">Date Issued: [[get_today_formatted(data['form'])]]</para></td>
 				<td><para style="P3"><u>Principal</u></para></td>
@@ -176,7 +169,6 @@
 		   </blockTable>
 		  	
 		  <blockTable colWidths="510" style="Table1">
-			<tr><td><para style="ParaWhite">.</para></td></tr>
 			<tr><td><para style="ParaWhite">[[(r['empty_lines'])]]</para></td></tr>
 			<tr><td><para style="P11">Note: Errors and omissions, if any, are subject to subsequent rectification.</para></td>
 		    </tr>

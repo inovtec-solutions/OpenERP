@@ -3,22 +3,31 @@ import datetime
 
 class exam_entry(osv.osv_memory):
 
-    def _get_teacher(self, cr, uid, ids):
-        employee_ids = self.pool.get('hr.employee').search(cr,uid,[('user_id','=',uid)])
-        print uid
-        print employee_ids
-        return employee_ids[0]
-    
+    def onchange_exam_type(self, cr, uid, ids, academiccalendar_id, context=None):
+        employee_ids = []
+        
+        sql = """SELECT distinct uid FROM  res_groups 
+            inner join res_groups_users_rel on 
+            res_groups.id = res_groups_users_rel.gid
+            where res_groups.name = 'Exam Officer'
+            AND res_groups_users_rel.uid = """ + str(uid)
+        cr.execute(sql)
+        
+        if cr.fetchone():
+            employee_ids = self.pool.get('hr.employee').search(cr,uid,[])
+        else:
+            employee_ids = self.pool.get('hr.employee').search(cr,uid,[('user_id','=',uid)])
+        
+        return {'domain':{'subject_id':[('academic_calendar','=',academiccalendar_id),('teacher_id','in',employee_ids)]}}
+
     _name = "exam.entry"
     _description = "Timetable Entry"
     _columns = {
                 'academiccalendar_id': fields.many2one('sms.academiccalendar','Select Class', domain="[('state','=','Active')]", required=True),
                 'exam_type': fields.many2one('sms.exam.datesheet','Exam Type', required=True, domain="[('academiccalendar','=',academiccalendar_id),('status','=','Active')]"),
-                'subject_id': fields.many2one('sms.academiccalendar.subjects','Subject', domain="[('academic_calendar','=',academiccalendar_id),('teacher_id','=',teacher)]", required=True),
-                'teacher': fields.many2one('hr.employee','Teacher', readonly=True,),
+                'subject_id': fields.many2one('sms.academiccalendar.subjects','Subject', domain="[('academic_calendar','=',academiccalendar_id)]", required=True),
               }
     _defaults = {
-            'teacher':_get_teacher
            }
     
     def onchange_academiccalendar(self, cr, uid, ids, context=None):
