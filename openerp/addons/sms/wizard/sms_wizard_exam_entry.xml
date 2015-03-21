@@ -12,9 +12,8 @@
                     <group col="4">
 
 						<field name="academiccalendar_id" on_change="onchange_academiccalendar()"/>
-						<field name="exam_type"/>
+						<field name="exam_type" on_change="onchange_exam_type(academiccalendar_id)"/>
 						<field name="subject_id"/>
-						<field name="teacher"/>
 					</group>
                     <footer>
                         <button string="Next" name="exam_entry" type="object" class="oe_highlight"/>

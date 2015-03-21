@@ -614,7 +614,7 @@ class crossovered_analytic(report_sxw.rml_parse):
             class_total_marks = 0.0
             count_fail = 0
             
-            empty_lines = "..\n.\n.\n.\n.\n.\n.\n.\n.\n.\n."
+            empty_lines = "..\n.\n.\n.\n.\n."
             
             for std_subs_row in std_subs_rows:
                 empty_lines = empty_lines.replace("..\n", ".")
