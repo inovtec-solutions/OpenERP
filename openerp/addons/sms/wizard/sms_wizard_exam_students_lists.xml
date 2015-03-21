@@ -12,8 +12,8 @@
                     <group col="4">
 						<field name="list_type"/>
 						<field name="academiccalendar_id" on_change="onchange_academiccalendar()"/>
+						<field name="exam_type" on_change="onchange_exam_type(academiccalendar_id)"/>
 						<field name="subject_id" attrs="{'required':[('list_type','not in',['Result_List','Result_Sheet'])], 'invisible':[('list_type','in',['Result_List','Result_Sheet'])]}"/>
-						<field name="exam_type"/>
 						<field name="order_by" attrs="{'required':[('list_type','in',['Result_List','Result_Sheet'])], 'invisible':[('list_type','not in',['Result_List','Result_Sheet'])]}"/>
 					</group>
                     <footer>

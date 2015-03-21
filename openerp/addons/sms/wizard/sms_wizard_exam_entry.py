@@ -9,18 +9,15 @@ class exam_entry(osv.osv_memory):
         sql = """SELECT distinct uid FROM  res_groups 
             inner join res_groups_users_rel on 
             res_groups.id = res_groups_users_rel.gid
-            where res_groups.name = 'Exam Officer'
+            where (res_groups.name = 'Exam Officer' or res_groups.name = 'Exam Manager') 
             AND res_groups_users_rel.uid = """ + str(uid)
         cr.execute(sql)
-        print type(uid)
         if cr.fetchone():
             employee_ids = self.pool.get('hr.employee').search(cr,uid,[])
         else:
-            employee_ids = self.pool.get('hr.employee').search(cr,uid,[('user_id','=',1)])
-        print employee_ids
+            resource_ids = self.pool.get('resource.resource').search(cr,uid,[('user_id','=',uid)])
+            employee_ids = self.pool.get('hr.employee').search(cr,uid,[('resource_id','in',resource_ids)])
         
-        return {'domain':{'student_id':[('id','in',student_ids)]}, 'value': result}
-
         return {'domain':{'subject_id':[('academic_calendar','=',academiccalendar_id),('teacher_id','in',employee_ids)]}}
 
     _name = "exam.entry"

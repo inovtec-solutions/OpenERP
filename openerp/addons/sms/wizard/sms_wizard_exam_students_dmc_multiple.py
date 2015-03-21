@@ -14,11 +14,15 @@ class sms_student_exam_dmc_multiple(osv.osv_memory):
             'report_type': 'Multiple_Report',
            }
     
-     
     def onchange_academiccalendar(self, cr, uid, ids, academiccalendar_id, context=None):
         result = {}
+        students = []
         result['student_id'] = None
         result['exam_type'] = None
+        
+        if not academiccalendar_id:
+            return {'domain':{'student_id':[('id','in',[])]}, 'value': result}
+        
         sql = """SELECT sms_student.id FROM sms_student 
             inner join sms_academiccalendar_student
             ON 
@@ -27,9 +31,11 @@ class sms_student_exam_dmc_multiple(osv.osv_memory):
                 
         cr.execute(sql)
         student_ids= cr.fetchall()
-        
-        return {'domain':{'student_id':[('id','in',student_ids)]}, 'value': result}
+        for student in student_ids:
+            students.append(student[0])
 
+        return {'domain':{'student_id':[('id','in',students)]}, 'value': result}
+     
     def print_dmc(self, cr, uid, ids, context=None):
         current_obj = self.browse(cr, uid, ids, context=context)
         

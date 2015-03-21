@@ -2,13 +2,30 @@ from openerp.osv import fields, osv
 
 class sms_student_exam_lists(osv.osv_memory):
 
+    def onchange_exam_type(self, cr, uid, ids, academiccalendar_id, context=None):
+        employee_ids = []
+        
+        sql = """SELECT distinct uid FROM  res_groups 
+            inner join res_groups_users_rel on 
+            res_groups.id = res_groups_users_rel.gid
+            where (res_groups.name = 'Exam Officer' or res_groups.name = 'Exam Manager') 
+            AND res_groups_users_rel.uid = """ + str(uid)
+        cr.execute(sql)
+        if cr.fetchone():
+            employee_ids = self.pool.get('hr.employee').search(cr,uid,[])
+        else:
+            resource_ids = self.pool.get('resource.resource').search(cr,uid,[('user_id','=',uid)])
+            employee_ids = self.pool.get('hr.employee').search(cr,uid,[('resource_id','in',resource_ids)])
+        
+        return {'domain':{'subject_id':[('academic_calendar','=',academiccalendar_id),('teacher_id','in',employee_ids)]}}
+
     _name = "sms.student.exam.lists"
     _description = "Student Exam List"
     _columns = {
                 'list_type': fields.selection([('Signature_Sheet','Signature Sheet'),('Award_List','Award List'),('Result_List','Result List'),('Result_Sheet','Result Sheet')],'Select', required=True,),
                 'academiccalendar_id': fields.many2one('sms.academiccalendar','Select Class', domain="[('state','=','Active')]", required=True,),
-                'subject_id': fields.many2one('sms.academiccalendar.subjects','Subject', domain="[('academic_calendar','=',academiccalendar_id)]",),
                 'exam_type': fields.many2one('sms.exam.datesheet','Exam Type', required=True, domain="[('academiccalendar','=',academiccalendar_id)]"),
+                'subject_id': fields.many2one('sms.academiccalendar.subjects','Subject', domain="[('academic_calendar','=',academiccalendar_id)]",),
                 'order_by': fields.selection([('sms_student.name','Student Name'), ('marks desc','Marks'), ('percentage desc','Percentage'),('sms_student.gender','Gender')],'Order By', required=True,),
               }
     _defaults = {

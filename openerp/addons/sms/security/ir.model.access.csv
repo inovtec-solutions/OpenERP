@@ -134,7 +134,17 @@
 "127","sms.student.certificate","model_sms_student_certificate","group_sms_admission_manager",1,1,1,0
 "128","sms.student.certificate","model_sms_student_certificate","group_sms_manager_exams",1,1,1,0
 "129","sms.student.certificate","model_sms_student_certificate","group_sms_fee_manager",1,1,1,0
-
 "130","sms.exam.default.lines","model_sms_exam_default_lines","group_sms_manager_exams",1,1,1,0
+
+"131","sms.academiccalendar.subjects.default","model_sms_academiccalendar_subjects_default","group_sms_faculty",1,0,0,0
+"132","sms.academiccalendar","model_sms_academiccalendar","group_sms_faculty",1,0,0,0
+"133","sms.academiccalendar.subjects","model_sms_academiccalendar_subjects","group_sms_faculty",1,0,0,0
+"134","sms.subject","model_sms_subject","group_sms_faculty",1,0,0,0
+"135","sms.exam.datesheet","model_sms_exam_datesheet","group_sms_faculty",1,0,0,0
+"136","sms.exam.datesheet.lines","model_sms_exam_datesheet_lines","group_sms_faculty",1,0,0,0
+"137","sms.exam.default","model_sms_exam_default","group_sms_faculty",1,1,1,0
+"138","sms.exam","model_sms_exam","group_sms_faculty",1,1,1,0
+"139","sms.exam.default.lines","model_sms_exam_default_lines","group_sms_faculty",1,1,1,0
+"140","sms.exam.lines","model_sms_exam_lines","group_sms_faculty",1,1,1,0
 
 

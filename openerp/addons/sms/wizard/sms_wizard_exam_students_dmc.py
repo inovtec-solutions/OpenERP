@@ -20,6 +20,10 @@ class sms_student_exam_dmc(osv.osv_memory):
         students = []
         result['student_id'] = None
         result['exam_type'] = None
+        
+        if not academiccalendar_id:
+            return {'domain':{'student_id':[('id','in',[])]}, 'value': result}
+        
         sql = """SELECT sms_student.id FROM sms_student 
             inner join sms_academiccalendar_student
             ON 
@@ -31,7 +35,7 @@ class sms_student_exam_dmc(osv.osv_memory):
         for student in student_ids:
             students.append(student[0])
 
-        return {'domain':{'student_id':[('id','in',student_ids)]}, 'value': result}
+        return {'domain':{'student_id':[('id','in',students)]}, 'value': result}
 
     def print_dmc(self, cr, uid, ids, context=None):
         current_obj = self.browse(cr, uid, ids, context=context)
