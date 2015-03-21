@@ -17,6 +17,7 @@ class sms_student_exam_dmc(osv.osv_memory):
      
     def onchange_academiccalendar(self, cr, uid, ids, academiccalendar_id, context=None):
         result = {}
+        students = []
         result['student_id'] = None
         result['exam_type'] = None
         sql = """SELECT sms_student.id FROM sms_student 
@@ -27,7 +28,9 @@ class sms_student_exam_dmc(osv.osv_memory):
                 
         cr.execute(sql)
         student_ids= cr.fetchall()
-        
+        for student in student_ids:
+            students.append(student[0])
+
         return {'domain':{'student_id':[('id','in',student_ids)]}, 'value': result}
 
     def print_dmc(self, cr, uid, ids, context=None):
