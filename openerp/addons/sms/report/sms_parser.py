@@ -343,7 +343,6 @@ class crossovered_analytic(report_sxw.rml_parse):
             and sms_academiccalendar_student.state = 'Current'
             ORDER BY subject_status, sms_student.name, sms_student.father_name"""
         
-        print students_sql
         self.cr.execute(students_sql)
         students_rows = self.cr.fetchall()
         
@@ -569,7 +568,6 @@ class crossovered_analytic(report_sxw.rml_parse):
                     and sms_student.state = 'Admitted'
                     """ + str(student_query) + """
                     ORDER BY  sms_student.name, sms_student.father_name"""
-        
         
         self.cr.execute(student_sql)
         student_rows = self.cr.fetchall()
@@ -1009,7 +1007,6 @@ class crossovered_analytic(report_sxw.rml_parse):
         result = []
         exam_offered = self.datas['form']['exam_offered'][0]
         if self.datas['form']['exam_datesheet']:
-            print [self.datas['form']['exam_datesheet'][0]]
             datesheet_ids = [self.datas['form']['exam_datesheet'][0]]
         else:
             datesheet_ids = self.pool.get('sms.exam.datesheet').search(self.cr, self.uid,[('exam_offered','=',exam_offered)])

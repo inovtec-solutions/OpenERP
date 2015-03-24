@@ -2760,19 +2760,34 @@ class sms_exam_offered(osv.osv):
     def set_result(self, cr, uid, ids, name, args, context=None):
         result = {}
         for obj in self.browse(cr, uid, ids, context=context):
-            result[obj.id] =  70.6
+            sql = """SELECT (sum(sms_exam_lines.obtained_marks)/ sum(sms_exam_lines.total_marks))*100
+                from sms_exam_lines
+                inner join sms_exam_datesheet
+                on 
+                sms_exam_lines.name = sms_exam_datesheet.id
+                where sms_exam_datesheet.exam_offered = """ + str(obj.id)
+            
+            cr.execute(sql)
+            res = cr.fetchone()[0]
+            result[obj.id] =  res
         return result
     
     def start_exam(self, cr, uid, ids, *args):
+        datesheet_ids = self.pool.get('sms.exam.datesheet').search(cr,uid,[('exam_offered','in',ids)])
+        self.pool.get('sms.exam.datesheet').write(cr, uid, datesheet_ids, {'status':'Active','start_date':datetime.date.today()})
         self.write(cr, uid, ids, {'state':'Active','start_date':datetime.date.today()})
         return True
     
     def close_exam(self, cr, uid, ids, *args):
-        self.write(cr, uid, ids, {'state':'Closed','start_date':datetime.date.today()})
+        datesheet_ids = self.pool.get('sms.exam.datesheet').search(cr,uid,[('exam_offered','in',ids)])
+        self.pool.get('sms.exam.datesheet').write(cr, uid, datesheet_ids, {'status':'Closed','closing_date':datetime.date.today()})
+        self.write(cr, uid, ids, {'state':'Closed','closing_date':datetime.date.today()})
         return True
     
     def cancel_exam(self, cr, uid, ids, *args):
-        self.write(cr, uid, ids, {'state':'Cancelled','closing_date':datetime.date.today()})
+        datesheet_ids = self.pool.get('sms.exam.datesheet').search(cr,uid,[('exam_offered','in',ids)])
+        self.pool.get('sms.exam.datesheet').write(cr, uid, datesheet_ids, {'status':'Cancelled','cancelled_date':datetime.date.today()})
+        self.write(cr, uid, ids, {'state':'Cancelled','cancelled_date':datetime.date.today()})
         return True
     
     _columns = { 
@@ -2780,6 +2795,7 @@ class sms_exam_offered(osv.osv):
         'exam_type': fields.many2one('sms.exam.type', 'Exam Type',required=True),
         'start_date': fields.date('Start Date',required =True),
         'closing_date': fields.date('Closing Date'),
+        'cancelled_date': fields.date('Cancelled Date'),
         'state': fields.selection([('Draft','Draft'),('Active','Active'),('Closed','Closed'),('Cancelled','Cancelled')],'Status'),
         'datesheet_ids' :fields.one2many('sms.exam.datesheet', 'exam_offered', 'Datesheets'),
         'result':fields.function(set_result, method=True,  string='Result(%)',type='float'),
@@ -2805,7 +2821,13 @@ class sms_exam_datesheet(osv.osv):
     def set_result(self, cr, uid, ids, name, args, context=None):
         result = {}
         for obj in self.browse(cr, uid, ids, context=context):
-            result[obj.id] =  70.6
+            sql = """SELECT (sum(sms_exam_lines.obtained_marks)/ sum(sms_exam_lines.total_marks))*100
+                from sms_exam_lines
+                where sms_exam_lines.name = """ + str(obj.id)
+            
+            cr.execute(sql)
+            res = cr.fetchone()[0]
+            result[obj.id] =  res
         return result
     
     def _get_exam_type(self, cr, uid, ids, name, args, context=None):
@@ -2825,6 +2847,8 @@ class sms_exam_datesheet(osv.osv):
         'exam_type':fields.function(_get_exam_type, string='Exam Type', type='many2one', relation="sms.exam.type", store=True),
         'academiccalendar':fields.many2one('sms.academiccalendar', 'Class',readonly = True),
         'start_date':fields.date('Start Date'),
+        'closing_date': fields.date('Closing Date'),
+        'cancelled_date': fields.date('Cancelled Date'),
         'status': fields.selection([('Active','Active'),('Closed','Closed'),('Cancelled','Cancelled')],'Status'),
         'exam_offered': fields.many2one('sms.exam.offered', 'Exam Offered',required=True ,readonly = True),
         'datesheet_lines' :fields.one2many('sms.exam.datesheet.lines', 'name', 'Datesheet Lines'),

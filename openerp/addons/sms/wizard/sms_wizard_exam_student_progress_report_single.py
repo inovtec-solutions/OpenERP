@@ -1,25 +1,28 @@
 from openerp.osv import fields, osv
 
-class sms_student_exam_dmc_multiple(osv.osv_memory):
+class sms_student_exam_progress_report_single(osv.osv_memory):
 
-    _name = "sms.student.exam.dmc.multiple"
+    def _get_student(self, cr, uid, ids):
+        stdobj = self.browse(cr, uid, ids['active_id'])
+        std_id =  stdobj.id
+        return std_id
+
+    _name = "sms.student.exam.progress.report.single"
     _description = "Student DMC"
     _columns = {
-                'report_type': fields.selection([('Single_Report','Single Report'),('Multiple_Report','Multiple Report')],'Select', required=True,),
+                'report_type': fields.selection([('Single_Report','Single Report'),('Multiple_Report','Multiple Report')],'Select', required=True, readonly=True),
                 'academiccalendar_id': fields.many2one('sms.academiccalendar','Select Class', domain="[('state','=','Active')]", required=True,),
-                'student_id': fields.many2one('sms.student','Select Student',),
-#                'exam_type': fields.many2many('sms.exam.datesheet','sms_wizard_exam_datesheet_exam_type_rel','exam_wizard_id','exam_type','Exam Types', required=True, domain="[('academiccalendar','=',academiccalendar_id)]"),
+                'student_id': fields.many2one('sms.student','Select Student', readonly=True),
               }
     _defaults = {
-            'report_type': 'Multiple_Report',
-           }
+            'report_type': 'Single_Report',
+            'student_id': _get_student,
+       }
     
     def onchange_academiccalendar(self, cr, uid, ids, academiccalendar_id, context=None):
         result = {}
         students = []
-        result['student_id'] = None
-        #result['exam_type'] = None
-        
+
         if not academiccalendar_id:
             return {'domain':{'student_id':[('id','in',[])]}, 'value': result}
         
@@ -45,7 +48,7 @@ class sms_student_exam_dmc_multiple(osv.osv_memory):
         datas = {
             'ids': [],
             'active_ids': '',
-            'model': 'sms.student.exam.dmc.multiple',
+            'model': 'sms.student.exam.progress.report.single',
             'form': self.read(cr, uid, ids)[0],}
         
         return {
@@ -53,6 +56,6 @@ class sms_student_exam_dmc_multiple(osv.osv_memory):
             'report_name':report,
             'datas': datas,}
     
-sms_student_exam_dmc_multiple()
+sms_student_exam_progress_report_single()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

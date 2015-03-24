@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- Student DMC -->
+
+        <record id="view_sms_student_exam_progress_report_single" model="ir.ui.view">
+            <field name="name">Student DMC</field>
+            <field name="model">sms.student.exam.progress.report.single</field>
+            <field name="arch" type="xml">
+                <form string="Student DMC" version="7.0">
+                    <group col="4">
+                        <field name="report_type"/>
+                        <field name="academiccalendar_id" on_change="onchange_academiccalendar(academiccalendar_id)"/>
+                        <field name="student_id" attrs="{'required':[('report_type','=','Single_Report')], 'invisible':[('report_type','!=','Single_Report')]}"/>
+                        <!-- <field name="exam_type"/> -->
+                    </group>
+                    <footer>
+                        <button string="Print" name="print_dmc" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+          </record>
+
+  <!-- View Student DMC -->
+                    
+        <record id="action_view_sms_student_progress_report_single_wizard" model="ir.actions.act_window">
+            <field name="name">Print Progress Report</field>
+            <field name="res_model">sms.student.exam.progress.report.single</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_sms_student_exam_progress_report_single"/>
+           <field name="target">new</field>
+        </record>
+</data>
+</openerp>

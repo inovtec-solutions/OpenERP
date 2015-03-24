@@ -595,6 +595,8 @@
 			<button name="%(action_withdraw_student)d" string="Withdraw" states="Admitted" type="action" class="oe_highlight" groups=""/>
 			<button name="%(action_demote_student)d" string="Demote" states="Admitted" type="action" confirm = "Use this wizard Carefully, thiw wizard enables you to bring a student back to his previous class." class="oe_highlight" groups=""/>
     		<button name="assign_relation" string="Assign Relatives" states="Admitted" type="object" class="oe_highlight" groups=""/>
+			<button name="%(action_view_sms_student_dmc_single_wizard)d" string="Print DMC" states="Admitted" type="action" class="oe_highlight" groups=""/>
+			<button name="%(action_view_sms_student_progress_report_single_wizard)d" string="Print Progress Report" states="Admitted" type="action" class="oe_highlight" groups=""/>
 				
 			<field name="state" widget="statusbar" statusbar_visible="Draft,Admitted,Pass Out"/>
              </header> 			 
@@ -2221,9 +2223,7 @@
          <field name="arch" type="xml">
             <form string="Datesheet" version="7.0">
  			<header>
-            <button name="start_new_session" string="Print ClassDatesheet" status="Active,Closed,Cancelled" type="object" class="oe_highlight" groups=""/>
-			<button name="load_session_months" string="Close Class Exam" status="Active,Closed,Cancelled" type="object" class="oe_highlight" groups=""/>
-             </header>
+            </header>
 				<sheet>
 				 <group >
 				 <field name="name" nolabel = "1" />
