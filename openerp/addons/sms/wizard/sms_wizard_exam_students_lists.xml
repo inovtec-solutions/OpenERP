@@ -28,7 +28,7 @@
   <!-- View Student Exam Lists -->
 					
         <record id="action_view_sms_student_exam_lists_wizard" model="ir.actions.act_window">
-            <field name="name">Student Exam Lists</field>
+            <field name="name">Print List</field>
             <field name="res_model">sms.student.exam.lists</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>

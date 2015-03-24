@@ -123,7 +123,6 @@ class sms_student(osv.osv):
         result = {}
         amount = '0'
         records =  self.browse(cr, uid, ids, context)
-        print "ids:,",ids
 
         for f in records:
             sql =   """SELECT sum(fee_amount) FROM smsfee_studentfee
@@ -132,9 +131,7 @@ class sms_student(osv.osv):
             amount = cr.fetchone()[0]
             if amount is None:
                 amount = '0'   
-                print "amount:m,",amount  
         result[f.id] = amount
-        print "result",result
         return result
     
     def set_paid_amount(self, cr, uid, ids, context={}, arg=None, obj=None):
@@ -1087,7 +1084,6 @@ class smsfee_receiptbook_lines(osv.osv):
     def onchange_amount(self, cr, uid, ids,total,paid_amount):
         vals = {}
         
-        print "ids::",ids
         if paid_amount > total:
             vals['paid_amount'] = 0
             vals['discount'] = 0
@@ -1403,7 +1399,6 @@ class smsfee_feereturn_lines(osv.osv):
     def onchange_amount(self, cr, uid, ids,total,paid_amount):
         vals = {}
         
-        print "ids::",ids
         if paid_amount > total:
             vals['paid_amount'] = 0
             vals['discount'] = 0
@@ -1563,8 +1558,7 @@ class smsfee_student_return_fee(osv.osv):
 
     def onchange_total_return(self, cr, uid, ids,return_amount,total_paid):
         result = {}
-        print "ids::",ids
-        
+
         if return_amount > total_paid:
             result['return_amount'] = 0
             warning = {

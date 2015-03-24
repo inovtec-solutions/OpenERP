@@ -48,7 +48,6 @@
 	<menuitem id="menu_sms_timetable_slot" parent="general_setting_id"  groups="group_sms_admin" action="action_sms_timetable_slot" />
 	<menuitem id="menu_sms_exam_type" parent="general_setting_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_sms_exam_type" />
 	<menuitem id="menu_sms_exam" parent="general_setting_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_sms_exam" />
-	<menuitem id="menu_sms_exam_datesheet" parent="general_setting_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_datesheet"/>
     <menuitem id="menu_action_sms_relation" parent="general_setting_id" sequence="3" groups="group_sms_admin,group_sms_admission_manager" action="action_sms_relation"/>
 	
     
@@ -70,22 +69,22 @@
 	<menuitem id="menu_examination_head_top_id" name="Examinations" parent="" sequence="2" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams,group_sms_faculty"/>	
 	<menuitem id="menu_examination_head_id" name="Examinations" parent="menu_examination_head_top_id" sequence="2" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams,group_sms_faculty"/>	
 	<menuitem id="menu_sms_exam_entry_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams,group_sms_faculty" action="action_view_sms_exam_entry_wizard" />
-	<menuitem id="menu_sms_student_exam_lists_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_manager_exams,group_sms_principal,group_sms_faculty" action="action_view_sms_student_exam_lists_wizard" />
-	<menuitem id="menu_sms_student_dmc_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_view_sms_student_dmc_wizard" />
-	<menuitem id="menu_sms_student_dmc_multiple_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_view_sms_student_dmc_multiple_wizard" />
+	
 	<!-- <menuitem id="menu_sms_exam_datesheet_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_datesheet_wizard" />
 	-->
-	<menuitem id="menu_sms_exam_offered"  name = "Running Exams" parent="menu_examination_head_id" sequence="1" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action=""/>
-	<menuitem id="menu_sms_exam_running" parent="menu_sms_exam_offered" sequence="2" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_datesheet"/>
-	<menuitem id="menu_sms_exam_offered_by_classes" parent="menu_sms_exam_offered" sequence="1" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_offered"/>
-	<menuitem id="menu_sms_exam_all_datesheets" name = "All Date sheets" parent="menu_sms_exam_offered" sequence="3" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_datesheet_lines_calendar"/>
+	<!-- <menuitem id="menu_sms_exams_draft"  name = "Draft Exams" parent="" sequence="1" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action=""/>
+	-->
+	<menuitem id="menu_sms_exam_offered_draft" parent="menu_examination_head_id" sequence="1" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_offered_draft"/>
+	<menuitem id="menu_sms_exam_offered_active" parent="menu_examination_head_id" sequence="1" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_offered_active"/>
+	<menuitem id="menu_sms_exam_offerd_closed" parent="menu_examination_head_id" sequence="1" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_offered_closed"/>
+	<menuitem id="menu_sms_exam_datesheet_lines_calendar" parent="menu_examination_head_id" sequence="3" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_sms_exam_datesheet_lines_calendar"/>
 	
-	<menuitem id="menu_sms_exam_closed"  name = "Closed Exams" parent="menu_examination_head_id" sequence="4" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action=""/>
-	<menuitem id="menu_sms_exam_closed_by_classes" parent="menu_sms_exam_closed" sequence="1" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_closed"/>
-	<menuitem id="menu_sms_exam_all_closed_datesheets" parent="menu_sms_exam_closed" sequence="3" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_exam_datesheet_closed"/>
+	<menuitem id="menu_sms_exams_report"  name = "Reports" parent="menu_examination_head_id" sequence="1" groups="group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action=""/>
+	<menuitem id="menu_sms_student_exam_lists_wizard" parent="menu_sms_exams_report" sequence="" groups="group_sms_manager_exams,group_sms_principal,group_sms_faculty" action="action_view_sms_student_exam_lists_wizard" />
+	<menuitem id="menu_sms_student_dmc_multiple_wizard" parent="menu_sms_exams_report" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_view_sms_student_dmc_multiple_wizard" />
+	<menuitem id="menu_sms_student_dmc_wizard" parent="menu_sms_exams_report" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams,group_sms_officers_exams" action="action_view_sms_student_dmc_wizard" />
+	
 	<menuitem id="menu_sms_student_promote_wizard" parent="menu_examination_head_id" sequence="" groups="group_sms_principal,group_sms_admin,group_sms_manager_exams" action="action_view_sms_student_promote_wizard"/>
-	
-	
 	<menuitem id="menu_sms_load_student_wizard" parent="general_setting_id" sequence="" groups="" action="action_load_student_wizard"/>
 	<menuitem id="menu_sms_expense_report" parent="hr_expense.next_id_49" sequence="" groups="" action="action_expense_report"/>
 	

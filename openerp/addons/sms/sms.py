@@ -653,10 +653,8 @@ class sms_student(osv.osv):
             return result
     
     def assign_relation(self, cr, uid, ids, context=None):
-#        context = {
-#        'student_id':ids,
-#        'student_class_id': [(0, 0, {'product_id': product_id, 'product_qty': 1})],   
-#         }
+
+        print ids
         result = {
         'type': 'ir.actions.act_window',
         'name': 'Assign Relation',
@@ -665,9 +663,10 @@ class sms_student(osv.osv):
         'view_mode': 'form,tree',
         'view_id': False,
         'target': 'current',
-        'domain':[ '|' ,('student_1_1','in',ids),('student_1_2','in',ids)],
+        'domain':{'student_1_1':[('id','in',ids)]},
         'context': context,
         }
+        print result
         return result 
     
     def _is_current_user_admin(self, cr, uid, ids, name, args, context=None):

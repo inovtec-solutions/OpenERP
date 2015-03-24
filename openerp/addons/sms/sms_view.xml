@@ -2189,18 +2189,27 @@
       </field>
     </record>
     
-    <record model="ir.actions.act_window" id="action_exam_offered">
-      <field name="name">Active Exams</field>
+    <record model="ir.actions.act_window" id="action_exam_offered_draft">
+      <field name="name">Draft Exams</field>
       <field name="res_model">sms.exam.offered</field>
       <field name="view_type">form</field>
+      <field name="domain">[('state','in',['Draft'])]</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-	 <record model="ir.actions.act_window" id="action_exam_closed">
+ 	<record model="ir.actions.act_window" id="action_exam_offered_active">
+      <field name="name">Active Exams</field>
+      <field name="res_model">sms.exam.offered</field>
+      <field name="view_type">form</field>
+      <field name="domain">[('state','in',['Active'])]</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+	 <record model="ir.actions.act_window" id="action_exam_offered_closed">
       <field name="name">Closed Exams</field>
       <field name="res_model">sms.exam.offered</field>
       <field name="view_type">form</field>
-	 <field name="domain">[('state','in',['Closed','Cancelled'])]</field>
+	  <field name="domain">[('state','in',['Closed','Cancelled'])]</field>
       <field name="view_mode">tree,form</field>
     </record>
     
@@ -2257,23 +2266,6 @@
       </field>
     </record>
         
-   
-
-    <record model="ir.actions.act_window" id="action_exam_datesheet">
-      <field name="name">Date Sheets</field>
-      <field name="res_model">sms.exam.datesheet</field>
-      <field name="view_type">form</field>
-	  <field name="domain">[('status','in',['Active','Draft'])]</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-	<record model="ir.actions.act_window" id="action_exam_datesheet_closed">
-      <field name="name">Closed Dates Sheets</field>
-      <field name="res_model">sms.exam.datesheet</field>
-      <field name="view_type">form</field>
-	  <field name="domain">[('status','in',['Closed','Cancelled'])]</field>
-      <field name="view_mode">tree,form</field>
-    </record>
     <!-- END sms.exam.datesheet -->
 	<!-- sms.exam.datesheet.lines -->
      <record model="ir.ui.view" id="sms_exam_datesheet_lines_form">
@@ -2316,6 +2308,7 @@
                 </calendar>
             </field>
         </record>
+
     <record model="ir.actions.act_window" id="action_exam_datesheet_lines">
       <field name="name">Exam Date Sheets</field>
       <field name="res_model">sms.exam.datesheet.lines</field>
@@ -2323,8 +2316,8 @@
       <field name="view_mode">tree,form,calendar</field>
     </record>
 
-	 <record model="ir.actions.act_window" id="action_exam_datesheet_lines_calendar">
-      <field name="name">Exam Date Sheets</field>
+	 <record model="ir.actions.act_window" id="action_sms_exam_datesheet_lines_calendar">
+      <field name="name">Datesheets Calendar</field>
       <field name="res_model">sms.exam.datesheet.lines</field>
       <field name="view_type">form</field>
       <field name="view_mode">calendar</field>

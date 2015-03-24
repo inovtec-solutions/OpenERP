@@ -27,7 +27,7 @@
   <!-- View Student DMC -->
 					
         <record id="action_view_sms_student_dmc_wizard" model="ir.actions.act_window">
-            <field name="name">Print DMCs</field>
+            <field name="name">Print DMC</field>
             <field name="res_model">sms.student.exam.dmc</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
