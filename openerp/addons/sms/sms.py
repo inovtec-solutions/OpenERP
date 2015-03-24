@@ -38,8 +38,6 @@ class sms_academics_session(osv.osv):
             start_date = f.start_date
             end_date = f.end_date
             
-            
-            
             s_year = int(datetime.datetime.strptime(str(f.start_date), '%Y-%m-%d').strftime('%Y'))
             s_month = int(datetime.datetime.strptime(str(f.start_date), '%Y-%m-%d').strftime('%m'))
             s_day = int(datetime.datetime.strptime(str(f.start_date), '%Y-%m-%d').strftime('%d'))
@@ -62,8 +60,7 @@ class sms_academics_session(osv.osv):
                         'start_date':session_start,
                         'end_date':session_end,
                         'state':state,
-                          'academic_session_id':f.id
-                        })
+                        'academic_session_id':f.id})
             return
     
     def _set_name(self, cr, uid, ids, name, args, context=None):
