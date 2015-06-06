@@ -61,11 +61,11 @@ class readmit_student(osv.osv_memory):
         session_id = self.pool.get('sms.academiccalendar').browse(cr,uid,acad_cal).session_id.id
         current_month_in_session = self.pool.get('sms.session.months').search(cr,uid,[('session_id','=',session_id),('session_month_id','=',current_month)])[0]
         counted_month =  int(current_month_in_session) - int(fee_starting_month)
-        this_class_fees = self.pool.get('smsfee.classes.fees').search(cr, uid, [('academic_cal_id','=', acad_cal),('fee_structure_id','=', fee_str)])
+        this_class_fees = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('academic_cal_id','=', acad_cal),('fee_structure_id','=', fee_str)])
         if this_class_fees:
             total = 0
             for class_fee in this_class_fees:
-                obj = self.pool.get('smsfee.classes.fees').browse(cr,uid,class_fee)
+                obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,class_fee)
                 fs = obj.fee_structure_id.name
                 ft = obj.fee_type_id.name
                
@@ -125,12 +125,12 @@ class readmit_student(osv.osv_memory):
             self.pool.get('sms.student').write(cr, uid, data['active_id'], {'fee_starting_month':f.fee_starting_month.id,'fee_type':f.fee_structure.id, 'state': 'Admitted', 'current_state': 'Current','admitted_to_class':f.name.id,'admitted_on':datetime.date.today(),'current_class':f.name.id})
             cal_obj = self.pool.get('sms.academiccalendar').browse(cr,uid,f.name.id)
             # Now insert all fees athat are applied on re-adminssion
-            sqlfee1 =  """SELECT smsfee_classes_fees.id,smsfee_feetypes.id,smsfee_feetypes.subtype
-                            FROM smsfee_classes_fees
+            sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id,smsfee_feetypes.id,smsfee_feetypes.subtype
+                            FROM smsfee_academiccalendar_fees
                             INNER JOIN smsfee_feetypes
-                            ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                            WHERE smsfee_classes_fees.academic_cal_id ="""+str(f.name.id)+"""
-                            AND smsfee_classes_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
+                            ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                            WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(f.name.id)+"""
+                            AND smsfee_academiccalendar_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
                             AND smsfee_feetypes.subtype IN('at_admission','Monthly_Fee','Annual_fee')
                             """
             cr.execute(sqlfee1)
@@ -140,7 +140,7 @@ class readmit_student(osv.osv_memory):
                 fee_month = ''
                 for idds in fees_ids:
                     
-                    obj = self.pool.get('smsfee.classes.fees').browse(cr,uid,idds[0])
+                    obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,idds[0])
                     if idds[2] == 'Monthly_Fee':
                         insert_monthly_fee = self.pool.get('smsfee.studentfee').insert_student_monthly_fee(cr,uid,std_id,std_cal_id,f.name.id,f.fee_starting_month.id,idds[0])
                     else:

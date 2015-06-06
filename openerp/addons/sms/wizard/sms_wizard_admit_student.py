@@ -22,7 +22,7 @@ class admit_student(osv.osv_memory):
               'student': fields.many2one('sms.student', 'Student', help="Student to be admitted", readonly = True),
               'academic_session': fields.many2one('sms.academics.session', 'Academic Session', domain="[('state','!=','Closed')]", help="Student will be admitted belongs to selected session"),
               'session': fields.many2one('sms.session', 'Session', domain="[('state','!=','Previous'),('academic_session_id','=',academic_session)]", help="Student will be admitted belongs to selected session"),
-              "name": fields.many2one('sms.academiccalendar', 'Class', domain="[('state','!=','Complete'),('subjects_loaded','=',True),('fee_defined','=',True)]", required=True, help="1: Only Draft & Active Classes are displayed here.\n2: Class Fee must be set before getting admission in that class. "),
+              "name": fields.many2one('sms.academiccalendar', 'Class', domain="[('state','!=','Complete')]", required=True, help="1: Only Draft & Active Classes are displayed here.\n2: Class Fee must be set before getting admission in that class. "),
               'fee_update_till':fields.many2one('sms.session.months','Fee Updated Till'),
               'fee_structure': fields.many2one('sms.feestructure', 'Fee Structure',  required=True, help="Select A Fee Structure for this student."),
               'fee_starting_month': fields.many2one('sms.session.months', 'Starting Fee Month', domain="[('session_id','=',session)]", required=True, help="Select A starting month for fee of this student "),
@@ -45,15 +45,15 @@ class admit_student(osv.osv_memory):
             session_id = self.pool.get('sms.academiccalendar').browse(cr,uid,acad_cal).session_id.id
             current_month_in_session = self.pool.get('sms.session.months').search(cr,uid,[('session_id','=',session_id),('session_month_id','=',current_month)])[0]
             counted_month =  int(current_month_in_session) - int(fee_starting_month)
-#             this_class_fees = self.pool.get('smsfee.classes.fees').search(cr, uid, [('academic_cal_id','=', acad_cal),('fee_structure_id','=', fee_str)])
+#             this_class_fees = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('academic_cal_id','=', acad_cal),('fee_structure_id','=', fee_str)])
             # Get this class admission fee
             
-            sqlfee1 =  """SELECT smsfee_classes_fees.id
-                            FROM smsfee_classes_fees
+            sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id
+                            FROM smsfee_academiccalendar_fees
                             INNER JOIN smsfee_feetypes
-                            ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                            WHERE smsfee_classes_fees.academic_cal_id ="""+str(acad_cal)+"""
-                            AND smsfee_classes_fees.fee_structure_id="""+str(fee_str)+"""
+                            ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                            WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(acad_cal)+"""
+                            AND smsfee_academiccalendar_fees.fee_structure_id="""+str(fee_str)+"""
                             AND smsfee_feetypes.subtype IN('at_admission','Monthly_Fee','Annual_fee')
                             """
             cr.execute(sqlfee1)
@@ -61,7 +61,7 @@ class admit_student(osv.osv_memory):
             if this_class_fees:
                 total = 0
                 for class_fee in this_class_fees:
-                    obj = self.pool.get('smsfee.classes.fees').browse(cr,uid,class_fee[0])
+                    obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,class_fee[0])
                     fs = obj.fee_structure_id.name
                     ft = obj.fee_type_id.name
                    
@@ -124,12 +124,12 @@ class admit_student(osv.osv_memory):
                 #
                 
 #               first insert all non motnly fees(search for fee with subtype at_admission)
-                sqlfee1 =  """SELECT smsfee_classes_fees.id,smsfee_feetypes.id,smsfee_feetypes.subtype
-                            FROM smsfee_classes_fees
+                sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id,smsfee_feetypes.id,smsfee_feetypes.subtype
+                            FROM smsfee_academiccalendar_fees
                             INNER JOIN smsfee_feetypes
-                            ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                            WHERE smsfee_classes_fees.academic_cal_id ="""+str(f.name.id)+"""
-                            AND smsfee_classes_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
+                            ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                            WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(f.name.id)+"""
+                            AND smsfee_academiccalendar_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
                             AND smsfee_feetypes.subtype IN('at_admission','Monthly_Fee','Annual_fee')
                             """
                 cr.execute(sqlfee1)
@@ -140,7 +140,7 @@ class admit_student(osv.osv_memory):
                     fee_month = ''
                     for idds in fees_ids:
                         
-                        obj = self.pool.get('smsfee.classes.fees').browse(cr,uid,idds[0])
+                        obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,idds[0])
                         if idds[2] == 'Monthly_Fee':
                             print "calling method"
                             insert_monthly_fee = self.pool.get('smsfee.studentfee').insert_student_monthly_fee(cr,uid,std_id,std_cal_id,f.name.id,f.fee_starting_month.id,idds[0])
@@ -164,11 +164,11 @@ class admit_student(osv.osv_memory):
                     else:
                           msg = 'Fee May be defined but not set for New Class:'       
 #                 # now insert all month fee , get it from the classes with a fee structure and then insert
-#                     sqlfee2 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+#                     sqlfee2 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
 #                             INNER JOIN smsfee_feetypes
-#                             ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-#                             WHERE smsfee_classes_fees.academic_cal_id ="""+str(f.name.id)+"""
-#                             AND smsfee_classes_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
+#                             ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+#                             WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(f.name.id)+"""
+#                             AND smsfee_academiccalendar_fees.fee_structure_id="""+str(f.fee_structure.id)+"""
 #                             AND smsfee_feetypes.subtype ='Monthly_Fee'
 #                             AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
 #            
@@ -193,7 +193,7 @@ class admit_student(osv.osv_memory):
 #                     for month1 in rec_months:
 #                         late_fee = 0
 #                         for fee in fees_ids2:
-#                             obj3 = self.pool.get('smsfee.classes.fees').browse(cr,uid,fee[0])
+#                             obj3 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,fee[0])
 #                             fee_already_exists =  self.pool.get('smsfee.studentfee').search(cr,uid,[('student_id','=',std_id),('fee_type','>=',obj3.id),('fee_month','>=',month1.id)])
 #                             if fee_already_exists:
 #                                 print "fee already exists"

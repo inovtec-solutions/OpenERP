@@ -23,52 +23,41 @@ class res_company(osv.osv):
     }
 res_company()
 
+class sms_feestructure(osv.osv):
+    """This object inherits sms.feestructure adds new fields ."""
+    _name = 'sms.feestructure'
+    _inherit ='sms.feestructure'
+    _columns = {
+    'classes_ids': fields.one2many('smsfee.class.fees', 'fee_structure_id', 'Classes'), 
+    }
 
+sms_feestructure()
 
 
 class sms_academiccalendar(osv.osv):
     """This object is used to add fields in sms.student"""
     def manage_class_fee(self, cr, uid, ids, context=None):
-        academic_object = self.browse(cr, uid, ids, context=context)
-        acad_cal_id = academic_object[0].id
-        already_exist = academic_object[0].fee_defined
-        if not already_exist:     
-            class_fee_obj = self.pool.get('smsfee.classes.fees')
-             
-            sql_fs = """SELECT id,name from sms_feestructure  ORDER BY name"""
-            cr.execute(sql_fs)
-            fs_rows =  view_res = cr.fetchall()
-             
-            success_create = True
-            for fee_str in fs_rows:
-                fees_str_id =fee_str[0]
-                  
-                sql_ft = """SELECT id,name,subtype from smsfee_feetypes ORDER BY name"""
-                cr.execute(sql_ft)
-                ft_rows =  view_res = cr.fetchall()
-                 
-                if ft_rows:
-                    for fee_type in ft_rows:
-                         created = class_fee_obj.create(cr, uid, {
-                                 'academic_cal_id': acad_cal_id,
-                                 'fee_structure_id':fees_str_id,
-                                 'fee_type_id': fee_type[0],
-                                 'fee_type_subtype': fee_type[2],
-                                 'amount': 0})  
-                         if not created:
-                            success_create = False
-                else:
-                    raise osv.except_osv(('Please Define fee Types'),('Fee Types & Fee Structure both are needed for lass Fee Management'))
-                                 
-            if success_create == True:
-               update = self.write(cr, uid, [acad_cal_id], {'fee_defined':True})
-            else:
-                raise osv.except_osv(('Error'), ('Some Fee Structures Or Fee Types could not be defined. Contact System Administrator.'))    
-        return                
+        academic_objects = self.browse(cr, uid, ids, context=context)
+
+        for academic_object in academic_objects:
+            generic_ids = self.pool.get('smsfee.class.fees').search(cr, uid, [('sms_class_id','=',academic_object.class_id.id)])
+            generic_objs = self.pool.get('smsfee.class.fees').browse(cr, uid, generic_ids, context=context)
+            
+            for generic_obj in generic_objs:
+                smsfee_exist = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('academic_cal_id','=',academic_object.id),
+                        ('fee_structure_id','=',generic_obj.fee_structure_id.id),('fee_type_id','=',generic_obj.fee_type_id.id)])
+                
+                if not smsfee_exist:
+                    created = self.pool.get('smsfee.academiccalendar.fees').create(cr, uid, {
+                         'academic_cal_id': academic_object.id,
+                         'fee_structure_id':generic_obj.fee_structure_id.id,
+                         'fee_type_id': generic_obj.fee_type_id.id,
+                         'amount': generic_obj.amount})                
+        return True           
          
 #============== View of tree ===========================================================================================================         
 #         cr.execute("""select id,name from ir_ui_view 
-#                     where model= 'smsfee.classes.fees' 
+#                     where model= 'smsfee.academiccalendar.fees' 
 #                     and type='tree'""")
 #         view_res = cr.fetchone()
 #          
@@ -77,7 +66,7 @@ class sms_academiccalendar(osv.osv):
 #             'name': 'Fee Management:'+academic_object[0].name,
 #             'view_type': 'form',
 #             'view_mode': 'tree',
-#             'res_model': 'smsfee.classes.fees',
+#             'res_model': 'smsfee.academiccalendar.fees',
 #             'view_id': view_res,
 #             'type': 'ir.actions.act_window'}
     
@@ -86,7 +75,7 @@ class sms_academiccalendar(osv.osv):
     _inherit ='sms.academiccalendar'
         
     _columns = {
-            'fee_structures':fields.one2many('smsfee.classes.fees','academic_cal_id','Fee Structure'),
+            'fee_structures':fields.one2many('smsfee.academiccalendar.fees','academic_cal_id','Fee Structure'),
             'fee_update_till':fields.many2one('sms.session.months','Fee Updated Till'),
             'fee_register':fields.one2many('smsfee.classfees.register','academic_cal_id','Register'),
     }
@@ -116,7 +105,7 @@ class sms_student(osv.osv):
         'target': 'current',
         'context': ctx,
         }
-        print "resssssssul",result
+        
         return result 
     
     def set_paybles(self, cr, uid, ids, context={}, arg=None, obj=None):
@@ -164,7 +153,7 @@ class sms_student(osv.osv):
     }
 sms_student()
 
-class smsfee_generic_classes_fees(osv.osv):
+class smsfee_class_fees(osv.osv):
     
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
         print "generic classes fee write is called"
@@ -177,11 +166,11 @@ class smsfee_generic_classes_fees(osv.osv):
                 acad_cals_ids = self.pool.get('sms.academiccalendar').search(cr, uid, [('class_id','=',class_id),('state','!=','Closed')])
                 if acad_cals_ids:
                     for acad_cal_id in acad_cals_ids:
-                        class_fee_ids = self.pool.get('smsfee.classes.fees').search(cr, uid, [('academic_cal_id','=',acad_cal_id),('fee_type_id','=',ft),('fee_structure_id','=',fs)])
+                        class_fee_ids = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('academic_cal_id','=',acad_cal_id),('fee_type_id','=',ft),('fee_structure_id','=',fs)])
                         print "class_fee_ids:",class_fee_ids
                         if class_fee_ids:
                            for cls_fees_id in class_fee_ids:
-                               update_classes_fee = self.pool.get('smsfee.classes.fees').write(cr, uid, cls_fees_id,{'amount': f.amount})
+                               update_classes_fee = self.pool.get('smsfee.academiccalendar.fees').write(cr, uid, cls_fees_id,{'amount': f.amount})
                         
         return result
     
@@ -194,7 +183,7 @@ class smsfee_generic_classes_fees(osv.osv):
                  if acad_cal_ids:
                      for acad_cal_id in acad_cal_ids:
                          print "calenar",acad_cal_id
-                         create_classes_fee = self.pool.get('smsfee.classes.fees').create(cr, uid, {
+                         create_classes_fee = self.pool.get('smsfee.academiccalendar.fees').create(cr, uid, {
                                                'academic_cal_id':acad_cal_id,
                                                'fee_structure_id':f.fee_structure_id.id,
                                                'fee_type_id': f.fee_type_id.id,
@@ -213,11 +202,11 @@ class smsfee_generic_classes_fees(osv.osv):
                     acad_cals_ids = self.pool.get('sms.academiccalendar').search(cr, uid, [('class_id','=',class_id),('state','!=','Closed')])
                     if acad_cals_ids:
                         for acad_cal_id in acad_cals_ids:
-                            class_fee_ids = self.pool.get('smsfee.classes.fees').search(cr, uid, [('academic_cal_id','=',acad_cal_id),('fee_type_id','=',ft),('fee_structure_id','=',fs)])
+                            class_fee_ids = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('academic_cal_id','=',acad_cal_id),('fee_type_id','=',ft),('fee_structure_id','=',fs)])
                             print "class_fee_ids:",class_fee_ids
                             if class_fee_ids:
                                for cls_fees_id in class_fee_ids:
-                                   delete_classes_fee = self.pool.get('smsfee.classes.fees').unlink(cr, uid, cls_fees_id)
+                                   delete_classes_fee = self.pool.get('smsfee.academiccalendar.fees').unlink(cr, uid, cls_fees_id)
          
          return result 
      
@@ -229,21 +218,21 @@ class smsfee_generic_classes_fees(osv.osv):
              result[f.id] = str(ftyp.name)
         return result
     
-    _name = 'smsfee.generic.classes.fees'
+    _name = 'smsfee.class.fees'
    
     _description = "Stores generic classes fee"
     _order = "sms_class_id"
     _columns = {
         'name':fields.function(_set_name, method=True,  string='Class Fee',type='char'),
         'sms_class_id': fields.many2one('sms.classes','Class',required = True),      
-        'fee_structure_id': fields.many2one('sms.feestructure','Fee Structure',required = True),
-        'fee_type_id': fields.many2one('smsfee.feetypes','Fee',required = True),
+        'fee_structure_id': fields.many2one('sms.feestructure','Fee Structure'),
+        'fee_type_id': fields.many2one('smsfee.feetypes','Fee Type',required = True),
         'amount':fields.integer('Amount'),
     }
     _sql_constraints = [('Class_fee_unique', 'unique (sms_class_id,fee_structure_id,fee_type_id)', """ Generic Class Fee is already Defined Remove Duplication..""")]
-smsfee_generic_classes_fees()
+smsfee_class_fees()
 
-class smsfee_classes_fees(osv.osv):
+class smsfee_academiccalendar_fees(osv.osv):
     
     def get_company(self, cr, uid, ids, context=None):
         cpm_id = self.pool.get('res.users').browse(cr,uid,uid).company_id.id
@@ -268,8 +257,8 @@ class smsfee_classes_fees(osv.osv):
              result[f.id] = str(ftyp.name)
         return result
     
-    _name = 'smsfee.classes.fees'
-    _inherit ='smsfee.classes.fees'
+    _name = 'smsfee.academiccalendar.fees'
+    _inherit ='smsfee.academiccalendar.fees'
    
     _description = "Stores classes fee"
     _order = "fee_structure_id"
@@ -277,11 +266,11 @@ class smsfee_classes_fees(osv.osv):
         'name':fields.function(_set_name, method=True,  string='Class Fee',type='char'),
         'academic_cal_id': fields.many2one('sms.academiccalendar','Academic Calendar',required = True),      
         'fee_structure_id': fields.many2one('sms.feestructure','Fee Structure',required = True),
-        'fee_type_id': fields.many2one('smsfee.feetypes','Fee',required = True),
+        'fee_type_id': fields.many2one('smsfee.feetypes','Fee Type',required = True),
         'amount':fields.integer('Amount'),
     }
     _sql_constraints = [('Class_fee_unique', 'unique (academic_cal_id,fee_structure_id,fee_type_id)', """ Class Fee is already Defined Remove Duplication..""")]
-smsfee_classes_fees()
+smsfee_academiccalendar_fees()
 
 class smsfee_classfees_register(osv.osv):
     
@@ -370,31 +359,7 @@ class smsfee_feetypes(osv.osv):
     
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
         result = super(osv.osv, self).write(cr, uid, ids, vals, context)
-        return result
-    
-    def create(self, cr, uid, vals, context=None, check=True):
-        new_feetype = super(osv.osv, self).create(cr, uid, vals, context) 
-        sql = """SELECT id,name FROM sms_feestructure"""
-        cr.execute(sql)
-        rows = cr.fetchall()
-        if rows:
-            sql = """SELECT DISTINCT sms_classes.id from sms_classes
-                  INNER JOIN sms_academiccalendar ON sms_classes.id = sms_academiccalendar.class_id"""
-            cr.execute(sql)
-            classes = cr.fetchall()
-            print "classes ",classes 
-            if classes:
-                for class_id in classes:
-                   for ft in rows:
-                       
-                       create = self.pool.get('smsfee.generic.classes.fees').create(cr, uid, {
-                               'sms_class_id': class_id,
-                               'fee_structure_id':ft[0],
-                               'fee_type_id': new_feetype,
-                               'amount': 0})   
-         
-            return new_feetype
-    
+        return result   
     
     _name = 'smsfee.feetypes'
     _description = "This object store fee types"
@@ -403,7 +368,7 @@ class smsfee_feetypes(osv.osv):
         'description': fields.char(string = 'Description',size = 100),
         'subtype': fields.selection([('Monthly_Fee','Monthly Fee'),('at_admission','Charged at The Time of Admission'),('Promotion_Fee','Promotion Fee'),('Annual_fee','Annual Fee'),('Refundable','Refundable'),('Other','Other')],'Fee Category',required = True),
         'helptxt': fields.text('Help Text',readonly = True),
-        'classes_ids': fields.one2many('smsfee.generic.classes.fees', 'fee_type_id', 'Classes'),
+        #'classes_ids': fields.one2many('smsfee.class.fees', 'fee_type_id', 'Classes'),
     }
     _sql_constraints = [  
         ('Fee Exisits', 'unique (name)', 'Fee Already exists!')
@@ -459,19 +424,16 @@ class smsfee_studentfee(osv.osv):
         class_fee_updated_till = acad_cal_obj.fee_update_till.id
        
         # Get a record frm sms acad cal classes fees, 
-        acad_cal_fee = self.pool.get('smsfee.classes.fees').browse(cr,uid,acad_cal_fee_id)
+        acad_cal_fee = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,acad_cal_fee_id)
         if acad_cal_fee:
             generic_fee_id = acad_cal_fee.fee_type_id.id
         
         session_months = self.pool.get('sms.session.months').search(cr,uid,[('session_id','=',acad_cal_obj.session_id.id),('id','>=',fee_starting_month),('id','<=',class_fee_updated_till)])
-        print "got session months ",session_months
         if session_months:
             for month in session_months:
-                print "this month",month
                 fee_already_exists =  self.pool.get('smsfee.studentfee').search(cr,uid,[('acad_cal_id','=',acad_cal_id),('student_id','=',ids),('fee_type','=',acad_cal_fee_id),('fee_month','=',month)])
                 
                 if fee_already_exists:
-                    print "fee already exists",month
                     continue
                 else:
                     late_fee = 0
@@ -503,7 +465,7 @@ class smsfee_studentfee(osv.osv):
         'acad_cal_std_id': fields.many2one('sms.academiccalendar.student','Academic Calendar Student'),  
         'date_fee_charged':fields.date('Date Fee Charged'),
         'date_fee_paid':fields.date('Date Fee Paid'),
-        'fee_type':fields.many2one('smsfee.classes.fees','Fee Type'),
+        'fee_type':fields.many2one('smsfee.academiccalendar.fees','Fee Type'),
         'generic_fee_type':fields.many2one('smsfee.feetypes','G.Feetype'),
         'fee_month':fields.many2one('sms.session.months','Fee Month'),
         'due_month':fields.many2one('sms.session.months','Payment Month'),
@@ -774,7 +736,7 @@ class smsfee_fee_adjustment(osv.osv):
                 ft_subtype = self.pool.get('smsfee.feetypes').browse(cr, uid, f.fee_type.id).subtype
                 if ft_subtype == 'Monthly_Fee':
                     fee_month = f.due_month.id
-                classes_fee = self.pool.get('smsfee.classes.fees').search(cr, uid, [('fee_type_id','=',f.fee_type.id),('academic_cal_id','=',f.class_id.id),('fee_structure_id','=',f.fee_structure.id)])
+                classes_fee = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('fee_type_id','=',f.fee_type.id),('academic_cal_id','=',f.class_id.id),('fee_structure_id','=',f.fee_structure.id)])
                 if f.selected:
                     
                  	add_fee = self.pool.get('smsfee.studentfee').create(cr,uid,{
@@ -1138,7 +1100,7 @@ class smsfee_receiptbook_lines(osv.osv):
     _description = "This object store fee types"
     _columns = {
         'name': fields.many2one('sms.academiccalendar','Academic Calendar'),      
-        'fee_type': fields.many2one('smsfee.classes.fees','Fee Type'),
+        'fee_type': fields.many2one('smsfee.academiccalendar.fees','Fee Type'),
         'student_fee_id': fields.many2one('smsfee.studentfee','Student Fee Id'),
         'fee_month': fields.many2one('sms.session.months','Fee Month'),
         'receipt_book_id': fields.many2one('smsfee.receiptbook','Receipt book',required = True),

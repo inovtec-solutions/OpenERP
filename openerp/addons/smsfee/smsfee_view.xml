@@ -29,6 +29,18 @@
 	      </field>
 	    </record>
 	
+	<!--Fee Structure-->
+	<record model="ir.ui.view" id="view_cms_company_form2">
+	      <field name="name">sms.feestructure.form.inherit</field>
+	      <field name="model">sms.feestructure</field>
+	      <field name="inherit_id" ref="sms.view_structure_form"/>
+	      <field name="type">form</field>
+	      <field name="arch" type="xml">
+			<field name="helptxt" position="after">
+            	<field  name="classes_ids" nolabel ="1" />
+             </field>
+	      </field>
+	    </record>
 
 	<!-- sms.student..inherited-->
 		<record model="ir.ui.view" id="inherit_view_sms_student_form">
@@ -76,9 +88,9 @@
 		      <field name="helptxt" position="before">
 			  </field>
 			  <header>
-			  <button name="manage_class_fee" string="Fee Structure" icon="gtk-execute" states="Draft,Active" type="object" class="oe_highlight" groups=""/>
-				<button name= "%(action_update_fee_register)d" string="Update Fee Register" states="Draft,Active"  icon="gtk-execute" type="action"/>
-				<button name="%(action_fee_receipts)d" string="Fee Receipts"  states="Draft,Active" type="action" icon="gtk-print"/>
+			  	<button name="manage_class_fee" string="Update Fee Structure" icon="gtk-execute" states="Active" type="object" class="oe_highlight" groups=""/>
+				<button name= "%(action_update_fee_register)d" string="Update Fee Register" states="Active"  icon="gtk-execute" type="action"/>
+				<button name="%(action_fee_receipts)d" string="Fee Receipts"  states="Active" type="action" icon="gtk-print"/>
 			  </header>
 				<notebook>
 				<page string = "Fee Management">
@@ -132,14 +144,14 @@
 
 <!-- Generic Classes Fee-->
         <record model="ir.ui.view" id="view_generic_classesfee_form">
-         <field name="name">smsfee.generic.classes.fees.form</field>
-         <field name="model">smsfee.generic.classes.fees</field>
+         <field name="name">smsfee.class.fees.form</field>
+         <field name="model">smsfee.class.fees</field>
          <field name="arch" type="xml">
             <form string="Classes Fee" version="7.0">
  			 <sheet>
 					<group string ="Classes Fees Details ">
 							<field name="sms_class_id"  />
-							<field name="fee_structure_id" />
+							<field name="fee_structure_id" invisible ="1"/>
 							<field name="fee_type_id" />
 							<field name="amount" />
 					</group>
@@ -149,22 +161,22 @@
         </record>
 
         <record model="ir.ui.view" id="view_generic_classesfee_tree">
-            <field name="name">smsfee.generic.classes.fees.tree</field>
-            <field name="model">smsfee.generic.classes.fees</field>
+            <field name="name">smsfee.class.fees.tree</field>
+            <field name="model">smsfee.class.fees</field>
             <field name="arch" type="xml">
                 <tree string="Classes Fees" colors="blue:fee_structure_id==1;grey:fee_structure_id ==2;green:fee_structure_id==3" editable="top">
-							<field name="sms_class_id"   />
-							<field name="fee_structure_id"  />
-							<field name="fee_type_id" />
-							<field name="amount" />
+							<field name="sms_class_id"/>
+							<field name="fee_structure_id" invisible ="1"/>
+							<field name="fee_type_id"/>
+							<field name="amount"/>
 				 </tree>
             </field>
         </record>
 
 <!-- sms.Classes Fee-->
         <record model="ir.ui.view" id="view_classesfee_form">
-         <field name="name">smsfee.classes.fees.form</field>
-         <field name="model">smsfee.classes.fees</field>
+         <field name="name">smsfee.academiccalendar.fees.form</field>
+         <field name="model">smsfee.academiccalendar.fees</field>
          <field name="arch" type="xml">
             <form string="Classes Fee" version="7.0">
  			 <sheet>
@@ -179,8 +191,8 @@
         </record>
 
         <record model="ir.ui.view" id="view_classesfee_tree">
-            <field name="name">smsfee.classes.fees.tree</field>
-            <field name="model">smsfee.classes.fees</field>
+            <field name="name">smsfee.academiccalendar.fees.tree</field>
+            <field name="model">smsfee.academiccalendar.fees</field>
             <field name="arch" type="xml">
                 <tree string="Classes Fees" colors="blue:fee_structure_id=='1';grey:fee_structure_id =='2';green:fee_structure_id=='3'" editable="top">
 							<field name="academic_cal_id" readonly ="1" />
@@ -192,8 +204,8 @@
         </record>
 
  <record id="view_sms_classesfees_search" model="ir.ui.view">
-            <field name="name">smsfee.classes.fees.search</field>
-            <field name="model">smsfee.classes.fees</field>
+            <field name="name">smsfee.academiccalendar.fees.search</field>
+            <field name="model">smsfee.academiccalendar.fees</field>
             <field name="arch" type="xml">
                 <search string="Timetable Search">
                     <field name="name" string="name"/>
@@ -203,7 +215,7 @@
 
         <record model="ir.actions.act_window" id="action_classesfee_id">
             <field name="name">Classes Fees</field>
-            <field name="res_model">smsfee.classes.fees</field>
+            <field name="res_model">smsfee.academiccalendar.fees</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -261,7 +273,8 @@
 						<group colspan="3">	
 							<field colspan="3" name="helptxt" nolabel ="1" />
 						</group>
-						</group><field  name="classes_ids" nolabel ="1" />
+						</group>
+						<!--<field  name="classes_ids" nolabel ="1" />-->
 						
 				</sheet>	 	
               </form>

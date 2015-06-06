@@ -18,7 +18,6 @@
 						 <newline/><field name="fee_starting_month"  placeholder = "Fee Starting Month" nolabel = "1"/>
 						 <newline/><field name="fee_class"  placeholder = "Fee Starting Month" nolabel = "1"/>
 						 
-
                     </group>
 					<group><field name="helptext" readonly = "1" nolabel = "1" /></group>
 					</group>

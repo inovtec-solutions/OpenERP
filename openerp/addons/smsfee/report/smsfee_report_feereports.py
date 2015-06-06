@@ -53,7 +53,7 @@ class smsfee_report_feereports(report_sxw.rml_parse):
         return range
     
     def company_name(self, data):  
-        return self.pool.get('smsfee.classes.fees').get_company(self.cr, self.uid,self.uid)
+        return self.pool.get('smsfee.academiccalendar.fees').get_company(self.cr, self.uid,self.uid)
     
     def get_month_name(self, data):  
         return self.pool.get('sms.session.months').browse(self.cr, self.uid,self.datas['form']['month'][0]).name
@@ -131,9 +131,9 @@ class smsfee_report_feereports(report_sxw.rml_parse):
         mydict = {'sno':'SNO','month':'Month','ft1':'--','ft2':'--','ft3':'--','ft4':'--','ft5':'--','other':'Others','total':'TOTAL'}
         
         sql_fs = """ SELECT DISTINCT (smsfee_feetypes.id) FROM smsfee_feetypes
-                    INNER JOIN smsfee_classes_fees
-                    ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                    WHERE  smsfee_classes_fees.academic_cal_id = """+str(cls_id)
+                    INNER JOIN smsfee_academiccalendar_fees
+                    ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                    WHERE  smsfee_academiccalendar_fees.academic_cal_id = """+str(cls_id)
         
         self.cr.execute(sql_fs)
         ft_ids = self.cr.fetchall()
@@ -169,9 +169,9 @@ class smsfee_report_feereports(report_sxw.rml_parse):
             for ft in ft_ids:
                 subtype = self.pool.get('smsfee.feetypes').browse(self.cr, self.uid,ft[0]).subtype
                 sql = """SELECT sum(smsfee_studentfee.paid_amount) FROM smsfee_studentfee
-                         INNER JOIN smsfee_classes_fees
-                         ON smsfee_classes_fees.id = smsfee_studentfee.fee_type  
-                         WHERE smsfee_classes_fees.fee_type_id = """+str(ft[0])+"""
+                         INNER JOIN smsfee_academiccalendar_fees
+                         ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type  
+                         WHERE smsfee_academiccalendar_fees.fee_type_id = """+str(ft[0])+"""
                          AND smsfee_studentfee.state = 'fee_paid'
                          AND acad_cal_id = """+str(cls_id)+"""
                          AND smsfee_studentfee.paid_amount>0
@@ -240,9 +240,9 @@ class smsfee_report_feereports(report_sxw.rml_parse):
             
             for ft in ft_ids:
                 sql = """SELECT sum(smsfee_studentfee.paid_amount) FROM smsfee_studentfee
-                     INNER JOIN smsfee_classes_fees
-                     ON smsfee_classes_fees.id = smsfee_studentfee.fee_type  
-                     WHERE smsfee_classes_fees.fee_type_id = """+str(ft[0])+"""
+                     INNER JOIN smsfee_academiccalendar_fees
+                     ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type  
+                     WHERE smsfee_academiccalendar_fees.fee_type_id = """+str(ft[0])+"""
                      AND smsfee_studentfee.state = 'fee_paid'
                      AND acad_cal_id = """+str(cls.id)+"""
                      AND smsfee_studentfee.paid_amount>0
@@ -277,9 +277,9 @@ class smsfee_report_feereports(report_sxw.rml_parse):
         mydict = {'sno':'SNO','student':'Student','father':'Father','ft1':'','ft2':'','ft3':'','ft4':'','ft5':'','other':'','total':'TOTAL','gtotal':''}
         
         sql_fs = """ SELECT DISTINCT smsfee_feetypes.id,smsfee_feetypes.subtype  FROM smsfee_feetypes
-                     INNER JOIN smsfee_classes_fees
-                     ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                     WHERE  smsfee_classes_fees.academic_cal_id = """+str(cls_id)
+                     INNER JOIN smsfee_academiccalendar_fees
+                     ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                     WHERE  smsfee_academiccalendar_fees.academic_cal_id = """+str(cls_id)
         self.cr.execute(sql_fs)
         ft_ids = self.cr.fetchall()
         
@@ -310,9 +310,9 @@ class smsfee_report_feereports(report_sxw.rml_parse):
             for ft in ft_ids:
                 mydict['ft'+str(j)] = '-'
                 sql = """SELECT smsfee_studentfee.paid_amount,smsfee_studentfee.state FROM smsfee_studentfee
-                         INNER JOIN smsfee_classes_fees
-                         ON smsfee_classes_fees.id = smsfee_studentfee.fee_type  
-                         WHERE smsfee_classes_fees.fee_type_id = """+str(ft[0])+"""
+                         INNER JOIN smsfee_academiccalendar_fees
+                         ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type  
+                         WHERE smsfee_academiccalendar_fees.fee_type_id = """+str(ft[0])+"""
                          AND smsfee_studentfee.student_id = """+str(student.id)+"""
                          AND smsfee_studentfee.acad_cal_id = """+str(cls_id)+"""
                          AND smsfee_studentfee.due_month = """+str(self.datas['form']['month'][0])
@@ -422,8 +422,8 @@ class smsfee_report_feereports(report_sxw.rml_parse):
                 
                 sql = """SELECT smsfee_studentfee.fee_amount, smsfee_studentfee.fee_type,
                          smsfee_studentfee.fee_month  FROM smsfee_studentfee
-                         INNER JOIN smsfee_classes_fees
-                         ON smsfee_classes_fees.id = smsfee_studentfee.fee_type  
+                         INNER JOIN smsfee_academiccalendar_fees
+                         ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type  
                          WHERE smsfee_studentfee.student_id = """+str(student.id)+"""
                          AND smsfee_studentfee.state = 'fee_unpaid'"""
                 self.cr.execute(sql)
@@ -441,7 +441,7 @@ class smsfee_report_feereports(report_sxw.rml_parse):
                             fee_dic['amount'] = "0"
                         else:
                             fee_dic['amount'] = fees[0]    
-                        fee_name = self.pool.get('smsfee.classes.fees').browse(self.cr, self.uid,fees[1] ).name
+                        fee_name = self.pool.get('smsfee.academiccalendar.fees').browse(self.cr, self.uid,fees[1] ).name
                         if fees[2]:
                            fee_month =  self.pool.get('sms.session.months').browse(self.cr, self.uid,fees[2] ).name
                            fee_name = fee_name+"("+fee_month+")"
@@ -541,7 +541,7 @@ class smsfee_report_feereports(report_sxw.rml_parse):
                 for lines in lines_ids:
                     print "fees: ", lines
                     lines_rec = self.pool.get('smsfee.receiptbook.lines').browse(self.cr, self.uid,lines)
-                    ft = self.pool.get('smsfee.classes.fees').browse(self.cr,self.uid, lines_rec.fee_type.id)
+                    ft = self.pool.get('smsfee.academiccalendar.fees').browse(self.cr,self.uid, lines_rec.fee_type.id)
                     fm_id = lines_rec.fee_month.id
                     print fm_id 
                     if fm_id:
@@ -568,7 +568,7 @@ class smsfee_report_feereports(report_sxw.rml_parse):
                     total_paid = total_paid + lines_rec.paid_amount
                     
                      
-#                     fee_name = self.pool.get('smsfee.classes.fees').browse(self.cr, self.uid,fees[1] ).name
+#                     fee_name = self.pool.get('smsfee.academiccalendar.fees').browse(self.cr, self.uid,fees[1] ).name
 #                     if fees[2]:
 #                        fee_month =  self.pool.get('sms.session.months').browse(self.cr, self.uid,fees[2] ).name
 #                        fee_name = fee_name+"("+fee_month+")"
@@ -702,8 +702,8 @@ class smsfee_report_feereports(report_sxw.rml_parse):
 #            (select name from sms_feestructure where id = fee_structure_id),
 #            (select name from sms_session_months where id = due_month)   
 #            FROM smsfee_studentfee
-#            INNER JOIN smsfee_classes_fees
-#            ON smsfee_classes_fees.id = smsfee_studentfee.fee_type  
+#            INNER JOIN smsfee_academiccalendar_fees
+#            ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type  
 #            group by academic_cal_id,fee_structure_id,due month
 #            order by academic_cal_id,fee_structure_id,due_month"""
 
@@ -711,8 +711,8 @@ class smsfee_report_feereports(report_sxw.rml_parse):
              (select name from sms_academiccalendar where id = academic_cal_id), 
              (select name from sms_feestructure where id = fee_structure_id)
              FROM smsfee_studentfee
-             INNER JOIN smsfee_classes_fees
-             ON smsfee_classes_fees.id = smsfee_studentfee.fee_type
+             INNER JOIN smsfee_academiccalendar_fees
+             ON smsfee_academiccalendar_fees.id = smsfee_studentfee.fee_type
              WHERE smsfee_studentfee.date_fee_paid >= '"""+str(this_form['from_date'])+"""'
              AND smsfee_studentfee.date_fee_paid <= '"""+str(this_form['to_date'])+"""'
              group by fee_structure_id, academic_cal_id

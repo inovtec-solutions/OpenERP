@@ -1095,7 +1095,7 @@
          <field name="arch" type="xml">
             <form string="" version="7.0">
  			 <header>
-             <button name="start_class" string="Start Class" states="Draft" type="object" class="oe_highlight" groups="" confirm="Are you sure to start this class?"/>
+             <button name="start_class" string="Start Class" states="Subjects_Loaded" type="object" class="oe_highlight" groups="" confirm="Are you sure to start this class?"/>
 			 <button name="load_subjects" string="Load Subjects" states="Draft"   type="object" class="oe_highlight" groups=""/>
 			 <!--
 			 <button name="load_timetable" string="Load Timetable" states="subjects_loaded" type="object" class="oe_highlight" groups=""/>
@@ -1845,7 +1845,7 @@
 							<field colspan="3" name="helptxt" nolabel ="1" />
 					</group>
 					</group>
-					<field  name="classes_ids" nolabel ="1" />
+					
 				</sheet>	 	
               </form>
             </field>

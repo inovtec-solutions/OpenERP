@@ -22,6 +22,8 @@ class res_company(osv.osv):
     }
     
     _defaults = {
+        'default_gender': lambda *a: 'Male',
+        'default_dmc_format': lambda *a: 'format1',
     }
 res_company()
 
@@ -208,7 +210,6 @@ class sms_session(osv.osv):
         cells = worksheet.ncols - 1
         row = 5
         while row < rows:
-            #print "worksheet.cell_value(row, 0),: ", worksheet.cell_value(row, 1)
             
             sql = """SELECT id from sms_academiccalendar 
             where class_id = (SELECT id from sms_classes where sms_classes.desc = '""" + str(worksheet.cell_value(row, 6)).strip() + """')"""
@@ -541,12 +542,12 @@ class sms_grading_scheme_line(osv.osv):
 sms_grading_scheme_line()
 
 ###################### SMS Fee Classes Fees #######################
-class smsfee_classes_fees(osv.osv):
+class smsfee_academiccalendar_fees(osv.osv):
     """This object is used to store SMS Fee Class"""
-    _name = 'smsfee.classes.fees'
+    _name = 'smsfee.academiccalendar.fees'
     _columns = {
     }
-smsfee_classes_fees()
+smsfee_academiccalendar_fees()
 ###################### SMS Fee Classes Fees #######################
 
 class sms_group(osv.osv):
@@ -651,7 +652,6 @@ class sms_student(osv.osv):
     
     def assign_relation(self, cr, uid, ids, context=None):
 
-        print ids
         result = {
         'type': 'ir.actions.act_window',
         'name': 'Assign Relation',
@@ -663,7 +663,6 @@ class sms_student(osv.osv):
         'domain':{'student_1_1':[('id','in',ids)]},
         'context': context,
         }
-        print result
         return result 
     
     def _is_current_user_admin(self, cr, uid, ids, name, args, context=None):
@@ -1078,14 +1077,8 @@ class sms_academiccalendar(osv.osv):
     
     def change_student_class(self, cr, uid, ids,class_id,new_class_id,new_fs,f_start_month,xx):
         ftlist = []
-                    
-        
-        #delete this from receiptbooklines
-        print "idssssss", ids
-        print "classsss", class_id
         
         cls_fees_ids = self.pool.get('smsfee.studentfee').search(cr,uid,[])
-        print "rrrrrrrrrr", cls_fees_ids
         for rec in cls_fees_ids:
             del_fee1 = """DELETE FROM smsfee_receiptbook_lines WHERE student_fee_id ="""+str(rec)
             cr.execute(del_fee1)
@@ -1131,11 +1124,11 @@ class sms_academiccalendar(osv.osv):
                             ftlist = ftlist+')'
             #               first insert all non motnly fees(search for fee with subtype at_admission) 
                             if ft_ids:
-                                sqlfee1 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                                sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                             INNER JOIN smsfee_feetypes
-                                            ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                            WHERE smsfee_classes_fees.academic_cal_id ="""+str(new_class_id)+"""
-                                            AND smsfee_classes_fees.fee_structure_id="""+str(new_fs)+"""
+                                            ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                            WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(new_class_id)+"""
+                                            AND smsfee_academiccalendar_fees.fee_structure_id="""+str(new_fs)+"""
                                             AND smsfee_feetypes.subtype <>'Monthly_Fee'
                                             AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                                 cr.execute(sqlfee1)
@@ -1143,7 +1136,7 @@ class sms_academiccalendar(osv.osv):
                                 if fees_ids: 
                                     late_fee = 0
                                     for idds in fees_ids:
-                                        obj2 = self.pool.get('smsfee.classes.fees').browse(cr,uid,idds[0])
+                                        obj2 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,idds[0])
                                         crate_fee = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                         'student_id': ids,
                                         'acad_cal_id': new_class_id,
@@ -1160,11 +1153,11 @@ class sms_academiccalendar(osv.osv):
                                 else:
                                       msg = 'Fee May be defined but not set for New Class:'        
             #                 # now insert all month fee , get it from the classes with a fee structure and then insert
-                                sqlfee2 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                                sqlfee2 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                             INNER JOIN smsfee_feetypes
-                                            ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                            WHERE smsfee_classes_fees.academic_cal_id ="""+str(new_class_id)+"""
-                                            AND smsfee_classes_fees.fee_structure_id="""+str(new_fs)+"""
+                                            ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                            WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(new_class_id)+"""
+                                            AND smsfee_academiccalendar_fees.fee_structure_id="""+str(new_fs)+"""
                                             AND smsfee_feetypes.subtype ='Monthly_Fee'
                                             AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                         
@@ -1179,7 +1172,7 @@ class sms_academiccalendar(osv.osv):
                                     if month1.id <= f_start_month:
                                         late_fee = 0
                                         for fee in fees_ids2:
-                                            obj3 = self.pool.get('smsfee.classes.fees').browse(cr,uid,fee[0])
+                                            obj3 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,fee[0])
                                             create_fee2 = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                             'student_id': obj.name.id,
                                             'acad_cal_id': obj.sms_academiccalendar_to.id,
@@ -1217,7 +1210,7 @@ class sms_academiccalendar(osv.osv):
         'subjects_loaded':fields.boolean('Subject Loaded'),
         'timetable_created':fields.boolean('Time Table Created'),
         'fee_defined':fields.boolean('Fee Defined'),
-        'state': fields.selection([('Draft', 'Draft'),('Active', 'Active'),('Complete', 'Complete')], 'States'),
+        'state': fields.selection([('Draft', 'Draft'),('Subjects_Loaded','Subjects Loaded'),('Active', 'Active'),('Complete', 'Complete')], 'States'),
         'date_started':fields.date('Started On'),
         'started_by':fields.many2one('res.users', 'Started By'),
         'date_closed':fields.date('Closed On'),
@@ -1246,15 +1239,11 @@ class sms_academiccalendar(osv.osv):
              raise osv.except_osv(('This Class Belongs to Session'+sess_name),('Which is in Draft State. Please Start This session when current running session is closed. '))
         sub_lst = 'Change Status of Following Subjects.\n' 
         acad_cal = obj[0].id
-        if obj[0].subjects_loaded:
-#             Search Draft Subjects before class is started
-              draft_subj = self.pool.get('sms.academiccalendar.subjects').search(cr, uid, [('academic_calendar','=', acad_cal),('state','=', 'Draft')])
-              if draft_subj:
-                  for sub in draft_subj:
-                    self.pool.get('sms.academiccalendar.subjects').write(cr, uid, sub, {'state': 'Current'})
-              self.write(cr, uid, ids, {'state': 'Active','date_started':datetime.date.today(),'started_by':uid})
-        else:
-             raise osv.except_osv(('Session '), ('Load subjects before starting Class.' ))
+        draft_subj = self.pool.get('sms.academiccalendar.subjects').search(cr, uid, [('academic_calendar','=', acad_cal),('state','=', 'Draft')])
+        if draft_subj:
+            for sub in draft_subj:
+                self.pool.get('sms.academiccalendar.subjects').write(cr, uid, sub, {'state': 'Current'})
+        self.write(cr, uid, ids, {'state': 'Active','date_started':datetime.date.today(),'started_by':uid})
         return True 
     
     
@@ -1280,539 +1269,11 @@ class sms_academiccalendar(osv.osv):
                             'min_require_att': 70,
                             'state': 'Draft',}, context=context)
                          
-                        self.write(cr, uid, ids, {'subjects_loaded':True})
+                        self.write(cr, uid, ids, {'state':'Subjects_Loaded'})
                 else:
                      raise osv.except_osv(('Class Does not Exist '), ('No Default Class Exists for .'+f.class_id.name))         
         return True 
         
-    
-#     def load_students_from_excel(self, cr, uid, data, context):
-#         workbook = xlrd.open_workbook('/home/inovtec/Desktop/Students.xls')
-#         worksheet = workbook.sheet_by_name('Student')
-#         rows = worksheet.nrows - 1
-#         cells = worksheet.ncols - 1
-#         row = 5
-#         while row < rows:
-#             #print "worksheet.cell_value(row, 0),: ", worksheet.cell_value(row, 1)
-#             print "worksheet.cell_value(row, 0),: ", worksheet.cell_value(row, 6)
-#             
-#             sql = """SELECT id from sms_academiccalendar 
-#             where class_id = (SELECT id from sms_classes where sms_classes.desc = '""" + str(worksheet.cell_value(row, 6)).strip() + """')"""
-#             cr.execute(sql)
-#             academic_id = cr.fetchone()[0]
-#             
-#             print "academic_id,: ", academic_id 
-#             
-#         
-#             student_id = self.pool.get('sms.student').create(cr, uid, {
-#                 'name': worksheet.cell_value(row, 4),
-#                 'registration_no': str(academic_id) + "-" +  str(worksheet.cell_value(row, 3)),
-#                 'gender': worksheet.cell_value(row, 18),
-#                 #'birthday': worksheet.cell_value(row, 20),
-#                 'blood_grp': worksheet.cell_value(row, 21),
-#                 'father_name': worksheet.cell_value(row, 5),
-#                 'father_nic': worksheet.cell_value(row, 7),
-#                 'phone': worksheet.cell_value(row, 8),
-#                 'cell_no': worksheet.cell_value(row, 9),
-#                 'cur_address': str(worksheet.cell_value(row, 10)) + ", " + str(worksheet.cell_value(row, 11)) + ", " + str(worksheet.cell_value(row, 12)),
-#                 'cur_city': 'Peshawar', 
-#                 'cur_country': 179,
-#                 'permanent_address': str(worksheet.cell_value(row, 10)) + ", " + str(worksheet.cell_value(row, 11)) + ", " + str(worksheet.cell_value(row, 12)),
-#                 'permanent_city': 'Peshawar', 
-#                 'permanent_country': 179, 
-#                 #'admitted_on': '201-10-01',
-#                 'admitted_to_class': academic_id,
-#                 'previous_school': worksheet.cell_value(row, 16),
-#                 'state': 'Admitted',
-#                 'admitted_on': '2013-04-01', 
-#                 'fee_type': 'normal', }, context=context)
-#             
-#             
-#             student_semester_id = self.pool.get('sms.academiccalendar.student').create(cr, uid, {
-#                 'name': academic_id,
-#                 'std_id': student_id,
-#                 'state': 'Current', 
-#                 'date_registered': '2013-04-01',}, context=context)
-#             
-#             registration_no = self.pool.get('sms.academiccalendar.student')._set_admission_no(cr, uid, student_semester_id,context = None)
-#             self.pool.get('sms.student').write(cr, uid, student_id, {'registration_no': registration_no})
-#             
-#             subject_ids = self.pool.get('sms.academiccalendar.subjects').search(cr, uid, [('academic_calendar','=', academic_id)], context=context)
-#             subject_objects = self.pool.get('sms.academiccalendar.subjects').browse(cr, uid, subject_ids, context=context)
-#             
-#             for subject in subject_objects: 
-#                 self.pool.get('sms.student.subject').create(cr, uid, {
-#                     'student': student_semester_id,
-#                     'subject': subject.id,
-#                     'subject_status': 'Current',}, context=context)       
-# 
-#             row += 1
-#         return {}
-
-    
-    def load_timetable(self, cr, uid, ids, context=None):
-        academic_object = self.browse(cr, uid, ids, context=context)
-        timetable_default_ids = self.pool.get('sms.timetable.default').search(cr, uid, [('name','=', academic_object[0].class_id.id)], context=context)
-        timetable_default_object = self.pool.get('sms.timetable.default').browse(cr, uid, timetable_default_ids, context=context)
-        
-        sub_query = """SELECT id, teacher_id from sms_academiccalendar_subjects
-            where academic_calendar = """ + str(academic_object[0].id)
-        cr.execute(sub_query)
-        sub_records = cr.fetchall()
-        
-        sub_list = []
-        count = 0
-        for sub_record in sub_records:
-            sub_list.append(str(sub_record[0]) + ":" + str(sub_record[1]))
-            count = count + 1
-
-        for row in timetable_default_object:
-            timetable_lines_ids = self.pool.get('sms.timetable.lines.default').search(cr, uid, [('timetable_id','=', row.id)], context=context)
-            timetable_lines_objects = self.pool.get('sms.timetable.lines.default').browse(cr, uid, timetable_lines_ids, context=context)
-            
-            timetable_id = self.pool.get('sms.timetable').create(cr, uid, {
-                        'state': 'Draft',
-                        'start_date': academic_object[0].session_id.start_date,
-                        'end_date': academic_object[0].session_id.end_date,
-                        'academic_id': academic_object[0].id,}, context=context)
-                
-            day_query="""SELECT id, name from sms_day where active = true order by id""" 
-            
-            cr.execute(day_query)
-            day_records = cr.fetchall()
-            
-            
-            time_list = []
-            for record in timetable_lines_objects:
-                if record.type == 'Period':
-                    time_list.append(record.timetable_slot_id.name)
-            
-            list = self.check_clash_all(cr,uid,sub_list, time_list, count)
-            sub_list = list.split(",");
-                   
-            for day_record in day_records:
-                i = 0
-                for record in timetable_lines_objects:
-                    teacher_id = sub_list[i].split(":")[1]
-                    day_id = day_record[0]
-                    slot_name = record.timetable_slot_id.name
-                     
-                    #is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,teacher_id, day_id, slot_name)
-                    #if not is_clash:
-                    if record.type == 'Period':
-                        self.pool.get('sms.timetable.lines').create(cr, uid, {
-                        'is_lab': False,
-                        'type': record.type,
-                        'period_break_no': record.period_break_no,
-                        'subject_id': sub_list[i].split(":")[0],
-                        'teacher_id': sub_list[i].split(":")[1],
-                        'day_id': day_record[0],
-                        'timetable_slot_id': record.timetable_slot_id.id,
-                        'timetable_id': timetable_id,}, context=context)
-                        i = i + 1
-                         
-                    else:
-                        self.pool.get('sms.timetable.lines').create(cr, uid, {
-                        'type': record.type,
-                        'period_break_no': record.period_break_no,
-                        'day_id': day_record[0],
-                        'timetable_slot_id': record.timetable_slot_id.id,
-                        'timetable_id': timetable_id,}, context=context)
-                    if count == i:
-                        break
-            self.write(cr, uid, ids, {'state': 'timetable_loaded'})
-        return True 
-    
-    def check_clash_all(self, cr, uid, sub_list, slot_list, size, context=None):
-        
-        break_value = '0'
-        is_break = False
-        count = 0
-        
-        for a in range(0, size):
-            if is_break:
-                if break_value == 'a': 
-                    is_break = False
-                else: break
-            if size == 1:
-                is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                if is_clash:
-                    break_value = '0'
-                    is_break = True
-                    break
-                return sub_list[a]
-                
-            else:
-                for b in range(0, size):
-                    if is_break:
-                        if break_value == 'b': 
-                            is_break = False
-                        else: break
-                    if size == 2:
-                        if(a != b):
-                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                            if is_clash:
-                                break_value = 'a'
-                                is_break = True
-                                break
-                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                            if is_clash:
-                                break_value = 'a'
-                                is_break = True
-                                break
-                            return sub_list[a] + "," + sub_list[b]
-                    else:
-                        for c in range(0, size):
-                            if is_break:
-                                if break_value == 'c': 
-                                    is_break = False
-                                else: break
-        
-                            if size == 3:
-                                if(a != b and a != c and b != c):
-                                    
-                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                    if is_clash:
-                                        break_value = 'a'
-                                        is_break = True
-                                        break
-                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                    if is_clash:
-                                        break_value = 'b'
-                                        is_break = True
-                                        break
-                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                    if is_clash:
-                                        break_value = 'b'
-                                        is_break = True
-                                        break
-                                    return sub_list[a] + "," + sub_list[b] + "," + sub_list[c]
-                            else:
-                                for d in range(0, size):
-                                    if is_break:
-                                        if break_value == 'd': 
-                                            is_break = False
-                                        else: break
-            
-                                    if size == 4:
-                                        if(a != b and a != c and a != d and b != c  and b != d and c != d):
-                                            
-                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                            if is_clash:
-                                                break_value = 'a'
-                                                is_break = True
-                                                break
-                                           
-                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                            if is_clash:
-                                                break_value = 'b'
-                                                is_break = True
-                                                break
-                                            
-                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                            if is_clash:
-                                                break_value = 'c'
-                                                is_break = True
-                                                break
-                                            
-                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                            if is_clash:
-                                                break_value = 'c'
-                                                is_break = True
-                                                break
-                                            
-                                            return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d]
-                                    else:
-                                        for e in range(0, size):
-                                            if is_break:
-                                                if break_value == 'e': 
-                                                    is_break = False
-                                                else: break
-                                            if size == 5:
-                                                if(a != b and a != c and a != d and a != e and b != c  and b != d and b != e and c != d and c != e and d != e):
-                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                    if is_clash:
-                                                        break_value = 'a'
-                                                        is_break = True
-                                                        break
-                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                    if is_clash:
-                                                        break_value = 'b'
-                                                        is_break = True
-                                                        break
-                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                    if is_clash:
-                                                        break_value = 'c'
-                                                        is_break = True
-                                                        break
-                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                    if is_clash:
-                                                        break_value = 'd'
-                                                        is_break = True
-                                                        break
-                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                    if is_clash:
-                                                        break_value = 'd'
-                                                        is_break = True
-                                                        break
-
-                                                    
-                                                    return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d]+ "," + sub_list[e]
-                                            else:
-                                                for f in range(0, size):
-                                                    if is_break:
-                                                        if break_value == 'f': 
-                                                            is_break = False
-                                                        else: break
-                                                    if size == 6:
-                                                        if(a != b and a != c and a != d and a != e and a != f and b != c  and b != d and b != e and b != f and c != d and c != e and c != f and d != e and d != f and e != f):
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                            if is_clash:
-                                                                break_value = 'a'
-                                                                is_break = True
-                                                                break
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                            if is_clash:
-                                                                break_value = 'b'
-                                                                is_break = True
-                                                                break
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                            if is_clash:
-                                                                break_value = 'c'
-                                                                is_break = True
-                                                                break
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                            if is_clash:
-                                                                break_value = 'd'
-                                                                is_break = True
-                                                                break
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                            if is_clash:
-                                                                break_value = 'e'
-                                                                is_break = True
-                                                                break
-                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[f].split(":")[1], slot_list[5])
-                                                            if is_clash:
-                                                                break_value = 'e'
-                                                                is_break = True
-                                                                break
-                                                            
-                                                            return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d]+ "," + sub_list[e]+ "," + sub_list[e]
-                                                    else:
-                                                        for g in range(0, size):
-                                                            if is_break:
-                                                                if break_value == 'f': 
-                                                                    is_break = False
-                                                                else: break
-                                                            if size == 7:
-                                                                if(a != b and a != c and a != d and a != e and a != f and a != g and b != c  and b != d and b != e and b != f and b != g and c != d and c != e and c != f and c != g and d != e and d != f and d != g and e != f and e != g and f != g ):
-
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                                    if is_clash:
-                                                                        break_value = 'a'
-                                                                        is_break = True
-                                                                        break
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                                    if is_clash:
-                                                                        break_value = 'b'
-                                                                        is_break = True
-                                                                        break
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                                    if is_clash:
-                                                                        break_value = 'c'
-                                                                        is_break = True
-                                                                        break
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                                    if is_clash:
-                                                                        break_value = 'd'
-                                                                        is_break = True
-                                                                        break
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                                    if is_clash:
-                                                                        break_value = 'e'
-                                                                        is_break = True
-                                                                        break
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[f].split(":")[1], slot_list[5])
-                                                                    if is_clash:
-                                                                        break_value = 'f'
-                                                                        is_break = True
-                                                                        break
-                                                                                                                                        
-                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[g].split(":")[1], slot_list[6])
-                                                                    if is_clash:
-                                                                        break_value = 'f'
-                                                                        is_break = True
-                                                                        break
-                                                                    
-                                                                    
-                                                                    return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d] + "," + sub_list[e] + "," + sub_list[f]+ "," + sub_list[g]
-                                                            else:
-                                                                for h in range(0, size):
-                                                                    if is_break:
-                                                                        if break_value == 'h': 
-                                                                            is_break = False
-                                                                        else: break
-                                                                    if size == 8:
-                                                                        if(a != b and a != c and a != d and a != e and a != f and a != g and a != h and b != c  and b != d and b != e and b != f and b != g and b != h and c != d and c != e and c != f and c != g and c != h and d != e and d != f and d != g and d != h and e != f and e != g and e != h and f != g and f != h and g != h):
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                                            if is_clash:
-                                                                                break_value = 'a'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                                            if is_clash:
-                                                                                break_value = 'b'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                                            if is_clash:
-                                                                                break_value = 'c'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                                            if is_clash:
-                                                                                break_value = 'd'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                                            if is_clash:
-                                                                                break_value = 'e'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[f].split(":")[1], slot_list[5])
-                                                                            if is_clash:
-                                                                                break_value = 'f'
-                                                                                is_break = True
-                                                                                break
-                                                                                                                                                
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[g].split(":")[1], slot_list[6])
-                                                                            if is_clash:
-                                                                                break_value = 'g'
-                                                                                is_break = True
-                                                                                break
-                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[h].split(":")[1], slot_list[7])
-                                                                            if is_clash:
-                                                                                break_value = 'g'
-                                                                                is_break = True
-                                                                                break
-                                                                            
-                                                                            return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d] + "," + sub_list[e] + "," + sub_list[f] + "," + sub_list[g] + "," + sub_list[h]
-                                                                    else:
-                                                                        for i in range(0, size):
-                                                                            if is_break:
-                                                                                if break_value == 'i': 
-                                                                                    is_break = False
-                                                                                else: break
-                                                                            if size == 9:
-                                                                                if(a != b and a != c and a != d and a != e and a != f and a != g and a != h and a != i and b != c  and b != d and b != e and b != f and b != g and b != h and b != i and c != d and c != e and c != f and c != g and c != h and c != i and d != e and d != f and d != g and d != h and d != i and e != f and e != g and e != h and e != i and f != g and f != h and f != i and g != h and g != i and h != i):
-                                                                                    
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                                                    if is_clash:
-                                                                                        break_value = 'a'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                                                    if is_clash:
-                                                                                        break_value = 'b'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                                                    if is_clash:
-                                                                                        break_value = 'c'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                                                    if is_clash:
-                                                                                        break_value = 'd'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                                                    if is_clash:
-                                                                                        break_value = 'e'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[f].split(":")[1], slot_list[5])
-                                                                                    if is_clash:
-                                                                                        break_value = 'f'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                                                                                        
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[g].split(":")[1], slot_list[6])
-                                                                                    if is_clash:
-                                                                                        break_value = 'g'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[h].split(":")[1], slot_list[7])
-                                                                                    if is_clash:
-                                                                                        break_value = 'h'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[i].split(":")[1], slot_list[8])
-                                                                                    if is_clash:
-                                                                                        break_value = 'h'
-                                                                                        is_break = True
-                                                                                        break
-                                                                                    
-                                                                                    return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d] + "," + sub_list[e] + "," + sub_list[f] + "," + sub_list[g] + "," + sub_list[h] + "," + sub_list[i]
-                                                                            else:
-                                                                                for j in range(0, size):
-                                                                                    if size == 10:
-                                                                                        if(a != b and a != c and a != d and a != e and a != f and a != g and a != h and a != i and a != j and b != c  and b != d and b != e and b != f and b != g and b != h and b != i and b != j and c != d and c != e and c != f and c != g and c != h and c != i and c != j and d != e and d != f and d != g and d != h and d != i and d != j and e != f and e != g and e != h and e != i and e != j and f != g and f != h and f != i and f != j and g != h and g != i and g != j and h != i and h != j and i != j):
-                                                                                            
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[a].split(":")[1], slot_list[0])
-                                                                                            if is_clash:
-                                                                                                break_value = 'a'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[b].split(":")[1], slot_list[1])
-                                                                                            if is_clash:
-                                                                                                break_value = 'b'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[c].split(":")[1], slot_list[2])
-                                                                                            if is_clash:
-                                                                                                break_value = 'c'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[d].split(":")[1], slot_list[3])
-                                                                                            if is_clash:
-                                                                                                break_value = 'd'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[e].split(":")[1], slot_list[4])
-                                                                                            if is_clash:
-                                                                                                break_value = 'e'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[f].split(":")[1], slot_list[5])
-                                                                                            if is_clash:
-                                                                                                break_value = 'f'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                                                                                                
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[g].split(":")[1], slot_list[6])
-                                                                                            if is_clash:
-                                                                                                break_value = 'g'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[h].split(":")[1], slot_list[7])
-                                                                                            if is_clash:
-                                                                                                break_value = 'h'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[i].split(":")[1], slot_list[8])
-                                                                                            if is_clash:
-                                                                                                break_value = 'i'
-                                                                                                is_break = True
-                                                                                                break
-                                                                                            is_clash = self.pool.get('sms.timetable.lines').check_clash(cr,uid,sub_list[j].split(":")[1], slot_list[9])
-                                                                                            if is_clash:
-                                                                                                break_value = 'i'
-                                                                                                is_break = True
-                                                                                                break
-
-                                                                                            return sub_list[a] + "," + sub_list[b] + "," + sub_list[c] + "," + sub_list[d] + ":" + sub_list[e] + "," + sub_list[f] + "," + sub_list[g] + "," + sub_list[h] + "," + sub_list[i] + "," + sub_list[j]
-    
     def close_class(self, cr, uid, ids, *args):
         self.write(cr, uid, ids, {'state': 'Complete'})
         return True  
@@ -1950,17 +1411,6 @@ class sms_academiccalendar_subjects(osv.osv):
     
     def create(self, cr, uid, vals, context=None, check=True):
         new_fs = super(osv.osv, self).create(cr, uid, vals, context)
-        
-#         if rows:
-#             acad_cal = self.pool.get('sms.academiccalendar').search(cr, uid, [('fee_defined','=',True),('state','!=','Closed')], context=context)
-#             if acad_cal:
-#                 for acad in acad_cal:
-#                    for ft in rows:
-#                        create = self.pool.get('smsfee.classes.fees').create(cr, uid, {
-#                               'academic_cal_id': acad,
-#                               'fee_structure_id':new_fs,
-#                               'fee_type_id': ft[0],
-#                               'amount': 0})  
         return new_fs
     
     _name = 'sms.academiccalendar.subjects'
@@ -2262,9 +1712,7 @@ class sms_timetable_lines(osv.osv):
         slot_end_time =  slot_end_time_hour * 60 + slot_end_time_min
 
         timetable_lines_ids = self.pool.get('sms.timetable.lines').search(cr,uid,[('teacher_id','=',teacher_id)])
-        print "iidddsss", timetable_lines_ids
         timetable_lines_objs = self.pool.get('sms.timetable.lines').browse(cr, uid, timetable_lines_ids, context=context)
-        print "objjjjcs", timetable_lines_objs
         for rec in timetable_lines_objs:
             start_time_hour = rec.timetable_slot_id.start_time.hour
             start_time_min = rec.timetable_slot_id.start_time.minute
@@ -2541,7 +1989,7 @@ class sms_feestructure(osv.osv):
             if classes:
                 for class_id in classes:
                    for ft in rows:
-                       create = self.pool.get('smsfee.generic.classes.fees').create(cr, uid, {
+                       create = self.pool.get('smsfee.class.fees').create(cr, uid, {
                                'sms_class_id': class_id,
                                'fee_structure_id':new_fs,
                                'fee_type_id': ft[0],
@@ -2558,7 +2006,6 @@ class sms_feestructure(osv.osv):
         'name': fields.char(string = 'Structure',size = 100,required = True),      
         'description': fields.char(string = 'description',size = 100),
         'helptxt': fields.text('Help Text',readonly = True),
-        'classes_ids': fields.one2many('smsfee.generic.classes.fees', 'fee_structure_id', 'Classes'),
     }
     _sql_constraints = [  
         ('Fee Exisits', 'unique(name)', 'Feestructure Already exists!')
@@ -2921,7 +2368,6 @@ class sms_student_promotion(osv.osv):
         
     def change_student_class_Journal_enteries(self, cr, uid, ids,current_class_id):
         ftlist = []
-        print "student_id,", ids
         acad_cal = self.pool.get('sms.academiccalendar').browse(cr,uid,obj.current_class_id)
         acd_cal_name = acad_cal.name
         user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
@@ -3054,11 +2500,11 @@ class sms_student_promotion(osv.osv):
                         ftlist = ftlist+')'
         #               first insert all non motnly fees(search for fee with subtype at_admission) 
                         if ft_ids:
-                            sqlfee1 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                            sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                                 INNER JOIN smsfee_feetypes
-                                                ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                                WHERE smsfee_classes_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
-                                                AND smsfee_classes_fees.fee_structure_id="""+str(obj.fee_str.id)+"""
+                                                ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                                WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
+                                                AND smsfee_academiccalendar_fees.fee_structure_id="""+str(obj.fee_str.id)+"""
                                                 AND smsfee_feetypes.subtype <>'Monthly_Fee'
                                                 AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                             cr.execute(sqlfee1)
@@ -3066,7 +2512,7 @@ class sms_student_promotion(osv.osv):
                             if fees_ids: 
                                 late_fee = 0
                                 for idds in fees_ids:
-                                    obj2 = self.pool.get('smsfee.classes.fees').browse(cr,uid,idds[0])
+                                    obj2 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,idds[0])
                                     crate_fee = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                     'student_id': ids,
                                     'acad_cal_id': new_class_id,
@@ -3082,11 +2528,11 @@ class sms_student_promotion(osv.osv):
                             else:
                                   msg = 'Fee May be defined but not set for New Class:'        
         #                 # now insert all month fee , get it from the classes with a fee structure and then insert
-                            sqlfee2 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                            sqlfee2 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                         INNER JOIN smsfee_feetypes
-                                        ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                        WHERE smsfee_classes_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
-                                        AND smsfee_classes_fees.fee_structure_id="""+str(obj.fee_str.id)+"""
+                                        ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                        WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
+                                        AND smsfee_academiccalendar_fees.fee_structure_id="""+str(obj.fee_str.id)+"""
                                         AND smsfee_feetypes.subtype ='Monthly_Fee'
                                         AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                     
@@ -3101,7 +2547,7 @@ class sms_student_promotion(osv.osv):
                                 if month1.id <= updated_month:
                                     late_fee = 0
                                     for fee in fees_ids2:
-                                        obj3 = self.pool.get('smsfee.classes.fees').browse(cr,uid,fee[0])
+                                        obj3 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,fee[0])
                                         create_fee2 = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                         'student_id': obj.name.id,
                                         'acad_cal_id': obj.sms_academiccalendar_to.id,
@@ -3184,18 +2630,18 @@ class sms_student_promotion(osv.osv):
                     ftlist = ftlist+')'
                     if ft_ids:
                          
-                        sqlfee1 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                        sqlfee1 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                         INNER JOIN smsfee_feetypes
-                                        ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                        WHERE smsfee_classes_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
-                                        AND smsfee_classes_fees.fee_structure_id="""+str(std_fs)+"""
+                                        ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                        WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
+                                        AND smsfee_academiccalendar_fees.fee_structure_id="""+str(std_fs)+"""
                                         AND smsfee_feetypes.subtype <>'Monthly_Fee'
                                         AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                         cr.execute(sqlfee1)
                         fees_ids = cr.fetchall()  
                         if fees_ids:
                             for idds in fees_ids:
-                                obj2 = self.pool.get('smsfee.classes.fees').browse(cr,uid,idds[0])
+                                obj2 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,idds[0])
                                 crate_fee = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                 'student_id': obj.student.id,
                                 'acad_cal_id': obj.sms_academiccalendar_to.id,
@@ -3210,11 +2656,11 @@ class sms_student_promotion(osv.osv):
                           msg = 'Fee May be defined but not set for New Class:'  
                           
                         # now insert all monthly fee , get it from the classes with a fee structure and then insert
-                        sqlfee2 =  """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                        sqlfee2 =  """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                 INNER JOIN smsfee_feetypes
-                                ON smsfee_feetypes.id = smsfee_classes_fees.fee_type_id
-                                WHERE smsfee_classes_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
-                                AND smsfee_classes_fees.fee_structure_id="""+str(std_fs)+"""
+                                ON smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id
+                                WHERE smsfee_academiccalendar_fees.academic_cal_id ="""+str(obj.sms_academiccalendar_to.id)+"""
+                                AND smsfee_academiccalendar_fees.fee_structure_id="""+str(std_fs)+"""
                                 AND smsfee_feetypes.subtype ='Monthly_Fee'
                                 AND smsfee_feetypes.id IN"""+str(ftlist)+""""""
                 
@@ -3230,7 +2676,7 @@ class sms_student_promotion(osv.osv):
                             if month1.id <= updated_month:
                                
                                 for fee in fees_ids2:
-                                    obj3 = self.pool.get('smsfee.classes.fees').browse(cr,uid,fee[0])
+                                    obj3 = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,fee[0])
                                     create_fee2 = self.pool.get('smsfee.studentfee').create(cr,uid,{
                                     'student_id': obj.student.id,
                                     'acad_cal_id': obj.sms_academiccalendar_to.id,
@@ -3303,13 +2749,6 @@ class sms_student_change_section(osv.osv):
                 std_subs = self.pool.get('sms.student.subject').search(cr,uid,[('student','=',obj.sms_academiccalendar_student.id),('subject_status','=','Current')])
                 for sub in std_subs:
                     add_subs = self.pool.get('sms.student.subject').write(cr,uid,sub,{'subject_status': 'Suspended'})
-                #udpate academic calendar old object strength redude by 1 
-#                 print "old acad cal::",obj.sms_academiccalendar_student_from.id
-#                 print "new acad_cal::",obj.sms_academiccalendar_to.id
-#                 cal_obj = self.pool.get('sms.academiccalendar').browse(cr,uid,obj.sms_academiccalendar_student_from)
-#                 cur_strength = cal_obj.cur_strength
-#                 cur_strength = int(cur_strength) - 1
-#                 update_acad_cal = self.pool.get('sms.academiccalendar').write(cr, uid, obj.sms_academiccalendar_student_from.id, {'cur_strength':cur_strength})
       
             if obj.change_section:
                 acad_student = self.pool.get('sms.academiccalendar.student').search(cr,uid,[('name','=',obj.sms_academiccalendar_to.id),('std_id','=',obj.student.id)])
@@ -3330,14 +2769,6 @@ class sms_student_change_section(osv.osv):
                         'state':'Current' })
                     if academiccalendar_student:
                         update_std = self.pool.get('sms.student').write(cr, uid, [obj.student.id], {'current_class':obj.sms_academiccalendar_to.id})
-    #                     #udpate academic calendar new object strength increment by 1
-    #                     cal_obj = self.pool.get('sms.academiccalendar').browse(cr,uid,obj.sms_academiccalendar_to.id)
-    #                     cur_strength = cal_obj.cur_strength
-    #                     print 
-    #                     cur_strength = int(cur_strength) + 1
-    #                     update_acad_cal = self.pool.get('sms.academiccalendar').write(cr, uid, obj.sms_academiccalendar_student_from.id, {'cur_strength':cur_strength})
-                        
-                        #uadd subjects to students
                         acad_subs = self.pool.get('sms.academiccalendar.subjects').search(cr,uid,[('academic_calendar','=',obj.sms_academiccalendar_to.id),('state','!=','Closed')])
                         for sub in acad_subs:
                             add_subs = self.pool.get('sms.student.subject').create(cr,uid,{
@@ -3478,8 +2909,6 @@ class sms_student_clearance(osv.osv):
             #execute these changes
             cr.execute(sql)
             row = cr.fetchone()
-#            print obj.name.id #just to check that obj.name.id is fetching vlaue or not
-#            print certificate.id #just to check that certificate.id is fetching vlaue or not
 
             #To check whether a student has already been issued a certificate?, check any id exist in sms.student.certificate object for selected student and selected certificate
             id_exist = self.pool.get('sms.student.certificate').search(cr, uid, [('name','=', obj.name.id),('certificate','=', certificate.id)])

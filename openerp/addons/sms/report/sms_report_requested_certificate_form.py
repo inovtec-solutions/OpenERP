@@ -18,11 +18,11 @@ class crossovered_analytic(report_sxw.rml_parse):
         self.base_amount = 0.00
     
     def company_name(self, data):  
-        company = self.pool.get('smsfee.classes.fees').get_company(self.cr, self.uid,self.uid)
+        company = self.pool.get('smsfee.academiccalendar.fees').get_company(self.cr, self.uid,self.uid)
         return company
     
     def company_address(self, data):  
-        company = self.pool.get('smsfee.classes.fees').get_company(self.cr, self.uid,self.uid)
+        company = self.pool.get('smsfee.academiccalendar.fees').get_company(self.cr, self.uid,self.uid)
         street = company.rml_header2
         print "address:",street
         return street

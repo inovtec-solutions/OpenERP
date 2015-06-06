@@ -81,13 +81,13 @@ class update_fee_register(osv.osv_memory):
                                 std_feestr = std_obj.fee_type.id
                                 total_paybles = std_obj.total_paybles
                                 # get monthly fees from classes fee with fee structure define with student,with subtype monthly fee
-    #                             monthly_feeids = self.pool.get('smsfee.classes.fees').search(cr,uid,[('fee_structure_id','=',std_feestr),('academic_cal_id','=',acad_cal),('fee_type_subtype','=','Monthly_Fee')])
+    #                             monthly_feeids = self.pool.get('smsfee.academiccalendar.fees').search(cr,uid,[('fee_structure_id','=',std_feestr),('academic_cal_id','=',acad_cal),('fee_type_subtype','=','Monthly_Fee')])
                                                                
                                 ft_idss2 = self.pool.get('smsfee.feetypes').search(cr,uid,[('subtype','=','Monthly_Fee')])
                                 for ft in ft_idss2:
-                                    sqlfee2 = """SELECT smsfee_classes_fees.id from smsfee_classes_fees
+                                    sqlfee2 = """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
                                                 INNER JOIN smsfee_feetypes
-                                                on smsfee_feetypes.id = smsfee_classes_fees.fee_type_id WHERE
+                                                on smsfee_feetypes.id = smsfee_academiccalendar_fees.fee_type_id WHERE
                                                 academic_cal_id ="""+str(acad_cal)+""" AND fee_structure_id="""+str(std_feestr)+"""
                                                 AND smsfee_feetypes.id ="""+str(ft)+""""""
                                     cr.execute(sqlfee2)
@@ -95,7 +95,7 @@ class update_fee_register(osv.osv_memory):
                                      
                                     for feetype in monthly_feeids:
                                         print "fee type id::",feetype[0]
-                                        cls_fee_obj = self.pool.get('smsfee.classes.fees').browse(cr,uid,feetype[0])
+                                        cls_fee_obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,feetype[0])
                                         print "fee_month:",month
                                         print "std_id:",std_id
                                         print "fts:",ft
@@ -139,9 +139,9 @@ class update_fee_register(osv.osv_memory):
                  for idss in acad_cal_stdids_rec:
                      student_rec = self.pool.get('sms.student').browse(cr,uid,idss.std_id.id)
                      if fee_subtype == 'Other':
-                         classes_fee = self.pool.get('smsfee.classes.fees').search(cr, uid, [('fee_type_id','=',f.fee_type.id),('academic_cal_id','=',acad_cal),('fee_structure_id','=',student_rec.fee_type.id)])
+                         classes_fee = self.pool.get('smsfee.academiccalendar.fees').search(cr, uid, [('fee_type_id','=',f.fee_type.id),('academic_cal_id','=',acad_cal),('fee_structure_id','=',student_rec.fee_type.id)])
                          if classes_fee:
-                             amount = self.pool.get('smsfee.classes.fees').browse(cr,uid,classes_fee[0]).amount
+                             amount = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,classes_fee[0]).amount
                          else:
                               raise osv.except_osv(('No Fee Found For Selected Class'),('Please Define a Fee For Selected Class'))
                      else:
