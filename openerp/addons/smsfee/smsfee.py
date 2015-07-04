@@ -340,21 +340,25 @@ class smsfee_feetypes(osv.osv):
     def onchange_feesubtype(self, cr, uid,ids,selection):
         vals = {}
         
-        if selection == 'Monthly_Fee':
-            vals['helptxt'] = 'Monthly Fee:\n \tUse the type for all fees that the institutes collects on monthly basis.'
-        elif selection == 'at_admission': 
-            vals['helptxt'] = 'Charged at The Time of Admission:\n\t Use this type of fee for all fees that the institutes want to charged at the time of new admission.\n\t Do not use for Refundable Fees.'
-        elif selection == 'Refundable': 
-            vals['helptxt'] = 'Refundable:\n\t Use it for all fees that are to be paid back to students.\n\t Example:\n\t\t Security Fee (At the time of admission)'
-        elif selection == 'Refundable': 
-            vals['helptxt'] = 'Refundable:\n\t Use it for all fees that are to be paid back to students.\n\t Example:\n\t\t Security Fee (At the time of admission)'
-        elif selection == 'Annual_fee': 
-            vals['helptxt'] = 'Annual Fee:\n\t Use this Fee Type for all fees that are charged at the time of students promotions to new classes.\n\t (Fees that are echanged only once within a session.).'
-        elif selection == 'Other': 
-            vals['helptxt'] = 'Other:\n\tUse this Option for the fee that does not match with the available options'  
-        elif selection == 'Promotion_Fee': 
-            vals['helptxt'] = 'Promotion Fee:\n\tFees charged at promotion'  
-        update_lines = self.pool.get('smsfee.feetypes').write(cr, uid, ids, {'helptxt':vals['helptxt']})   
+        if selection == 'Once_Time':
+            vals['helptxt'] = 'Once Time Collections:\n \tUse this type for all fees that the institutes collects Once Time.'
+        if selection == 'Daily':
+            vals['helptxt'] = 'Daily Collections:\n \tUse this type for all fees that the institutes collects on Daily basis.'
+        elif selection == 'Weekly':
+            vals['helptxt'] = 'Weekly Collections:\n \tUse this type for all fees that the institutes collects on Weekly basis.'
+        elif selection == 'Monthly':
+            vals['helptxt'] = 'Monthly Collections:\n \tUse this type for all fees that the institutes collects on Monthly basis.'
+        elif selection == 'Quarter_Yearly':
+            vals['helptxt'] = 'Quarter Yearly Collections:\n \tUse this type for all fees that the institutes collects after every Four Months.'
+        elif selection == 'Half_Yearly':
+            vals['helptxt'] = 'Half Yearly Collections:\n \tUse this type for all fees that the institutes collects after every Six Months.'
+        elif selection == 'Yearly':
+            vals['helptxt'] = 'Yearly Collections:\n \tUse this type for all fees that the institutes collects on Yearly basis.'
+        elif selection == 'Evently':
+            vals['helptxt'] = 'Evently Collections:\n \tUse this type for all fees that the institutes collects for Events (Concerts, Festivals, Movies, Performing arts, Family events, Sports etc.)'
+        elif selection == 'Other':
+            vals['helptxt'] = 'Other Collections:\n \tUse this type for alternate cases.'
+
         return {'value':vals}
     
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
@@ -366,14 +370,14 @@ class smsfee_feetypes(osv.osv):
     _columns = {
         'name': fields.char(string = 'Fee Type',size = 100,required = True),      
         'description': fields.char(string = 'Description',size = 100),
-        'subtype': fields.selection([('Monthly_Fee','Monthly Fee'),('at_admission','Charged at The Time of Admission'),('Promotion_Fee','Promotion Fee'),('Annual_fee','Annual Fee'),('Refundable','Refundable'),('Other','Other')],'Fee Category',required = True),
+        'subtype': fields.selection([('Once_Time','Once Time'),('Daily','Daily'),('Weekly','Weekly'),('Monthly','Monthly'),('Quarter_Yearly','Quarter Yearly'),('Half_Yearly','Half Yearly'),('Yearly','Yearly'),('Evently','Evently'),('Other','Other')],'Charge Fee',required = True),
         'helptxt': fields.text('Help Text',readonly = True),
         #'classes_ids': fields.one2many('smsfee.class.fees', 'fee_type_id', 'Classes'),
     }
     _sql_constraints = [  
         ('Fee Exisits', 'unique (name)', 'Fee Already exists!')
     ] 
-    _defaults = {'helptxt' :'\n\nDefine Your Fee Details Here.\n\n\t1:Admission Fee, \n\t2:Monthly Fee,\n\t3: Security Fee etc.'}
+    _defaults = {'helptxt' :'\n\nDefine Your Fee Details Here.\n\n\t1:Admission Fee, \n\t2:Tuition Fee,\n\t3: Security Fee etc.'}
 smsfee_feetypes()
 
 class smsfee_studentfee(osv.osv):
@@ -719,7 +723,7 @@ class smsfee_fee_adjustment(osv.osv):
         'fee_structure':fields.many2one('sms.feestructure','Fee Structure', readonly=True),
         'class_id':fields.many2one('sms.academiccalendar','Class', readonly=True),
         'fee_type':fields.many2one('smsfee.feetypes','Fee', readonly=True),
-        'fee_subtype': fields.selection([('Monthly_Fee','Monthly Fee'),('at_admission','Charged at The Time of Admission'),('Promotion_Fee','Promotion Fee'),('Annual_fee','Annual Fee'),('Refundable','Refundable'),('Other','Other')],'Fee Category',required = True),
+        'fee_subtype': fields.selection([('Once_Time','Once Time'),('Daily','Daily'),('Weekly','Weekly'),('Monthly','Monthly'),('Quarter_Yearly','Quarter Yearly'),('Half_Yearly','Half Yearly'),('Yearly','Yearly'),('Evently','Evently'),('Other','Other')],'Charge Fee',required = True),
         'due_month': fields.many2one('sms.session.months','Due Month', readonly=True),
         'amount': fields.float('Amount'),
         'selected': fields.boolean('Included'),
