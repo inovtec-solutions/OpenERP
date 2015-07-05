@@ -18,6 +18,7 @@ class exam_entry(osv.osv_memory):
             resource_ids = self.pool.get('resource.resource').search(cr,uid,[('user_id','=',uid)])
             employee_ids = self.pool.get('hr.employee').search(cr,uid,[('resource_id','in',resource_ids)])
         
+        print {'subject_id':[('academic_calendar','=',academiccalendar_id),('teacher_id','in',employee_ids)]}
         return {'domain':{'subject_id':[('academic_calendar','=',academiccalendar_id),('teacher_id','in',employee_ids)]}}
 
     _name = "exam.entry"

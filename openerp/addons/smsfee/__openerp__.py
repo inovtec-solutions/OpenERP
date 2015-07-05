@@ -6,7 +6,7 @@
     'description': """This Module is used for fee management for Compas ManagmentS ystem.""",
     'website': 'http://www.inovtec.com.pk',
     'images': [''],
-    'depends' : ['base','account','account_accountant','sms'],
+    'depends' : ['sms'],
     'data': ['security/smsfee_security.xml',
              'security/ir.model.access.csv',
              'wizard/smsfee_wizard_update_fee_register.xml',

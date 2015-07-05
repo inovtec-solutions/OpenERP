@@ -22,7 +22,7 @@ class admit_student(osv.osv_memory):
               'student': fields.many2one('sms.student', 'Student', help="Student to be admitted", readonly = True),
               'academic_session': fields.many2one('sms.academics.session', 'Academic Session', domain="[('state','!=','Closed')]", help="Student will be admitted belongs to selected session"),
               'session': fields.many2one('sms.session', 'Session', domain="[('state','!=','Previous'),('academic_session_id','=',academic_session)]", help="Student will be admitted belongs to selected session"),
-              "name": fields.many2one('sms.academiccalendar', 'Class', domain="[('state','!=','Complete')]", required=True, help="1: Only Draft & Active Classes are displayed here.\n2: Class Fee must be set before getting admission in that class. "),
+              "name": fields.many2one('sms.academiccalendar', 'Class', domain="[('state','in',['Draft','Subjects_Loaded','Active'])]", required=True, help="1: Only Draft & Active Classes are displayed here.\n2: Class Fee must be set before getting admission in that class. "),
               'fee_update_till':fields.many2one('sms.session.months','Fee Updated Till'),
               'fee_structure': fields.many2one('sms.feestructure', 'Fee Structure',  required=True, help="Select A Fee Structure for this student."),
               'fee_starting_month': fields.many2one('sms.session.months', 'Starting Fee Month', domain="[('session_id','=',session)]", required=True, help="Select A starting month for fee of this student "),

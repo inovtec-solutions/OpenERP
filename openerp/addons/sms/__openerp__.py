@@ -9,7 +9,7 @@ Manage Students records From their Admission Entry to Final Transcript
 Manage Employee records as Teacher Round Report etc""",
     'website': 'http://www.inovtec.com.pk',
     'images': ['images/sms.jpeg'],
-    'depends' : ['base','account','hr','hr_contract','account_accountant','sale','purchase','hr_expense'],
+    'depends' : ['base','account','hr','hr_contract','account_accountant','hr_expense'],
     'data': ['security/sms_security.xml',
              'security/ir.model.access.csv',
              'wizard/sms_wizard_admit_studen.xml',

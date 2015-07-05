@@ -1000,27 +1000,6 @@ class sms_academiccalendar(osv.osv):
                                                     'subject':subject,
                                                     'subject_status':'Current',
                                                     })
-        super(osv.osv, self).write(cr, uid, ids, vals, context)
-        for f in self.browse(cr, uid, ids, context=context):
-            acad_cal_state = f.state
-            if f.state == 'Active':
-                #Step1: make all draft subject to current in this acad cal,
-                cal_subjects = self.pool.get('sms.academiccalendar.subjects').search(cr, uid, [('academic_calendar','=',ids[0]),('state','=','Draft')])
-                if cal_subjects:
-                    for subject in cal_subjects:
-                        make_current =self.pool.get('sms.academiccalendar.subjects').write(cr, uid, subject, {'state':'Current'})
-                        if make_current:
-                            #step 2 add all these subjects to student of this acad_cal
-                            acad_cal_students = self.pool.get('sms.academiccalendar.student').search(cr, uid, [('name','=',ids[0]),('state','=','Current')])
-                            if acad_cal_students:
-                                rec_cal_students = self.pool.get('sms.academiccalendar.student').search(cr, uid,acad_cal_students)
-                                for cal_student in acad_cal_students:
-                                    add_subjects = self.pool.get('sms.academiccalendar.subjects').create(cr, uid, {
-                                                    'student': cal_student.id,
-                                                    'student_id': cal_student.student_id.id,
-                                                    'subject':subject,
-                                                    'subject_status':'Current',
-                                                    })
         return True
     
     def _get_default_group(self, cr, uid, context={}):
@@ -1213,6 +1192,8 @@ class sms_academiccalendar(osv.osv):
         'state': fields.selection([('Draft', 'Draft'),('Subjects_Loaded','Subjects Loaded'),('Active', 'Active'),('Complete', 'Complete')], 'States'),
         'date_started':fields.date('Started On'),
         'started_by':fields.many2one('res.users', 'Started By'),
+        'date_cancelled':fields.date('Cancelled On'),
+        'cancelled_by':fields.many2one('res.users', 'Cancelled By'),
         'date_closed':fields.date('Closed On'),
         'closed_by':fields.many2one('res.users', 'Closed By'),
         'helptxt':fields.text('Help', readonly = True),
@@ -1245,8 +1226,7 @@ class sms_academiccalendar(osv.osv):
                 self.pool.get('sms.academiccalendar.subjects').write(cr, uid, sub, {'state': 'Current'})
         self.write(cr, uid, ids, {'state': 'Active','date_started':datetime.date.today(),'started_by':uid})
         return True 
-    
-    
+        
     def load_subjects(self, cr, uid, ids, context=None):
         for f in self.browse(cr, uid, ids, context=context):
             if f.subjects_loaded:
@@ -1385,17 +1365,7 @@ class sms_academiccalendar_student(osv.osv):
     _sql_constraints = [('name_unique', 'unique (name,std_id,state)', """Student is already registered in selected class. """)]      
     
 class sms_academiccalendar_subjects(osv.osv):
-    """Stores new subjects in newly defined session.add subjects to class"""
-    
-    def unlink(self, cr, uid, ids, context={}, check=True):
-        for rec in self.browse(cr, uid, ids, context):
-
-            if rec.state == 'Draft':
-                result = super(sms_academiccalendar_subjects, self).unlink(cr, uid, [rec.id], context=context)
-            else:
-                raise osv.except_osv(('Not Allowed'), ('Class subjects can only be deleted in Draft State.'))
-        return result
-    
+    """Stores new subjects in newly defined session.add subjects to class"""    
     
     def _set_name(self, cr, uid, ids, name, args, context=None):
         result = {}
@@ -1408,11 +1378,7 @@ class sms_academiccalendar_subjects(osv.osv):
             else:    
                 result[f.id] = str(f.subject_id.name) 
         return result
-    
-    def create(self, cr, uid, vals, context=None, check=True):
-        new_fs = super(osv.osv, self).create(cr, uid, vals, context)
-        return new_fs
-    
+        
     _name = 'sms.academiccalendar.subjects'
     _description = "Defines subjects for new class in session."
     _columns = {
@@ -1422,14 +1388,22 @@ class sms_academiccalendar_subjects(osv.osv):
         'total_marks': fields.float('Total Marks(%)'),
         'passing_marks': fields.float('Passing marks(%)'),
         'min_require_att': fields.float('Attendance Per'),
-        'state': fields.selection([('Draft','Draft'),('Current', 'Current'),('Closed', 'Closed')], 'States'),
+        'state': fields.selection([('Draft','Draft'),('Current', 'Current'),('Closed', 'Closed')], 'State',required=True),
         'teacher_id': fields.many2one('hr.employee','Teacher'),
         'offered_as': fields.selection([('theory','Theory Only'),('theory_practical','Theory + Practical'),('practical','Practical Only')], 'Offered As'),
         'reference_practical_of': fields.many2one('sms.academiccalendar.subjects', 'Main Subject',),
     }
-     
+
+    def unlink(self, cr, uid, ids, context={}, check=True):
+        for rec in self.browse(cr, uid, ids, context):
+            if rec.state == 'Draft':
+                result = super(osv.osv, self).unlink(cr, uid, [rec.id], context)
+            else:
+                raise osv.except_osv(('Not Allowed'), ('Class subjects can only be deleted in Draft State.'))
+        return result
+
     _defaults = {
-        'state': 'Draft',
+        'state': lambda *a: 'Draft',
     }
 #     _sql_constraints = [('name_unique', 'unique (subject_id,academic_calendar)', """Subject Already Added to Class. """)]     
     

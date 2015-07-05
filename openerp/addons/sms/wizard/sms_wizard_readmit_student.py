@@ -44,7 +44,7 @@ class readmit_student(osv.osv_memory):
               'student': fields.many2one('sms.student', 'Student', help="Student to be admitted", readonly = True),
               'academic_session': fields.many2one('sms.academics.session', 'Academic Session', domain="[('state','!=','Closed')]", help="Student will be admitted belongs to selected session"),
               'session': fields.many2one('sms.session', 'Session', domain="[('state','!=','Previous'),('academic_session_id','=',academic_session)]", help="Student will be admitted belongs to selected session"),
-              'name': fields.many2one('sms.academiccalendar', 'Student Class', help="Student class to be re-admitted in"),
+              'name': fields.many2one('sms.academiccalendar', 'Class', domain="[('state','in',['Draft','Subjects_Loaded','Active'])]", help="Student class to be re-admitted in"),
               'fee_structure': fields.many2one('sms.feestructure', 'Fee Structure',  required=True, help="Select A Fee Structure for this student."),
               'fee_starting_month': fields.many2one('sms.session.months', 'Starting Fee Month', required=True, help="Select A starting month for fee of this student "),
               'helptext':fields.char(string ='Help Text',size = 400)

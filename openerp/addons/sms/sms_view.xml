@@ -1189,8 +1189,30 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_session_classes">
-            <field name="name">Academic Calenders</field>
+		<record model="ir.actions.act_window" id="action_session_classes_draft">
+            <field name="name">New/ Draft</field>
+            <field name="res_model">sms.academiccalendar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+			<field name="domain">[('state','=','Draft')]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="search_view_id" ref="view_session_classes_search"/>
+        </record>
+        
+		<record model="ir.actions.act_window" id="action_session_classes_subject_loaded">
+            <field name="name">Subjects Loaded</field>
+            <field name="res_model">sms.academiccalendar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+			<field name="domain">[('state','=','Subjects_Loaded')]</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="search_view_id" ref="view_session_classes_search"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_session_classes_active">
+            <field name="name">Active</field>
             <field name="res_model">sms.academiccalendar</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
@@ -1200,23 +1222,23 @@
             <field name="search_view_id" ref="view_session_classes_search"/>
         </record>
 
-		 <record model="ir.actions.act_window" id="action_session_classes_draft">
-            <field name="name">Academic Calenders(Draft)</field>
+		<record model="ir.actions.act_window" id="action_session_classes_complete">
+            <field name="name">Closed</field>
             <field name="res_model">sms.academiccalendar</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
-			<field name="domain">[('state','=','Draft')]</field>
+			<field name="domain">[('state','=','Complete')]</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{'search_default_draft': 1}</field>
             <field name="search_view_id" ref="view_session_classes_search"/>
         </record>
 
-		 <record model="ir.actions.act_window" id="action_session_classes_complete">
-            <field name="name">Academic Calenders(Draft)</field>
+		<record model="ir.actions.act_window" id="action_session_classes_cancelled">
+            <field name="name">Cancelled</field>
             <field name="res_model">sms.academiccalendar</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
-			<field name="domain">[('state','=','Complete')]</field>
+			<field name="domain">[('state','=','Cancelled')]</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{'search_default_draft': 1}</field>
             <field name="search_view_id" ref="view_session_classes_search"/>
@@ -1329,7 +1351,7 @@
 				<field name="teacher_id"/>
 				<field name="offered_as"/>
 				<field name="reference_practical_of"/>
-				<field name="state" readonly = "1"/>
+				<field name="state" readonly="1"/>
                 </tree>
             </field>
         </record>

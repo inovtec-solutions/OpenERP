@@ -71,18 +71,13 @@ class update_fee_register(osv.osv_memory):
                             print "month>>>>>>",month
                             updated_fee_till = month
                             for cal_std_obj in cal_std_objs:
-                                #print "cal_std_id",cal_std_id
-                                #cal_std_obj = self.pool.get('sms.academiccalendar.student').browse(cr,uid,cal_std_id)
-                                #print "std_id1",cal_std_obj.std_id
                                 std_id = cal_std_obj.std_id.id
                                 if not std_id:
                                     continue
                                 std_obj = self.pool.get('sms.student').browse(cr,uid,std_id)
                                 std_feestr = std_obj.fee_type.id
                                 total_paybles = std_obj.total_paybles
-                                # get monthly fees from classes fee with fee structure define with student,with subtype monthly fee
-    #                             monthly_feeids = self.pool.get('smsfee.academiccalendar.fees').search(cr,uid,[('fee_structure_id','=',std_feestr),('academic_cal_id','=',acad_cal),('fee_type_subtype','=','Monthly_Fee')])
-                                                               
+                                                                 
                                 ft_idss2 = self.pool.get('smsfee.feetypes').search(cr,uid,[('subtype','=','Monthly_Fee')])
                                 for ft in ft_idss2:
                                     sqlfee2 = """SELECT smsfee_academiccalendar_fees.id from smsfee_academiccalendar_fees
@@ -94,12 +89,7 @@ class update_fee_register(osv.osv_memory):
                                     monthly_feeids = cr.fetchall()
                                      
                                     for feetype in monthly_feeids:
-                                        print "fee type id::",feetype[0]
                                         cls_fee_obj = self.pool.get('smsfee.academiccalendar.fees').browse(cr,uid,feetype[0])
-                                        print "fee_month:",month
-                                        print "std_id:",std_id
-                                        print "fts:",ft
-                                        #check if student is already charged with fee then only uodate record otherwiase insert his fee    
                                         std_fee_ids = self.pool.get('smsfee.studentfee').search(cr,uid,[('student_id','=',std_id),('generic_fee_type','=',ft),('fee_month','=',month)])
                                         if not std_fee_ids:
                                             std_fee_obj = self.pool.get('smsfee.studentfee').create(cr,uid,{
@@ -130,7 +120,6 @@ class update_fee_register(osv.osv_memory):
                  sql="""delete from smsfee_fee_adjustment where user_id = """+str(uid)
                  cr.execute(sql)
                  cr.commit()
-                 print "adding fee to class"
                  #add Fee to the whole class normally the fee may be of type other, but it also contain more fee types
                  acad_cal_stdids = self.pool.get('sms.academiccalendar.student').search(cr,uid,[('state','=','Current'),('name','=',acad_cal)])
                  acad_cal_stdids_rec = self.pool.get('sms.academiccalendar.student').browse(cr,uid,acad_cal_stdids)
@@ -146,12 +135,7 @@ class update_fee_register(osv.osv_memory):
                               raise osv.except_osv(('No Fee Found For Selected Class'),('Please Define a Fee For Selected Class'))
                      else:
                          amount = f.fee_amount
-                     print "found students",idss.std_id.id
-                     print "due_month",f.month_of_dues.id
-                     print "fee_structure",student_rec.fee_type.id
-                     print "amount",f.fee_amount
-                     print "class_id",acad_cal
-                     print "action",action
+
                      std_fee_obj = self.pool.get('smsfee.fee.adjustment').create(cr,uid,{
                                       'class_id':acad_cal,                                                       
                                       'name':idss.std_id.id,
